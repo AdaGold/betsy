@@ -1,4 +1,4 @@
-# C3Projects--bEtsy
+# bEtsy
 [b]Etsy will be an online store where a wide variety of products can be listed and sold by any user. In this project we will focus on reinforcing the major components of Rails, Model Validation, as well as introducing some more complex logic such as user authentication.
 
 #### In this project you will cover
@@ -15,7 +15,7 @@
 
 #### Guidelines
 
-- Groups of four will collaborate in pairs or individually
+- Groups of three or four will collaborate in pairs or individually
 - Use a task manager like [Trello](http://trello.com) to track your team's efforts
 - Build a logical user-flow that moves across multiple controllers and models
 - Use HTML/CSS to style your website.
@@ -23,12 +23,11 @@
 ### Restrictions
 
 - Do not use gems for user authentication (such as Devise)
-- Do not use Rails `scaffold` generator (All other Rails generators are fine)
 
 ### Getting Started
 
 1. As a group decide on an app name (this may help lead the aesthetic)
-1. As a group decide on a team name (this will amuse me)
+1. As a group decide on a team name (this will amuse your instructors)
 1. Create a branch on the master repo with your team name
 1. Have one person on your team fork/clone the project master as per usual.
   1. Figure out your workflow for the project, re: Git and Task management
@@ -170,7 +169,7 @@ Your `README` file on your Github repo should contain a link to your live site.
 
 ## Team Leaders
 Each team will have team leaders who are responsible for keeping track of each
-team member's contributions. Rotate leader roles at the beginning of every week; every team member should be in at least one leader role during the project.
+team member's contributions. Rotate leader roles at the beginning of each week; every team member should be in at least one leader role during the project.
 
 - Stand Up Leader
   - Takes notes about each person's daily report in Stand Up
