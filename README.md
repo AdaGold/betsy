@@ -33,6 +33,7 @@
   1. Figure out your workflow for the project, re: Git and Task management
 1. Determine who will be the Stand Up Leader and Task Leader for the first week
 1. Create a Trello board and ensure that all team members and instructors have access
+1. Setup a basic Rails application (without using Minitest, but WITH RSpec), and submit a baseline PR with the generated application.
 
 ### Expectations
 
