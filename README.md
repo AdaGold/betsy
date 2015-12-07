@@ -15,7 +15,7 @@
 
 #### Guidelines
 
-- Groups of three or four will collaborate in pairs or individually
+- Groups of three or four will collaborate in pairs or individually and will report to their assigned Project Manager (one of the instructors)
 - Use a task manager like [Trello](http://trello.com) to track your team's efforts
 - Build a logical user-flow that moves across multiple controllers and models
 - Use HTML/CSS to style your website
@@ -31,6 +31,8 @@
 1. Create a branch on the master repo with your team name
 1. Have one person on your team fork/clone the project master as per usual
   1. Figure out your workflow for the project, re: Git and Task management
+1. Determine who will be the Stand Up Leader and Task Leader for the first week
+1. Create a Trello board and ensure that all team members and instructors have access
 
 ### Expectations
 
@@ -168,10 +170,10 @@ Your final project must be deployed to [Heroku](http://heroku.com). Your team wi
 Your `README` file on your Github repo should contain a link to your live site.
 
 ## Team Leaders
-Each team will have team leaders who are responsible for keeping track of each
-team member's contributions. Rotate leader roles at the beginning of each week; every team member should be in at least one leader role during the project.
+Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of each week; every team member should be in at least one leader role during the project.
 
 - Stand Up Leader
+  - Notifies team members about meeting schedule and ensures that everyone is present and ready
   - Takes notes about each person's daily report in Stand Up
   - Keeps the meeting moving
 - Task Leader
@@ -183,7 +185,10 @@ team member's contributions. Rotate leader roles at the beginning of each week; 
       - Ability
   - Ensures the task list stays up to date
 
-At the end of each day, the team leaders will prepare a report containing the Stand Up notes for that day and the list of Tasks completed or started that day. Email that report to your team's Project Manager.
+## Stand Up Meetings
+The Project Manager for your team will determine the timing for all Stand Up meetings. Because PMs are managing multiple projects at once this time will be different for each team, and may change from day to day. The meeting schedule will be communicated to the Stand Up Leader as soon as it is determined.
+
+At the end of each day, your team's assigned Project Manager will review the Trello board for all tasks discussed during that day's Stand Up meeting.
 
 ## Weekly Demos
 In a real world work environment, a team's success is measured by their product as opposed to each individual's contribution.
