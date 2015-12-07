@@ -18,7 +18,7 @@
 - Groups of three or four will collaborate in pairs or individually
 - Use a task manager like [Trello](http://trello.com) to track your team's efforts
 - Build a logical user-flow that moves across multiple controllers and models
-- Use HTML/CSS to style your website.
+- Use HTML/CSS to style your website
 
 ### Restrictions
 
@@ -29,7 +29,7 @@
 1. As a group decide on an app name (this may help lead the aesthetic)
 1. As a group decide on a team name (this will amuse your instructors)
 1. Create a branch on the master repo with your team name
-1. Have one person on your team fork/clone the project master as per usual.
+1. Have one person on your team fork/clone the project master as per usual
   1. Figure out your workflow for the project, re: Git and Task management
 
 ### Expectations
@@ -77,7 +77,7 @@ As a guest to the website (not signed in) I **can**:
 
 As a guest I **cannot**:
 
-- Add products to the cart that are out of stock.
+- Add products to the cart that are out of stock
 - View any link or page to manage any products
 - View any of the account pages
 
@@ -85,7 +85,7 @@ As a guest I **cannot**:
 
 As a signed-in user, I **can**:
 
-- Do everything a guest user can do except for sign up and sign in.
+- Do everything a guest user can do except for sign up and sign in
 - Sign out
 - Create new categories (categories are shared between all merchants)
 - Create a new product providing:
@@ -163,7 +163,7 @@ Many of our models will have attributes that are required for our application to
 - Rating must be between 1 and 5
 
 ## Submission Guidelines
-Your final project must be deployed to [Heroku](http://Heroku.com). Your team will open a single pull request for the entire project. Include the link to your Heroku deployment in the PR's description.
+Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. Include the link to your Heroku deployment in the PR's description.
 
 Your `README` file on your Github repo should contain a link to your live site.
 
@@ -183,7 +183,7 @@ team member's contributions. Rotate leader roles at the beginning of each week; 
       - Ability
   - Ensures the task list stays up to date
 
-At the end of each day, the team leaders will prepare a report containing the Stand Up notes for that day and the last of Tasks completed or started that day. Email that report to your team's Project Manager.
+At the end of each day, the team leaders will prepare a report containing the Stand Up notes for that day and the list of Tasks completed or started that day. Email that report to your team's Project Manager.
 
 ## Weekly Demos
 In a real world work environment, a team's success is measured by their product as opposed to each individual's contribution.
