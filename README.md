@@ -39,6 +39,14 @@
 
 Build an online system for listing, selling, reviewing, and buying a wide variety of products listed by multiple merchants.
 
+#### General Requirements
+- RSpec tests for
+  - Controllers
+  - Models
+  - Routes (optional)
+- Test code coverage (using SimpleCov)
+  - 90% for all controller and model classes
+
 #### Guest User (Unauthenticated)
 
 As a guest to the website (not signed in) I **can**:
