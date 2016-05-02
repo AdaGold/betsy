@@ -1,8 +1,7 @@
 # bEtsy
 [b]Etsy will be an online store where a wide variety of products can be listed and sold by any user. In this project we will focus on reinforcing the major components of Rails, Model Validation, as well as introducing some more complex logic such as user authentication.
 
-#### In this project you will cover
-
+## Project Learning Goals
 - Core comprehension of:
   - Routes
   - Controllers
@@ -11,44 +10,43 @@
 - User based application logic
 - User authentication
 - Agile practices
+- Feature branch management with Git
 - Group project ownership
 
-#### Guidelines
-
+## Guidelines
 - Groups of three or four will collaborate in pairs or individually and will report to their assigned Project Manager (one of the instructors)
 - Use a task manager like [Trello](http://trello.com) to track your team's efforts
 - Build a logical user-flow that moves across multiple controllers and models
 - Use HTML/CSS to style your website
 
-### Restrictions
-
+###Restrictions
 - Do not use gems for user authentication (such as Devise)
 
-### Getting Started
-
+## Getting Started
 1. As a group decide on an app name (this may help lead the aesthetic)
 1. As a group decide on a team name (this will amuse your instructors)
-1. Create a branch on the master repo with your team name
 1. Have one person on your team fork/clone the project master as per usual
-  1. Figure out your workflow for the project, re: Git and Task management
-1. Determine who will be the Stand Up Leader and Task Leader for the first week
+  1. Add all other team members as collaborators
+  1. Each team member should clone the repo to their computer
+1. Figure out your workflow for the project, re: Git and Task management 
+  1. Determine who will be the Stand Up Leader and Task Leader for the first week
 1. Create a Trello board and ensure that all team members and instructors have access
-1. Setup a basic Rails application (without using Minitest, but WITH RSpec), and submit a baseline PR with the generated application.
+1. Review the User Storie below and create Trello tasks to represent them
+1. Slack your team name, app name, and link to your trello board to your Project Manager
 
-### Expectations
-
+## Expectations
 Build an online system for listing, selling, reviewing, and buying a wide variety of products listed by multiple merchants.
 
-#### General Requirements
-- RSpec tests for
+### General Requirements
+- Unit tests and/or specs for
   - Controllers
   - Models
-  - Routes (optional)
+  - Routes
 - Test code coverage (using SimpleCov)
   - 90% for all controller and model classes
 
+### User Stories
 #### Guest User (Unauthenticated)
-
 As a guest to the website (not signed in) I **can**:
 
 - Browse all products
@@ -93,7 +91,6 @@ As a guest I **cannot**:
 - View any of the account pages
 
 #### Authenticated Users
-
 As a signed-in user, I **can**:
 
 - Do everything a guest user can do except for sign up and sign in
@@ -135,11 +132,9 @@ As a signed-in user, I **cannot**:
 - View another users private data (i.e. order fulfillment or product management)
 
 ### Model Validations
-
 Many of our models will have attributes that are required for our application to use and display data consistently. Each model will have attributes with requirements for a valid record. The requirements are summarized below:
 
 #### User
-
 - Username must be present
 - Username must be unique
 - Email Address must be present
@@ -147,7 +142,6 @@ Many of our models will have attributes that are required for our application to
 - Password Confirmation must match Password
 
 #### Product
-
 - Name must be present
 - Name must be unique
 - Price must be present
@@ -156,11 +150,9 @@ Many of our models will have attributes that are required for our application to
 - Product must belong to a User
 
 #### Order
-
 - An Order must have one or more Order Items
 
 #### OrderItem
-
 - Must belong to a Product
 - Must belong to an Order
 - Quantity must be present
@@ -168,15 +160,12 @@ Many of our models will have attributes that are required for our application to
 - Quantity must be greater than 0
 
 #### Review
-
 - Rating must be present
 - Rating must be an integer
 - Rating must be between 1 and 5
 
 ## Submission Guidelines
 Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. Include the link to your Heroku deployment in the PR's description.
-
-Your `README` file on your Github repo should contain a link to your live site.
 
 ## Team Leaders
 Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of each week; every team member should be in at least one leader role during the project.
