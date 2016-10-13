@@ -21,6 +21,7 @@
 
 ###Restrictions
 - Do not use gems for user authentication (such as Devise)
+- You must use oAuth for user authentication.  
 
 ## Getting Started
 1. As a group decide on an app name (this may help lead the aesthetic)
@@ -31,7 +32,7 @@
 1. Figure out your workflow for the project, re: Git and Task management 
   1. Determine who will be the Stand Up Leader and Task Leader for the first week
 1. Create a Trello board and ensure that all team members and instructors have access
-1. Review the User Storie below and create Trello tasks to represent them
+1. Review the User Stories below and create Trello tasks to represent them
 1. Slack your team name, app name, and link to your trello board to your Project Manager
 
 ## Expectations
@@ -42,7 +43,7 @@ Build an online system for listing, selling, reviewing, and buying a wide variet
   - Controllers
   - Models
   - Routes
-- Test code coverage (using SimpleCov)
+- Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 
 ### User Stories
