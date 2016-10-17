@@ -19,7 +19,7 @@
 - Build a logical user-flow that moves across multiple controllers and models
 - Use HTML/CSS to style your website
 
-###Restrictions
+### Restrictions
 - Do not use gems for user authentication (such as Devise)
 - You must use oAuth for user authentication.  
 
@@ -29,7 +29,7 @@
 1. Have one person on your team fork/clone the project master as per usual
   1. Add all other team members as collaborators
   1. Each team member should clone the repo to their computer
-1. Figure out your workflow for the project, re: Git and Task management 
+1. Figure out your workflow for the project, re: Git and Task management
   1. Determine who will be the Stand Up Leader and Task Leader for the first week
 1. Create a Trello board and ensure that all team members and instructors have access
 1. Review the User Stories below and create Trello tasks to represent them
@@ -78,12 +78,9 @@ As a guest to the website (not signed in) I **can**:
     - Order total price
     - DateTime the order was placed
     - The current status of the order
-- Sign up to be a merchant, providing:
-    - Email Address
-    - Username
-    - Password (plain text passwords cannot be stored in the database)
-    - Password confirmation
-- Sign in to my merchant account
+- Sign up to be a merchant using OAuth
+    - Every merchant must have a username
+- Sign in to my merchant account using OAuth
 
 As a guest I **cannot**:
 
@@ -135,12 +132,11 @@ As a signed-in user, I **cannot**:
 ### Model Validations
 Many of our models will have attributes that are required for our application to use and display data consistently. Each model will have attributes with requirements for a valid record. The requirements are summarized below:
 
-#### User
+#### Merchant
 - Username must be present
 - Username must be unique
 - Email Address must be present
 - Email Address must be unique
-- Password Confirmation must match Password
 
 #### Product
 - Name must be present
@@ -166,7 +162,7 @@ Many of our models will have attributes that are required for our application to
 - Rating must be between 1 and 5
 
 ## Submission Guidelines
-Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. Include the link to your Heroku deployment in the PR's description.
+Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. Include the link to your Heroku deployment in the PR's description, as well as the team name and the names of all members.
 
 ## Team Leaders
 Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of each week; every team member should be in at least one leader role during the project.
@@ -192,4 +188,7 @@ At the end of each day, your team's assigned Project Manager will review the Tre
 ## Weekly Demos
 In a real world work environment, a team's success is measured by their product as opposed to each individual's contribution.
 
-Each team will present their progress and respond to questions from their Project Manager each Friday. Every team member will participate in these demos; the PM will ask specific questions regarding 1) the team's progress and plan for completing the project, 2) the technical decisions and implementation, and 3) every team member's understanding of the underlying technical structures.
+Each team will present their progress and respond to questions from their Project Manager each Friday. Every team member will participate in these demos; the PM will ask specific questions regarding
+1. The team's progress and plan for completing the project
+1. The technical decisions and implementation
+1. Every team member's understanding of the underlying technical structures.
