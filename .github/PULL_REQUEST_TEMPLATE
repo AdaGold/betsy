@@ -1,0 +1,20 @@
+# bEtsy
+Congratulations! You're submitting your assignment! These comprehension questions should be answered by all members of your team, not by a single teammate.
+
+## Comprehension Questions
+| Question | Answer    |
+| :------------- | :------------- |
+
+| How was oAuth implemented to restrict guests from certain functionality?  |    |
+| How was functionality restricted between the different user roles (Merchant and signed-in user)?  |    |
+| What did your group do to setup the cart?  |    |
+| What nested routes were needed for this application?  |    |
+| How did your group do to test sessions? |    |
+| What did your group do to keep your code DRY?  |    |
+| How did your team break up the work to be done? |    |
+| How did your team utilize git to collaborate? |    |
+| What challenges did your group face?  |    |
+| What could your team have done better?  |    |
+| What was your application's ERD? (include a link) |    |
+| What is your Trello URL? |        |
+| What is the Heroku URL of your deployed application? |        |
