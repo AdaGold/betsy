@@ -43,7 +43,6 @@ Build an online system for listing, selling, reviewing, and buying a wide variet
 - Unit tests and/or specs for
   - Controllers
   - Models
-  - Routes
 - Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 

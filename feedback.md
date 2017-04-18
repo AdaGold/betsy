@@ -32,7 +32,6 @@
 |  **Testing** |   |
 | Model Testing |  |
 | Controller Testing |  |
-| Route Testing |  |
 | Session Testing |  |
 | SimpleCov at 90% for controller and model tests |  |
 |  **Front-end** |   |
