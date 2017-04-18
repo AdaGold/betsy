@@ -17,7 +17,7 @@
 - Groups of three or four will collaborate in pairs or individually and will report to their assigned Project Manager (one of the instructors)
 - Use a task manager like [Trello](http://trello.com) to track your team's efforts
 - Build a logical user-flow that moves across multiple controllers and models
-- Use HTML/CSS to style your website
+- Use HTML/CSS and Foundation to style your website
 
 ### Restrictions
 - Do not use gems for user authentication (such as Devise)
