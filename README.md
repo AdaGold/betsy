@@ -17,7 +17,7 @@
 - Groups of three or four will collaborate in pairs or individually and will report to their assigned Project Manager (one of the instructors)
 - Use a task manager like [Trello](http://trello.com) to track your team's efforts
 - Build a logical user-flow that moves across multiple controllers and models
-- Use HTML/CSS to style your website
+- Use HTML/CSS and Foundation to style your website
 
 ### Restrictions
 - Do not use gems for user authentication (such as Devise)
@@ -27,6 +27,7 @@
 1. As a group decide on an app name (this may help lead the aesthetic)
 1. As a group decide on a team name (this will amuse your instructors)
 1. Have one person on your team fork/clone the project master as per usual
+  1. Create a new rails app using `rails new .`
   1. Add all other team members as collaborators
   1. Each team member should clone the repo to their computer
 1. Figure out your workflow for the project, re: Git and Task management
@@ -42,7 +43,6 @@ Build an online system for listing, selling, reviewing, and buying a wide variet
 - Unit tests and/or specs for
   - Controllers
   - Models
-  - Routes
 - Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 
