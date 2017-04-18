@@ -27,6 +27,7 @@
 1. As a group decide on an app name (this may help lead the aesthetic)
 1. As a group decide on a team name (this will amuse your instructors)
 1. Have one person on your team fork/clone the project master as per usual
+  1. Create a new rails app using `rails new .`
   1. Add all other team members as collaborators
   1. Each team member should clone the repo to their computer
 1. Figure out your workflow for the project, re: Git and Task management
