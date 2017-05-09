@@ -4,16 +4,11 @@ Congratulations! You're submitting your assignment! These comprehension question
 ## Comprehension Questions
 | Question | Answer    |
 | :------------- | :------------- |
-
-| How was oAuth implemented to restrict guests from certain functionality?  |    |
-| How was functionality restricted between the different user roles (Merchant and signed-in user)?  |    |
-| What did your group do to setup the cart?  |    |
-| What nested routes were needed for this application?  |    |
-| How did your group do to test sessions? |    |
-| What did your group do to keep your code DRY?  |    |
 | How did your team break up the work to be done? |    |
 | How did your team utilize git to collaborate? |    |
-| What challenges did your group face?  |    |
+| What did your group do to try to keep your code DRY while many people collaborated on it?  |    |
+| What was a technical challenge that you faced as a group?  |    |
+| What was a team/personal challenge that you faced as a group?  |    |
 | What could your team have done better?  |    |
 | What was your application's ERD? (include a link) |    |
 | What is your Trello URL? |        |

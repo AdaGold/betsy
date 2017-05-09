@@ -6,6 +6,8 @@
 |  **Baseline** |   |
 | Appropriate Git Usage with all members contributing	|   	|
 | Answered comprehension questions	|   	|
+| Trello board is created and utilized in project management |   |
+| Heroku instance is online |   |
 |  **General** |   |
 | Nested routes follow RESTful conventions |   |
 | oAuth used for User authentication  |   |
@@ -14,22 +16,20 @@
 | Users can view past orders |   |
 | Merchants can add, edit and view their products |   |
 | Errors are reported to the user  |   |
-| Trello board is created and utilized in project management |   |
-| Heroku instance is online |   |
-| ** Order Functionaly ** |   |
+| **Order Functionality** |   |
 | Reduces products' inventory  |   |
 | Cannot order products that are out of stock  |   |
 | Changes order state  |   |
 | Clears current cart  |   |
-| ** Database ** |   |
+| **Database** |   |
 | ERD includes all necessary tables and relationships  |   |
 | Table relationships  |   |
-| ** Models ** |   |
+| **Models** |   |
 | Validation rules for Models |   |
 | Business logic is in the models |   |
-| ** Controllers ** |   |
+| **Controllers** |   |
 | Controller Filters used to DRY up controller code |   |
-|  **Testing** |   |
+| **Testing** |   |
 | Model Testing |  |
 | Controller Testing |  |
 | Session Testing |  |
