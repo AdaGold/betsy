@@ -193,6 +193,6 @@ Each team will present their progress and respond to questions from their Projec
 1. Every team member's understanding of the underlying technical structures
 
 ## Final Presentation
-Each team will present their product in a final presentation to the group on the final Friday. The presentation should include every team member and:
+Each team will present their product in a final presentation to the group on the final Friday. Your presentation should be no more than 7 minutes. The presentation should include every team member and:
 - what you learned as individuals and as a group
 - a short story-driven demo of interesting features
