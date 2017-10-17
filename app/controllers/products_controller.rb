@@ -1,10 +1,14 @@
 class ProductsController < ApplicationController
+before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.get_products(a_category: params[:category])
   end
 
   def show
+    unless @product
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -19,5 +23,10 @@ class ProductsController < ApplicationController
   def create
   end
 
+  private
+
+  def find_product
+    @product = Product.find_by_id(params[:id])
+  end
 
 end

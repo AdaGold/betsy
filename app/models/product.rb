@@ -10,4 +10,12 @@ class Product < ApplicationRecord
   validates :price, numericality: { only_float: true }
   #may need to include integers as well
   validates :merchant_id, presence: true
+
+  def self.get_products(a_category: "all")
+    if ["all", nil].include?(a_category)
+      return Product.all
+    else
+      return Product.where(category: a_category)
+    end
+  end
 end

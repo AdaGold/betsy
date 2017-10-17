@@ -1,42 +1,19 @@
 require "test_helper"
 
 describe ProductsController do
-  
+  let(:one) {products(:tree1)}
+
   it "must get the index view" do
     get products_path
     must_respond_with :success
   end
 
-  it "Successfully loads the index page" do
+  it "must get the show view" do
+    get product_path(one.id)
+    must_respond_with :success
 
+    get product_path(-1)
+    must_respond_with :redirect
+    must_redirect_to root_path
   end
-
-  it "Successfully loads the show page" do
-
-  end
-
-  it "Successfully loads a new product form page" do
-
-  end
-
-  it "Successfully loads an edit product form page" do
-
-  end
-
-  it "Successfully creates a new work that saves to the database" do
-
-  end
-
-  it "Successfully saves the attributes of a new work" do
-
-  end
-
-  it "Successfully updates attribute for an existing work" do
-
-  end
-  #may do attributes individually and for redirecting
-
-
-
-
-end #desribe products controller
+end
