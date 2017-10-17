@@ -1,6 +1,6 @@
 <h1>Treebay Products</h1>
 <ul>
   <% @products.each do |product| %>
-    <li><%= product.name %></li>
+    <li><%= link_to(product.name, product_path(product.id)) %></li>
   <% end %>
 </ul>
