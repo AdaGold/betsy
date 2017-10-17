@@ -28,10 +28,21 @@ describe Product do
   end
 
   it "price must be a number" do
-
+    tree1.valid?.must_equal true
+    tree1.price = nil
+    tree1.valid?.must_equal false
+    tree1.price = "haha"
+    tree1.valid?.must_equal false
   end
 
   it "price must be greater than 0" do
+    tree1.valid?.must_equal true
+    tree1.price = 1
+    tree1.valid?.must_equal true
+    tree1.price = 0
+    tree1.valid?.must_equal false
+    tree1.price = -1
+    tree1.valid?.must_equal false
 
   end
 
