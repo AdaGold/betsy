@@ -6,6 +6,9 @@ before_action :find_product, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    unless @product
+      redirect_to root_path
+    end
   end
 
   def edit

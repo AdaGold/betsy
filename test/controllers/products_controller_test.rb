@@ -1,8 +1,7 @@
 require "test_helper"
 
-let(:one) {products(:one)}
-
 describe ProductsController do
+  let(:one) {products(:tree1)}
 
   it "must get the index view" do
     get products_path
@@ -15,6 +14,6 @@ describe ProductsController do
 
     get product_path(-1)
     must_respond_with :redirect
-    must_redirect_to products_path
+    must_redirect_to root_path
   end
 end
