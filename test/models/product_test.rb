@@ -1,4 +1,5 @@
 require "test_helper"
+  #needs to write in two tests for scopes on the model
 
 describe Product do
   let(:product) { Product.new }
