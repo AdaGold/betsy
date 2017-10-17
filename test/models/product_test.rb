@@ -10,6 +10,8 @@ describe Product do
     tree1.valid?.must_equal true
     tree1.name = nil
     tree1.valid?.must_equal false
+    tree1.save
+    tree1.errors.keys.must_include :name
   end
 
   it "must have a unique name" do
@@ -19,6 +21,9 @@ describe Product do
   end
 
   it "must have a price" do
+    tree1.valid?.must_equal true
+    tree1.price = nil
+    tree1.valid?.must_equal false
 
   end
 
