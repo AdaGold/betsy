@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  price: 1
+tree1:
+  name: Tree1
+  price: 10
 
-two:
-  name: MyString
-  price: 1
+tree2:
+  name: Tree2
+  price: 20
