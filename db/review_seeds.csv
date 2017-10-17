@@ -1,0 +1,11 @@
+id,product_id,review_text
+1,1,product1 is awesome
+2,1,product1 is awful
+3,1,product1 is okay
+4,2,product2 is alright
+5,3,product3 is so-so
+6,4,product4 is the best
+7,5,product5 is the worst
+8,6,product6 is meh
+9,7,product7 is great
+10,8,product8 is unsatisfying
