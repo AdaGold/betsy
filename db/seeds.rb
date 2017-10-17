@@ -9,15 +9,39 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
   product.id = row['id']
   product.name = row['name']
   product.price = row['price']
+  product.category = row['category']
+  product.merchant_id = row['merchant_id']
+  product.quantity = row['quantity']
   puts "Created product: #{product.inspect}"
   successful = product.save
   if !successful
-    product_failures << driver
+    product_failures << product
   end
 end
 
 puts "Added #{Product.count} product records"
 puts "#{product_failures.length} products failed to save"
+
+
+
+MERCHANT_FILE = Rails.root.join('db', 'merchant_seeds.csv')
+puts "Loading raw merchant data from #{MERCHANT_FILE}"
+
+merchant_failures = []
+CSV.foreach(MERCHANT_FILE, :headers => true) do |row|
+  merchant = Merchant.new
+  merchant.id = row['id']
+  merchant.username = row['username']
+  merchant.email = row['email']
+  puts "Created merchant: #{merchant.inspect}"
+  successful = merchant.save
+  if !successful
+    merchant_failures << merchant
+  end
+end
+
+puts "Added #{Merchant.count} merchant records"
+puts "#{merchant_failures.length} merchants failed to save"
 
 
 # Since we set the primary key (the ID) manually on each of the
