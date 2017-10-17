@@ -22,6 +22,32 @@ ActiveRecord::Schema.define(version: 20171017231027) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orderitems", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_orderitems_on_order_id"
+    t.index ["product_id"], name: "index_orderitems_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "customer_email"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.integer "zipcode"
+    t.string "cc_name"
+    t.integer "cc_number"
+    t.string "cc_expiration"
+    t.integer "cc_security"
+    t.integer "billingzip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.float "price"
@@ -33,5 +59,7 @@ ActiveRecord::Schema.define(version: 20171017231027) do
     t.index ["merchant_id"], name: "index_products_on_merchant_id"
   end
 
+  add_foreign_key "orderitems", "orders"
+  add_foreign_key "orderitems", "products"
   add_foreign_key "products", "merchants"
 end

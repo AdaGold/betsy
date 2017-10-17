@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :products, :except => [:delete]
   resources :merchants, :except => [:delete]
+  resources :orders, :except => [:delete]
 
 end

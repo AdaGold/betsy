@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :merchant
+  has_many :orderitems
+  has_many :orders, :through => :orderitems
 
   validates :name, presence: true
   validates :name, uniqueness: true
