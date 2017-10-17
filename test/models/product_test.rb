@@ -47,7 +47,7 @@ describe Product do
   end
 
   it "must belong to a user" do
-
+    
   end
 
 end
