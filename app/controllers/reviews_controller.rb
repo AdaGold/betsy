@@ -8,14 +8,14 @@ class ReviewsController < ApplicationController
 
     unless @review
       flash[:error] = "Review not found"
-      redirect_to product_show_path
+      redirect_to root_path
     end
   end
 
   def edit
     @review = Review.find_by(id: params[:id].to_i)
     unless @review
-      redirect_to product_show_path
+      redirect_to root_path
     end
   end
 
@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
     @review = Review.find_by(id: params[:id].to_i)
 
     if @review.update_attributes review_params
-        redirect_to product_show_path
+        redirect_to root_path
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find_by(id: params[:id].to_i)
     @review.destroy
-    redirect_to product_show_path
+    redirect_to root_path
   end
 
 
