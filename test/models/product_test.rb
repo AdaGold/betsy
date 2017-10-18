@@ -82,6 +82,10 @@ describe Product do
       products.must_equal Product.all
     end
   end
-
+  it "can retrieve reviews" do
+    tree1.reviews.each do |r|
+      r.must_be_kind_of Review
+    end
+  end
 
 end
