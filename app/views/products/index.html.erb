@@ -1,10 +1,9 @@
 <h1>Treebay Products</h1>
-
 <%= form_tag(root_path, method: :get) do %>
   <%= label_tag(:category, "Category") %>
-  <%= select_tag "category", options_for_select(["all", "indoor", "outdoor"], ["all"] ) %>
+  <%= select_tag "category", options_for_select(["all", "indoor", "outdoor"], params["category"] ) %>
     <%= label_tag(:merchant, "Merchant") %>
-    <%= select_tag "merchant", options_from_collection_for_select(Merchant.all, "id", "username"), include_blank: "all" %>
+    <%= select_tag "merchant", options_from_collection_for_select(Merchant.all, "id", "username", selected: params[:merchant].to_i), include_blank: "all" %>
   <%= submit_tag("Submit", class: "button") %>
 <% end %>
 <ul>
