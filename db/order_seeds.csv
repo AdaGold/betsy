@@ -1,11 +1,11 @@
-id,customer_email,address1,address2,city,state,zip_code,cc_name,cc_number,cc_expiration,cc_security,billing_zip
-1,christiane@gmail.com,123 A Street,,New York,NY,93507,Christiane S,4111283003558320,01/01,791,96535
-2,shaunna@gmail.com,456 B Street,#4,Lahaina,HI,92509,Shaunna W,4111381187187510,01/02,539,92509
-3,kayla@gmail.com,1 3rd Ave,,Seattle,WA,93032,Kayla E,4111515970319250,01/03,322,96433
-4,victoria@gmail.com,12 8th Ave,#21,New York,NY,99690,Victoria S,4111892427248440,01/04,291,99690
-5,chris@gmail.com,21 Fake Pl,,New York,NY,90097,Chris M,4111698564821290,01/05,981,99642
-6,dee@gmail.com,13 Real St,Apt E,Lahaina,HI,99858,Dee D,4111258502273620,01/06,259,99858
-7,cynthia@gmail.com,321 C Ave,,Seattle,WA,92249,Cynthia T,4111261136939650,01/07,385,98631
-8,sarah@gmail.com,1923 4th Ave,,New York,NY,90161,Sarah E,4111702954334590,01/08,941,90161
-9,alexandra@gmail.com,1230 3rd Ave,Apt 3,New York,NY,96558,Alexandra H,4111941145824450,01/09,382,96558
-10,dan@gmail.com,1083 2nd Ave,,Lahaina,HI,98953,Dan R,4111597016882430,01/10,488,93479
+id,customer_email,address1,address2,city,state,zipcode,cc_name,cc_number,cc_expiration,cc_security,billingzip,status
+1,christiane@gmail.com,123 A Street,,New York,NY,93507,Christiane S,4111283003558320,01/01,791,96535,pending
+2,shaunna@gmail.com,456 B Street,#4,Lahaina,HI,92509,Shaunna W,4111381187187510,01/02,539,92509,paid
+3,kayla@gmail.com,1 3rd Ave,,Seattle,WA,93032,Kayla E,4111515970319250,01/03,322,96433,complete
+4,victoria@gmail.com,12 8th Ave,#21,New York,NY,99690,Victoria S,4111892427248440,01/04,291,99690,cancelled
+5,chris@gmail.com,21 Fake Pl,,New York,NY,90097,Chris M,4111698564821290,01/05,981,99642,pending
+6,dee@gmail.com,13 Real St,Apt E,Lahaina,HI,99858,Dee D,4111258502273620,01/06,259,99858,pending
+7,cynthia@gmail.com,321 C Ave,,Seattle,WA,92249,Cynthia T,4111261136939650,01/07,385,98631,paid
+8,sarah@gmail.com,1923 4th Ave,,New York,NY,90161,Sarah E,4111702954334590,01/08,941,90161,paid
+9,alexandra@gmail.com,1230 3rd Ave,Apt 3,New York,NY,96558,Alexandra H,4111941145824450,01/09,382,96558,complete
+10,dan@gmail.com,1083 2nd Ave,,Lahaina,HI,98953,Dan R,4111597016882430,01/10,488,93479,complete
