@@ -8,10 +8,9 @@ class ReviewsController < ApplicationController
 
     unless @review
       flash[:error] = "Review not found"
-      redirect_to reviews_path
+      redirect_to product_show_path
     end
   end
-
 
   def edit
     @review = Review.find_by(id: params[:id].to_i)
@@ -19,7 +18,6 @@ class ReviewsController < ApplicationController
       redirect_to reviews_path
     end
   end
-
 
   def update
     @review = Review.find_by(id: params[:id].to_i)
@@ -30,7 +28,6 @@ class ReviewsController < ApplicationController
       render :edit
     end
   end
-
 
   def new
     @review = Review.new
@@ -57,6 +54,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    return params.require(:review).permit(:user_id, :product_id)
+    return params.require(:review).permit(:user_id, :product_id, :text, :rating)
   end
 end
