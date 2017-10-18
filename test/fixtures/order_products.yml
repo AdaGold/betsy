@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  quantity: MyString
-  product_id:
-  order_id:
+  quantity: 2
+  product_id: converse
+  order_id: one
 
 two:
-  quantity: MyString
-  product_id:
-  order_id: 
+  quantity: 1
+  product_id: flats
+  order_id: four

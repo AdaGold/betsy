@@ -4,7 +4,7 @@ converse1:
   shipping_status: false
   purchase_status: false
   product_id: :converse
-  order_id: :one
+  order_id:
 
 converse2:
   shipping_status: false
@@ -13,10 +13,10 @@ converse2:
   order_id: :two
 
 flats1:
-  shipping_status: true
+  shipping_status: false
   purchase_status: false
   product_id: :flats
-  order_id: :one
+  order_id:
 
 flats2:
   shipping_status: true
