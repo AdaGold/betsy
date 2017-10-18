@@ -7,7 +7,7 @@ one:
   credit_card_number: 2423 2211 3231 2121
   credit_card_cvv: 344
   billing_zip_code: 98112
-  user_id: 
+  user_id: mia
 
 two:
   email: mia@mommamia.com
@@ -16,4 +16,13 @@ two:
   credit_card_number: 2392 2932 1010 2020
   credit_card_cvv: 232
   billing_zip_code: 02020
-  user_id:
+  user_id: carl
+
+three:
+  email: star@lightbright.com
+  mailing_address: 2929 StarLight Street, Tacoma, Washington 02020
+  credit_card_name: StarLight StarBright
+  credit_card_number: 2392 2932 1010 2020
+  credit_card_cvv: 232
+  billing_zip_code: 02020
+  user_id: 

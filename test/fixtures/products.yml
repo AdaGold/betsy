@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  price: 9.99
-  description: MyString
-  category_id:
-  user_id:
+converse:
+  name: black converse
+  price: 10.99
+  description: some black converses
+  category_id: shoes
+  user_id: carl
 
-two:
-  name: MyString
+flats:
+  name: yellow flats
   price: 9.99
-  description: MyString
-  category_id:
-  user_id:
+  description: a pair of yellow flats
+  category_id: shoes
+  user_id: carl
