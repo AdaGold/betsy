@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'items/index'
+
+  get 'items/show'
+
+  get 'items/edit'
+
+  get 'items/update'
+
+  get 'items/new'
+
+  get 'items/create'
+
+  get 'items/destroy'
+
   get 'main_page/index'
 
   get 'categories/index'
