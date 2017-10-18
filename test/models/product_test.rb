@@ -56,5 +56,10 @@ describe Product do
     tree1.merchant.must_be_kind_of Merchant
   end
 
+  it "can retrieve reviews" do
+    tree1.reviews.each do |r|
+      r.must_be_kind_of Review
+    end
+  end
 
 end
