@@ -7,5 +7,5 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
   validates :category, presence: true
-  validates :price, numericality:true
+  validates :price, numericality: true
 end
