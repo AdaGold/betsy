@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+review1:
+  rating: 1
+  product: tree1
+
+review2:
+  rating: 2
+  product: tree2
