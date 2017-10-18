@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018022914) do
+ActiveRecord::Schema.define(version: 20171018030251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 20171018022914) do
     t.string "billing_zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_billing_data_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -34,25 +32,17 @@ ActiveRecord::Schema.define(version: 20171018022914) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "entries", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.boolean "shipping_status"
     t.boolean "purchase_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "product_id"
-    t.bigint "order_id"
-    t.index ["order_id"], name: "index_entries_on_order_id"
-    t.index ["product_id"], name: "index_entries_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.string "order_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "billing_data_id"
-    t.index ["billing_data_id"], name: "index_orders_on_billing_data_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -61,10 +51,6 @@ ActiveRecord::Schema.define(version: 20171018022914) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.bigint "user_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -72,10 +58,6 @@ ActiveRecord::Schema.define(version: 20171018022914) do
     t.string "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "product_id"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,13 +67,4 @@ ActiveRecord::Schema.define(version: 20171018022914) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "billing_data", "users"
-  add_foreign_key "entries", "orders"
-  add_foreign_key "entries", "products"
-  add_foreign_key "orders", "billing_data", column: "billing_data_id"
-  add_foreign_key "orders", "users"
-  add_foreign_key "products", "categories"
-  add_foreign_key "products", "users"
-  add_foreign_key "reviews", "products"
-  add_foreign_key "reviews", "users"
 end
