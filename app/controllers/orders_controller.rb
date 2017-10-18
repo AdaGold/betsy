@@ -22,23 +22,32 @@ class OrdersController < ApplicationController
     product = Product.find_by(id: params[:product_id])
     if product
       if product.quantity >= 1
+        puts "==============================="
+        puts order_item
+        puts "==============================="
         if order_item
           order_item.quantity += 1
         else
           order_item = Orderitem.new(order_id: session[:order_id], product_id: params[:product_id], quantity: 1)
         end
-        product.quantity -= 1
-        if order_item.save && product.save
-          #TODO: put in a success flash message once we decide what format we want to use
+        if order_item.save
+          flash[:status] = :success
+          flash[:result_text] = "1 #{product.name} added to your cart"
           redirect_back(fallback_location: root_path)
         else
-          #TODO: put in a failure flash message once we decide what format we want to use
+          flash[:status] = :error
+          flash[:result_text] = "Unable to add #{product.name} to your cart"
+          redirect_back(fallback_location: root_path)
         end
       else
-        #TODO: put in a failure flash message for out of stock product
+        flash[:status] = :error
+        flash[:result_text] = "#{product.name} is out of stock"
+        redirect_back(fallback_location: root_path)
       end
     else
-      #TODO: put in a failure flash message for invalid product
+      flash[:status] = :error
+      flash[:result_text] = "That is not a valid product"
+      redirect_back(fallback_location: root_path)
     end
   end
 end
