@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find_by(id: params[:id].to_i)
     unless @review
-      redirect_to reviews_path
+      redirect_to product_show_path
     end
   end
 
@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
     @review = Review.find_by(id: params[:id].to_i)
 
     if @review.update_attributes review_params
-        redirect_to root_path
+        redirect_to product_show_path
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find_by(id: params[:id].to_i)
     @review.destroy
-    redirect_to root_path
+    redirect_to product_show_path
   end
 
 
