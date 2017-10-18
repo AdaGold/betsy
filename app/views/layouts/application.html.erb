@@ -12,7 +12,21 @@
   </head>
 
   <body>
-
+    <header>
+      <h2>Treebay</h2>
+    </header>
+    <section class="flash">
+      <h3><%= flash[:status] == :error ? "A problem occurred: " : "" %><%= flash[:result_text] %></h3>
+      <% if flash[:messages] %>
+        <ul>
+          <% flash[:messages].each do |name, problems| %>
+            <% problems.each do |problem| %>
+              <li><%= name %>: <%= problem %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
     <%= yield %>
 
   </body>
