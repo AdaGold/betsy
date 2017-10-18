@@ -6,4 +6,6 @@ class Product < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, presence: true
   validates :price, presence: true
+  validates :category, presence: true
+  validates :price, numericality: true
 end
