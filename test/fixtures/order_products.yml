@@ -2,6 +2,10 @@
 
 one:
   quantity: MyString
+  product_id:
+  order_id:
 
 two:
   quantity: MyString
+  product_id:
+  order_id: 

@@ -2,6 +2,12 @@
 
 one:
   order_status: MyString
+  user_id:
+  billing_data_id:
+  session_id:
 
 two:
   order_status: MyString
+  user_id:
+  billing_data_id:
+  session_id:

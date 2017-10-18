@@ -3,7 +3,11 @@
 one:
   text: MyString
   rating: MyString
+  user_id:
+  product_id:
 
 two:
   text: MyString
   rating: MyString
+  user_id:
+  product_id:

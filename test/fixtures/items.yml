@@ -1,9 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+converse:
   shipping_status: false
   purchase_status: false
+  product_id:
+  order_id:
 
-two:
+nikes:
   shipping_status: false
+  purchase_status: true
+  product_id:
+  order_id:
+
+pumps:
+  shipping_status: true
   purchase_status: false
+  product_id:
+  order_id:
+
+flats:
+  shipping_status: true
+  purchase_status: true
+  product_id:
+  order_id:

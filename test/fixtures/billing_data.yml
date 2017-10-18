@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  mailing_address: MyString
-  credit_card_name: MyString
-  credit_card_number: MyString
-  credit_card_cvv: MyString
-  billing_zip_code: MyString
+  email: carl@carlcarle.com
+  mailing_address: 4223 Carl Street, Seattle, Washington 98112
+  credit_card_name: Carl Carle
+  credit_card_number: 2423 2211 3231 2121
+  credit_card_cvv: 344
+  billing_zip_code: 98112
+  user_id: 
 
 two:
-  email: MyString
-  mailing_address: MyString
-  credit_card_name: MyString
-  credit_card_number: MyString
-  credit_card_cvv: MyString
-  billing_zip_code: MyString
+  email: mia@mommamia.com
+  mailing_address: 2929 Mia Street, Tacoma, Washington 02020
+  credit_card_name: Momma Mia
+  credit_card_number: 2392 2932 1010 2020
+  credit_card_cvv: 232
+  billing_zip_code: 02020
+  user_id:
