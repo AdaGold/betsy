@@ -4,8 +4,14 @@ tree1:
   name: Tree1
   price: 10
   merchant: sappy1
+  category: indoor
+  quantity: 12
+  merchant: sappy1
 
 tree2:
   name: Tree2
   price: 20
+  merchant: sappy2
+  category: outdoor
+  quantity: 10
   merchant: sappy2
