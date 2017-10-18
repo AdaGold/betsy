@@ -1,0 +1,8 @@
+
+one:
+  category_id: converse
+  product_id: shoes
+
+two:
+  category_id: converse
+  product_id: clothes
