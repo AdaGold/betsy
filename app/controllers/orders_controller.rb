@@ -22,9 +22,6 @@ class OrdersController < ApplicationController
     product = Product.find_by(id: params[:product_id])
     if product
       if product.quantity >= 1
-        puts "==============================="
-        puts order_item
-        puts "==============================="
         if order_item
           order_item.quantity += 1
         else
