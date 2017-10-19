@@ -152,4 +152,15 @@ describe OrdersController do
     end
   end
 
-end
+  describe "#checkout_form" do
+
+    it "should get the checkout_form" do
+      get checkout_form_path
+      must_respond_with :success
+    end
+
+  end #checkout
+
+
+
+end #OrdersController

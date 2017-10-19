@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   def create
   end
 
-  def checkout
+  def checkout_form
 
   end
 
