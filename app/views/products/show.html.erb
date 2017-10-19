@@ -17,3 +17,5 @@
     <% end %>
   </ul>
 <% end %>
+
+<%= link_to "Add to cart", add_order_item_path(session[:order_id], @product.id), method: :patch, class: :button %>

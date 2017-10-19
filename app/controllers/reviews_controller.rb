@@ -22,6 +22,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    if session[:merchant_id]
+      flash[:status] = :failure
+      flash[:message] = "Merchant can't leave reviews, sorry! Wink-wink."
+      redirect_to new_review_path(@review.product_id)
+    end
+
     @review = Review.new(product_id: params[:review][:product_id], rating: params[:review][:rating], review_text: params[:review][:review_text], title: params[:review][:title])
     if @review.save
       redirect_to product_path(@review.product_id)
@@ -29,7 +35,7 @@ class ReviewsController < ApplicationController
       flash[:status] = :failure
       flash[:message] = "Review failed to be added"
       flash[:details] = @review.errors.messages
-      redirect_to new_review_path(@review.product_id)
+      redirect_to product_path(@review.product_id), status: 403
     end
   end
 
