@@ -1,7 +1,7 @@
 <h1><%= @product.name %></h1>
 <h3>$<%= @product.price %></h3>
 
-<%= link_to("Leave a review", new_review_path(pass_product_id: @product.id), method: :get, class: "button") %>
+<%= link_to("Leave a review", new_review_path(@product.id), method: :get, class: "button") %>
 
 <h3>Average Rating: <%= @product.average_rating%></h3>
 
