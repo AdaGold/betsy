@@ -18,6 +18,11 @@ class OrdersController < ApplicationController
   end
 
   def show
+    unless @cart
+      flash[:status] = :error
+      flash[:result_text] = "Invalid order information"
+      redirect_to root_path, status: 404
+    end
   end
 
   def show_cart
@@ -35,7 +40,7 @@ class OrdersController < ApplicationController
         if @order_item.save
           flash[:status] = :success
           flash[:result_text] = "1 #{product.name} added to your cart"
-          redirect_back(fallback_location: root_path)
+          redirect_back(fallback_location: root_path, status: 200)
         else
           flash[:status] = :error
           flash[:result_text] = "Unable to add #{product.name} to your cart"
@@ -44,12 +49,12 @@ class OrdersController < ApplicationController
       else
         flash[:status] = :error
         flash[:result_text] = "#{product.name} is out of stock"
-        redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: root_path, status: 400)
       end
     else
       flash[:status] = :error
       flash[:result_text] = "That is not a valid product"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_path, status: 400)
     end
   end
 
@@ -83,6 +88,6 @@ class OrdersController < ApplicationController
   end
 
   def find_cart
-    @cart = Order.find_by(id: session[:order_id])
+    @cart = Order.find_by(id: session[:order_id], status: "pending")
   end
 end
