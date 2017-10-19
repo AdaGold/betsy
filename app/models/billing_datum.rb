@@ -1,6 +1,7 @@
 class BillingDatum < ApplicationRecord
   has_many  :orders
   belongs_to :user, optional: true
+
   validates :email, presence: true
   validates :mailing_address, presence: true
   validates :credit_card_name, presence: true
