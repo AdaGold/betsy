@@ -4,6 +4,7 @@ class ProductController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id].to_i)
   end
 
   def edit

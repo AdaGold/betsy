@@ -1,43 +1,43 @@
-# # This file should contain all the record creation needed to seed the database with its default values.
-# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-# #
-# # Examples:
-# #
-# #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-# #   Character.create(name: 'Luke', movie: movies.first)
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# # This file should contain all the record creation needed to seed the database with its default values.
-# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-# #
-# # Examples:
-# #
-# #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-# #   Character.create(name: 'Luke', movie: movies.first)
+# Examples:
 #
-# require 'csv'
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# PRODUCT_FILE = Rails.root.join('db', 'seed_data', 'product_seeds.csv')
-# puts "Loading raw work data from #{PRODUCT_FILE}"
+# Examples:
 #
-# product_failures = []
-# CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
-#   product = Product.new
-#   product.id = row['product_id']
-#   product.category_id = row['category_id']
-#   product.user_id = row['user_id']
-#   product.name = row['name']
-#   product.price = row['price']
-#   product.description = row['description']
-#   puts "Created product: #{product.inspect}"
-#   successful = product.save
-#   if !successful
-#     product_failures << product
-#   end
-# end
-#
-# puts "Added #{Product.count} product records"
-# puts "#{product_failures.length} product failed to save"
-#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+require 'csv'
+
+PRODUCT_FILE = Rails.root.join('db', 'seed_data', 'product_seeds.csv')
+puts "Loading raw work data from #{PRODUCT_FILE}"
+
+product_failures = []
+CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
+  product = Product.new
+  product.id = row['product_id']
+  product.category_id = row['category_id']
+  product.user_id = row['user_id']
+  product.name = row['name']
+  product.price = row['price']
+  product.description = row['description']
+  puts "Created product: #{product.inspect}"
+  successful = product.save
+  if !successful
+    product_failures << product
+  end
+end
+
+puts "Added #{Product.count} product records"
+puts "#{product_failures.length} product failed to save"
+
 #
 #
 # USER_FILE = Rails.root.join('db', 'seed_data', 'user_seeds.csv')
@@ -196,14 +196,14 @@
 # puts "Added #{Item.count} item records"
 # puts "#{item_failures.length} item records failed to save"
 #
-#
-# # Since we set the primary key (the ID) manually on each of the
-# # tables, we've got to tell postgres to reload the latest ID
-# # values. Otherwise when we create a new record it will try
-# # to start at ID 1, which will be a conflict.
-# puts "Manually resetting PK sequence on each table"
-# ActiveRecord::Base.connection.tables.each do |t|
-#   ActiveRecord::Base.connection.reset_pk_sequence!(t)
-# end
-#
-# puts "done"
+
+# Since we set the primary key (the ID) manually on each of the
+# tables, we've got to tell postgres to reload the latest ID
+# values. Otherwise when we create a new record it will try
+# to start at ID 1, which will be a conflict.
+puts "Manually resetting PK sequence on each table"
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
+puts "done"
