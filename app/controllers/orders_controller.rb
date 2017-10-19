@@ -65,15 +65,21 @@ class OrdersController < ApplicationController
         flash[:result_text] = "#{@order_item.product.name} quantity is still #{@order_item.quantity}"
         return redirect_to show_cart_path
       end
-      @order_item.quantity = params[:quantity]
-      if @order_item.save
-        flash.now[:status] = :success
-        flash.now[:result_text] = "#{@order_item.product.name} quantity changed to #{params[:quantity]}"
-        return render :show_cart, status: 200
+      if params[:quantity].to_i <= @order_item.product.quantity
+        @order_item.quantity = params[:quantity]
+        if @order_item.save
+          flash.now[:status] = :success
+          flash.now[:result_text] = "#{@order_item.product.name} quantity changed to #{params[:quantity]}"
+          return render :show_cart, status: 200
+        else
+          flash.now[:status] = :error
+          flash.now[:result_text] = "#{@order_item.product.name} quantity was not changed"
+          return render :show_cart, status: 500
+        end
       else
         flash.now[:status] = :error
-        flash.now[:result_text] = "#{@order_item.product.name} quantity was not changed"
-        return render :show_cart, status: 500
+        flash.now[:result_text] = "You can only order up to #{@order_item.product.quantity} of #{@order_item.product.name}"
+        return render :show_cart, status: 400
       end
     else
       flash[:status] = :error

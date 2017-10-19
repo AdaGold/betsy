@@ -71,24 +71,53 @@ describe OrdersController do
   end
 
   describe '#update_quantity' do
+    before do
+      get root_path #do this to get session
+      Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+      #add product to cart
+      patch add_order_item_path(session[:order_id], product.id)
+      must_respond_with :success
+      order_item = Order.find_by(id: session[:order_id]).orderitems.first
+      order_item.product_id.must_equal product.id
+      order_item.quantity.must_equal 1
+    end
+
     it "won't allow action if item is not in cart" do
-      skip
+      invalid_id = -1
+      patch update_quantity_path(session[:order_id], invalid_id)
+      must_respond_with :bad_request
+      flash[:status].must_equal :error
+      flash[:result_text].must_equal "This item is not in your cart"
     end
 
     it "will redirect back with a flash message if the quantity is not changed" do
-      skip
+      patch update_quantity_path(session[:order_id], product.id), params: {quantity: 1}
+      must_respond_with :redirect
+      must_redirect_to show_cart_path
+      flash[:status].must_equal :success
+      flash[:result_text].must_equal "#{product.name} quantity is still 1"
     end
 
     it "won't allow the quantity to be changed to < 1" do
-      skip
+      patch update_quantity_path(session[:order_id], product.id), params: {quantity: 0}
+      must_respond_with :error
+      flash[:status].must_equal :error
+      flash[:result_text].must_equal "#{product.name} quantity was not changed"
     end
 
     it "won't allow the quantity to be changed to > product quantity" do
-      skip
+      patch update_quantity_path(session[:order_id], product.id), params: {quantity: (product.quantity + 1)}
+      must_respond_with :bad_request
+      flash[:status].must_equal :error
+      flash[:result_text].must_equal "You can only order up to #{product.quantity} of #{product.name}"
     end
 
     it "will update the quantity of an item that is in the cart" do
-      skip
+      product.quantity.must_be :>, 1
+      patch update_quantity_path(session[:order_id], product.id), params: {quantity: (product.quantity - 1)}
+      must_respond_with :success
+      flash[:status].must_equal :success
+      flash[:result_text].must_equal "#{product.name} quantity changed to #{product.quantity - 1}"
     end
   end
   # it "should get index" do
