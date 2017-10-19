@@ -61,7 +61,6 @@ GEM
       xpath (~> 2.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
-    choice (0.2.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.2)
@@ -136,11 +135,6 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-erd (1.5.2)
-      activerecord (>= 3.2)
-      activesupport (>= 3.2)
-      choice (~> 0.2.0)
-      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     railties (5.1.4)
@@ -153,7 +147,6 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    ruby-graphviz (1.2.3)
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
@@ -223,7 +216,6 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.4)
-  rails-erd
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
@@ -234,4 +226,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.0.pre.3
