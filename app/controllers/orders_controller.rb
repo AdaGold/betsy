@@ -58,22 +58,22 @@ class OrdersController < ApplicationController
       if @order_item.quantity == params[:quantity].to_i
         flash[:status] = :success
         flash[:result_text] = "#{@order_item.product.name} quantity is still #{@order_item.quantity}"
-        return redirect_back(fallback_location: show_cart_path)
+        return redirect_to show_cart_path
       end
       @order_item.quantity = params[:quantity]
       if @order_item.save
-        flash[:status] = :success
-        flash[:result_text] = "#{@order_item.product.name} quantity changed to #{params[:quantity]}"
-        render :show_cart, status: 200
+        flash.now[:status] = :success
+        flash.now[:result_text] = "#{@order_item.product.name} quantity changed to #{params[:quantity]}"
+        return render :show_cart, status: 200
       else
-        flash[:status] = :error
-        flash[:result_text] = "#{@order_item.product.name} quantity was not changed"
-        render :show_cart, status: 500
+        flash.now[:status] = :error
+        flash.now[:result_text] = "#{@order_item.product.name} quantity was not changed"
+        return render :show_cart, status: 500
       end
     else
       flash[:status] = :error
       flash[:result_text] = "This item is not in your cart"
-      redirect_back(fallback_location: root_path, status: 400)
+      return redirect_back(fallback_location: root_path, status: 400)
     end
   end
 
