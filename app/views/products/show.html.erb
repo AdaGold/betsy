@@ -1,4 +1,21 @@
 <h1><%= @product.name %></h1>
 <h3>$<%= @product.price %></h3>
 
-<%= link_to("Leave a review", new_review_path(pass_product_id: @product.id), method: :get) %>
+<!-- <%= link_to("Leave a review", new_review_path(pass_product_id: @product.id), method: :get) %> -->
+<!-- Above code not useful anymore. Found how to pass parameter through button_to -->
+<%= button_to("Leave a review", new_review_path, method: :get, params: { pass_product_id: @product.id }) %>
+
+
+<h3>Average Rating: <%= @product.average_rating%></h3>
+
+<h3>Reviews: </h3>
+<% if @product.reviews.count < 1  %>
+  <p>Nothing to show!</p>
+<% else %>
+  <ul>
+    <% @product.first_10_reviews.each do |review| %>
+      <li>Rating:  <%=review.rating.to_s%></li>
+      <li><%=review.review_text%></li>
+    <% end %>
+  </ul>
+<% end %>
