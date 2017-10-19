@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(product_id: params[:review][:product_id], rating: params[:review][:rating], review_text: params[:review][:review_text], title: params[:review][:title])
+    @review = Review.new(review_params)
 
     if session[:merchant_id] == nil
       if @review.save
@@ -49,5 +49,10 @@ class ReviewsController < ApplicationController
   def index
   end
 
+  private
+
+  def review_params
+    return params.require(:review).permit(:product_id, :rating, :review_text, :title)
+  end
 
 end
