@@ -12,6 +12,11 @@
   </head>
 
   <body>
+
+
+      <%= session[:merchant_id] %>
+
+
     <header>
       <h2>Treebay</h2>
       <nav>
@@ -32,6 +37,7 @@
         </ul>
       <% end %>
     </section>
+
     <%= yield %>
 
   </body>

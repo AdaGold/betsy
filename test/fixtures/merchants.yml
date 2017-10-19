@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 sappy1:
+  oauth_provider: github
+  oauth_uid: 1111
   username: sappy1
   email: sappy1@gmail.com
 
 sappy2:
+  oauth_provider: github
+  oauth_uid: 2222
   username: sappy2
   email: sappy2@gmail.com
