@@ -7,5 +7,4 @@ class BillingDatum < ApplicationRecord
   validates :credit_card_number, presence: true
   validates :credit_card_cvv, presence: true
   validates :billing_zip_code, presence: true
-
 end

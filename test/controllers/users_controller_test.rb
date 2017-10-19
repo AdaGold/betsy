@@ -11,6 +11,17 @@ describe UsersController do
     must_respond_with :success
   end
 
+# TODO
+  # it "Cannot show a user that doesnt exist" do
+  #     # User.last gives the user with the highest ID
+  #     user = User.last.id + 1
+  #     get user_path(user)
+  #     must_respond_with :not_found
+  #
+  #     # must_respond_with :redirect
+  #     # must_redirect_to root_path
+  #   end
+
 
   it "should successfully create a new user" do
     proc  {
@@ -21,7 +32,6 @@ describe UsersController do
   end
 
   it "should be able to update a user" do
-
     put user_path(users(:carl)), params: {user: {username: "Karl"} }
     user = User.find(users(:carl).id)
     user.username = "Karl"

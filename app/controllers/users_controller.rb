@@ -8,14 +8,20 @@ class UsersController < ApplicationController
     @users = User.order(:id)
   end
 
+
+
   def show
     @user = User.find(params[:id].to_i)
+    # render_404 unless @user
 
     unless @user
       flash[:error] = "User not found"
-      redirect_to users_path
+      redirect_to root_path
     end
   end
+
+
+
   def create
     @user = User.new user_params
 
