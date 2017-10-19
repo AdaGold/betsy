@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :billing_data
+  belongs_to :billing_data, optional: true
   has_many :entries
   belongs_to :user, optional: true
   validates :session_id, presence: true
