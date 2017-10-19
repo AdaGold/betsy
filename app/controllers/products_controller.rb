@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, except: [:index, :new]
+  before_action :find_product, except: [:index, :new, :create]
   def index
     @products = Product.all
   end
@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
 
 private
   def product_params
-    params.require(:product).permit(:name, :description, :user, :price)
+    params.require(:product).permit(:name, :description, :user_id, :price, :category_id)
   end
 
   def find_product

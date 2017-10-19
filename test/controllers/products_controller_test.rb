@@ -50,7 +50,7 @@ describe ProductsController do
         }
         patch product_path(product), params: product_datum
       end
-      # 
+      #
       # it "cannot update a work that does not exist" do
       #     product = Product.last.id + 1
       #     product_datum = {
@@ -62,31 +62,43 @@ describe ProductsController do
       #     must_respond_with :not_found
       # end
     end
+
+    describe "new" do
+      it "it should get a new form" do
+        get new_product_path
+        must_respond_with :success
+      end
+    end
+
+    describe "create" do
+      it "should create a new product when given valid data" do
+        user = users(:carl).id
+        product_data = {
+          product: {
+            name: "God Ugly Converse",
+            price: 99,
+            description: "Great pink shoes!",
+            user_id: user
+          }
+        }
+        post products_path, params: product_data
+        must_respond_with :success
+      end
+
+      it "should throw an error when not given valid data" do
+
+      end
+
+    end
+
+    describe "destroy" do
+      it "Destroys a product that exists" do
+
+      end
+
+      it "cannot destroy a product that doesn't exist" do
+
+      end
+    end
   end
-
-  # it "should get edit" do
-  #   get products_edit_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get update" do
-  #   get products_update_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get new" do
-  #   get products_new_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get create" do
-  #   get products_create_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get destroy" do
-  #   get products_destroy_url
-  #   value(response).must_be :success?
-  # end
-
 end
