@@ -159,8 +159,77 @@ describe OrdersController do
       must_respond_with :success
     end
 
-  end #checkout
+  end
 
+  describe "#checkout" do
+
+    describe "Reduces the number of inventory for each product" do
+      before do
+        get root_path #do this to get session
+        Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+        #add product to cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 1
+      end
+
+      it "reduces inventory" do
+        patch checkout_path
+        Product.find_by(name: product.name).quantity.must_equal product.quantity - 1
+        must_respond_with :success
+      end
+
+      it "won't allow purchase of out of stock items" do
+        out_of_stock_product = Product.find_by(name: product.name)
+        out_of_stock_product.quantity = 0
+        out_of_stock_product.save.must_equal true
+        patch checkout_path
+        flash[:status].must_equal :error
+        flash[:result_text].must_equal "#{product.name} is out of stock"
+        must_redirect_to show_cart_path
+      end
+
+      it "won't allow purchase of more items than are available" do
+        # add a second item to the cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 2
+        # set product quantity to 1
+        product.quantity = 1
+        product.save.must_equal true
+        patch checkout_path
+        flash[:status].must_equal :error
+        flash[:result_text].must_equal "You attempted to purchase #{order_item.quantity} #{product.name}, but there are only #{product.quantity} available."
+        must_redirect_to show_cart_path
+      end
+
+    end
+
+    describe "changes the order state from pending to paid" do
+
+    end
+
+    describe "clears the current cart" do
+
+      it "shows that the cart is now empty" do
+
+      end
+
+      it "sets a new session order id when checkout process complete" do
+        skip
+      end
+
+    end
+
+    describe "Properly validates for user input" do
+
+    end
+
+  end #checkout
 
 
 end #OrdersController

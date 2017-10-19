@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_orderitem, only: [:add_item, :update_quantity, :remove_from_cart]
-  before_action :find_cart, only: [:show_cart, :update_quantity, :remove_from_cart]
+  before_action :find_cart, only: [:show_cart, :update_quantity, :remove_from_cart, :checkout]
 
   def index
   end
@@ -9,7 +9,27 @@ class OrdersController < ApplicationController
   end
 
   def checkout_form
+  end
 
+  def checkout
+    @cart.orderitems.each do |orderitem|
+      if orderitem.product.quantity == 0
+        flash[:status] = :error
+        flash[:result_text] = "#{orderitem.product.name} is out of stock"
+        return redirect_to show_cart_path
+      elsif orderitem.quantity > orderitem.product.quantity
+        flash[:status] = :error
+        flash[:result_text] = "You attempted to purchase #{orderitem.quantity} #{orderitem.product.name}, but there are only #{orderitem.product.quantity} available."
+        return redirect_to show_cart_path
+      end
+
+    end
+
+    @cart.orderitems.each do |orderitem|
+      product = orderitem.product
+      product.quantity -= orderitem.quantity
+      product.save
+    end
   end
 
   def new
