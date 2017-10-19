@@ -1,18 +1,20 @@
 class ProductsController < ApplicationController
+  before_action :find_product, except: [:index, :new]
   def index
     @products = Product.all
   end
 
   def show
-    @product = Product.find(params[:id].to_i)
+    unless @product
+      render :not_found
+    end
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product.update_attributes(product_params)
+    @product.update_attributes product_params
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "Successfully updated #{@product.name}"
@@ -50,5 +52,9 @@ class ProductsController < ApplicationController
 private
   def product_params
     params.require(:product).permit(:name, :description, :user, :price)
+  end
+
+  def find_product
+    @product = Product.find(params[:id].to_i)
   end
 end

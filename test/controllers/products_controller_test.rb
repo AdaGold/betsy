@@ -21,6 +21,31 @@ describe ProductsController do
       get product_path(products(:converse))
       must_respond_with :success
     end
+
+    # it "responds with 404 for non-existing product" do
+    #   get product_path(Product.last.id + 1)
+    #   must_respond_with :bad_request
+    # end
+
+
+    describe "edit" do
+      it "produces an edit form" do
+
+
+      end
+    end
+
+    describe "update" do
+      it "can update an existing work with valid data" do
+        product = products(:converse)
+        product_datum = {
+          product: {
+            name: product.name + " updated"
+          }
+        }
+        patch product_path(product), params: product_datum
+      end
+    end
   end
 
   # it "should get edit" do
