@@ -5,4 +5,4 @@
 
 
 
-<% button_to("Leave a review", new_review_path(:pass_product_id => @product.id) ) %>
+<%= button_to("Leave a review", new_review_path(:pass_product_id => @product.id), method: :get) %>
