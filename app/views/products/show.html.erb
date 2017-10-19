@@ -1,2 +1,20 @@
 <h1>Products#show</h1>
 <p>Find me in app/views/products/show.html.erb</p>
+
+
+
+<section class="product-details">
+<h3><%= @product.name.upcase %> </h3>
+<p>
+  <%= @product.description %>
+</p>
+
+<ul>
+  <li>
+    <strong>Price:</strong> $<%= @product.price %>
+  </li>
+  <li>
+    <strong>Sold By: </strong><%= @product.user.username %>
+  </li>
+</ul>
+</section>
