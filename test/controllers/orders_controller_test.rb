@@ -120,34 +120,19 @@ describe OrdersController do
       flash[:result_text].must_equal "#{product.name} quantity changed to #{product.quantity - 1}"
     end
   end
-  # it "should get index" do
-  #   get orders_index_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get create" do
-  #   get orders_create_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get new" do
-  #   get orders_new_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get edit" do
-  #   get orders_edit_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get update" do
-  #   get orders_update_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get show" do
-  #   get orders_show_url
-  #   value(response).must_be :success?
-  # end
+
+  describe "#remove_from_cart" do
+    it "won't remove an item from an invalid cart" do
+      skip
+    end
+
+    it "won't remove an item if the item doesn't exist in that cart" do
+      skip
+    end
+
+    it "will remove a valid item from a valid cart" do
+      skip
+    end
+  end
 
 end
