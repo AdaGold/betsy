@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :find_orderitem, only: [:add_item, :update_quantity, :remove_from_cart]
-  before_action :find_cart, only: [:show_cart, :update_quantity, :remove_from_cart]
+  before_action :find_orderitem, only: [:add_item, :update_quantity]
+  before_action :find_cart, only: [:show_cart, :update_quantity]
 
   def index
   end
