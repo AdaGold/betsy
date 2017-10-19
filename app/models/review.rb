@@ -8,4 +8,5 @@ class Review < ApplicationRecord
     validates :title, presence: true, length: { in: 2..100 }
     validates :review_text, presence: true, length: { in: 2..700 }
 
+
 end
