@@ -23,6 +23,11 @@
 
     <header>
       <h2>Treebay</h2>
+      <nav>
+        <ul>
+          <li><%= link_to "Cart", show_cart_path%></li>
+        </ul>
+      </nav>
     </header>
     <section class="flash">
       <h3><%= flash[:status] == :error ? "A problem occurred: " : "" %><%= flash[:result_text] %></h3>
