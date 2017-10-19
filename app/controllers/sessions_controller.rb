@@ -18,6 +18,13 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end #create
 
-  def index
+  def logout
+    session[:merchant_id] = nil
+    flash[:status] = :success
+    flash[:result_text] = "Successfully logged out"
+    redirect_to root_path
   end
+
+  # def index
+  # end
 end

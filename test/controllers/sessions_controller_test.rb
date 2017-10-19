@@ -22,8 +22,28 @@ describe SessionsController do
 
     proc {login(@merchant, :github)}.must_change 'Merchant.count', +1
     must_redirect_to root_path
-    p flash
+
     session[:merchant_id].must_equal Merchant.find_by(username: "toolazytomakeone").id
   end
+
+  it "clears the session and redirects back to the root path when a merchant logs out" do
+    @merchant = merchants(:sappy1)
+    login(@merchant, :github)
+    post logout_path
+    session[:merchant_id].must_equal nil
+    must_redirect_to root_path
+  end
+
+  it "notifies ther merchant after it logs out" do
+    @merchant = merchants(:sappy1)
+    login(@merchant, :github)
+    post logout_path
+    flash[:status].must_equal :success
+    flash[:result_text].must_equal "Successfully logged out"
+  end
+
+
+
+
 
 end
