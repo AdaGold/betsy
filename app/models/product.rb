@@ -32,8 +32,8 @@ class Product < ApplicationRecord
     return (sum.to_f/reviews.count).round(1)
   end
 
-  def first_10_reviews
-    return reviews.all.limit(10)
-  end
+  # def first_10_reviews
+  #   return reviews.all.limit(10)
+  # end
 
 end

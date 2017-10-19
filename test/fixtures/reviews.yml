@@ -2,11 +2,13 @@
 
 review1:
   rating: 2
-  review_text: "Ohlala"
+  title: Super review
+  review_text: Ohlala
   product: tree1
 
 
 review2:
   rating: 5
-  review_text: "Boooooh"
+  title: Mediocre review
+  review_text: Boooooh
   product: tree2
