@@ -11,6 +11,7 @@
 <% else %>
   <ul>
     <% @product.reviews.each do |review| %>
+      <li>Title:  <%=review.title%></li>
       <li>Rating:  <%=review.rating.to_s%></li>
       <li><%=review.review_text%></li>
     <% end %>

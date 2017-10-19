@@ -1,5 +1,15 @@
 <%# <h1>Leave a review for <%=Product.find_by_id(params[:pass_product_id]).name </h1> %>
 <h1>Leave a review for</h1>
+
+<% if @review.errors.any? %>
+    <ul class="errors">
+      <% @review.errors.each do |column, message| %>
+      <li> <strong><%= column.capitalize %> </strong> <%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+
 <%= form_for @review do |f| %>
   <%= f.hidden_field :product_id %>
   <%= f.label :Rating %>
@@ -8,5 +18,5 @@
   <%= f.text_field :title %>
   <%= f.label :Review %>
   <%= f.text_area :review_text %>
-  <%= f.submit "submit" %>
+  <%= f.submit("submit", class: "button") %>
 <% end %>
