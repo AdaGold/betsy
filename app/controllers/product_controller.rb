@@ -1,8 +1,10 @@
 class ProductController < ApplicationController
   def index
+    @products = Product.all
   end
 
   def show
+    @product = Product.find(params[:id].to_i)
   end
 
   def edit
