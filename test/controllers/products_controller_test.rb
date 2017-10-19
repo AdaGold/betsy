@@ -6,11 +6,21 @@ describe ProductsController do
       get products_path
       must_respond_with :success
     end
+
+    it "can display index page with no products" do
+      Product.destroy_all
+      Product.count.must_equal 0
+
+      get products_path
+      must_respond_with :success
+    end
   end
-  
-  it "should get show" do
-    get products_show_url
-    value(response).must_be :success?
+
+  describe "Show" do
+    it "shows an existing product" do
+      get product_path(products(:converse))
+      must_respond_with :success
+    end
   end
 
   # it "should get edit" do
