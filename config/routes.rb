@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   resources :orders, :except => [:delete]
   resources :reviews, :except => [:delete]
 
-  get "/auth/:provider/callback", to: "sessions#create"
+  get "/auth/:provider/callback", to: "sessions#create", as: "auth_callback"
 end
