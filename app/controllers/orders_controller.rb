@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :find_orderitem, only: [:add_item, :update_quantity]
-  before_action :find_cart, only: [:show_cart, :update_quantity]
+  before_action :find_orderitem, only: [:add_item, :update_quantity, :remove_from_cart]
+  before_action :find_cart, only: [:show_cart, :update_quantity, :remove_from_cart]
 
   def index
   end
@@ -85,6 +85,30 @@ class OrdersController < ApplicationController
       flash[:status] = :error
       flash[:result_text] = "This item is not in your cart"
       return redirect_back(fallback_location: root_path, status: 400)
+    end
+  end
+
+  def remove_from_cart
+    if @cart
+      if @order_item
+        if @order_item.destroy
+          flash[:status] = :success
+          flash[:result_text] = "#{@order_item.product.name} was removed from your cart"
+          redirect_back(fallback_location: show_cart_path)
+        else
+          flash[:status] = :error
+          flash[:result_text] = "#{@order_item.product.name} was not removed from your cart"
+          redirect_back(fallback_location: show_cart_path)
+        end
+      else
+        flash[:status] = :error
+        flash[:result_text] = "This item is not in your cart"
+        return redirect_back(fallback_location: show_cart_path)
+      end
+    else
+      flash[:status] = :error
+      flash[:result_text] = "Invalid shopping cart"
+      return redirect_back(fallback_location: show_cart_path)
     end
   end
 
