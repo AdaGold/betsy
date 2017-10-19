@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
 before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.get_products(a_category: params[:category])
+    @products = Product.get_products(a_category: params[:category], a_merchant: params[:merchant])
+
   end
 
   def show

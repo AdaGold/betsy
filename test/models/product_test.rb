@@ -56,6 +56,32 @@ describe Product do
     tree1.merchant.must_be_kind_of Merchant
   end
 
+  describe "Product.get_products method" do
+    let(:merchant) { merchants(:sappy1) }
+    let(:category) { products(:tree1).category }
+    it "returns all products when the user does not filter category or merchant" do
+      products = Product.get_products()
+      products.must_equal Product.all
+    end
+    it "filters products by category" do
+      products = Product.get_products(a_category: category)
+      products.must_equal Product.where(category: category)
+    end
+    it "filters products by merchant" do
+      products = Product.get_products(a_merchant: merchant.id)
+      products.must_equal Product.where(merchant_id: merchant.id)
+    end
+    it "filters products by category and merchant" do
+      products = Product.get_products(a_category: category, a_merchant: merchant.id)
+      products.must_equal Product.where(category: category, merchant_id: merchant.id)
+    end
+    it "does returns all products when the user submits invalid filters" do
+      skip
+      #TODO: Write the method to prevent users from inputting invalid filter params
+      products = Product.get_products(a_category: "fake category")
+      products.must_equal Product.all
+    end
+  end
   it "can retrieve reviews" do
     tree1.reviews.each do |r|
       r.must_be_kind_of Review
