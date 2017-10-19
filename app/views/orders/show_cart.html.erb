@@ -1,0 +1,13 @@
+<h1>Your Cart</h1>
+<ul>
+  <% @cart.orderitems.each do |item| %>
+    <li>
+      <%= item.product.name %>
+      <%= form_tag(update_quantity_path(@cart.id, item.product.id), method: :patch) do %>
+        <%= label_tag(:quantity, "Quantity (max #{item.product.quantity})") %>
+        <%= number_field_tag(:quantity, item.quantity, in: (1..(item.product.quantity))) %>
+        <%= submit_tag("Submit", class: "button", method: :patch) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

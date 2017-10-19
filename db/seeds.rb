@@ -9,6 +9,8 @@ CSV.foreach(MERCHANT_FILE, :headers => true) do |row|
   merchant.id = row['id']
   merchant.username = row['username']
   merchant.email = row['email']
+  merchant.oauth_uid = row['oauth_uid']
+  merchant.oauth_provider = row['provider']
   puts "Created merchant: #{merchant.inspect}"
   successful = merchant.save
   if !successful
