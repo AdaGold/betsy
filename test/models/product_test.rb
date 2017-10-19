@@ -27,5 +27,14 @@ describe Product do
     converse.valid?.must_equal false
   end
 
+  it "Must have an associated user id" do
+    converse.user = nil
+    converse.valid?.must_equal false
+  end
 
+  describe "relationship to items" do
+    it "can have many items" do
+
+    end
+  end
 end
