@@ -14,7 +14,11 @@
   <body>
 
 
-      <%= session[:merchant_id] %>
+      <% if session[:merchant_id] %>
+        <%= link_to "Log Out", logout_path, method: :post, class: "button" %>
+      <% else %>
+        <%= link_to "Log in with Github", '/auth/github', class: "button" %>
+      <% end %>
 
 
     <header>
