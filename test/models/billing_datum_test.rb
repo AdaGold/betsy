@@ -42,5 +42,4 @@ describe BillingDatum do
     datum.billing_zip_code = nil
     datum.valid?.must_equal false
   end
-
 end
