@@ -29,10 +29,15 @@ describe ProductsController do
 
 
     describe "edit" do
-      it "produces an edit form" do
-
-
+      it "produces an edit form for a valid product" do
+        get edit_product_path(products(:converse))
+        must_respond_with :success
       end
+
+      # it "does not produce an edit form for bogus product" do
+      #   get edit_product_path(Product.last.id+1)
+      #   must_respond_with :not_found
+      # end
     end
 
     describe "update" do
@@ -45,6 +50,17 @@ describe ProductsController do
         }
         patch product_path(product), params: product_datum
       end
+      # 
+      # it "cannot update a work that does not exist" do
+      #     product = Product.last.id + 1
+      #     product_datum = {
+      #       product: {
+      #         name: product.name + " updated"
+      #       }
+      #     }
+      #     patch product_path(product), params: product_datum
+      #     must_respond_with :not_found
+      # end
     end
   end
 
