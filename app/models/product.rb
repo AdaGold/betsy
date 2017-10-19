@@ -23,4 +23,7 @@ class Product < ApplicationRecord
       return Product.where(category: a_category, merchant_id: a_merchant)
     end
   end
+  def first_10_review(id)
+    Review.where(product_id: id).all.limit(10)
+  end
 end

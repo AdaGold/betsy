@@ -1,9 +1,9 @@
-<h1>Leave a review for</h1>
+<h1>Leave a review for <%=Product.find_by_id(params[:pass_product_id]).name %></h1>
 <%= form_for @review do |f| %>
+  <%= f.hidden_field :product_id %>
   <%= f.label :Rating %>
   <%= f.select :rating, options_for_select(1..5) %>
   <%= f.label :Review %>
   <%= f.text_area :review_text %>
-  <%= f.hidden_field :product_id %>
   <%= f.submit "submit" %>
 <% end %>
