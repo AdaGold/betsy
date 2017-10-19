@@ -8,6 +8,7 @@
         <%= number_field_tag(:quantity, item.quantity, in: (1..(item.product.quantity))) %>
         <%= submit_tag("Submit", class: "button", method: :patch) %>
       <% end %>
+      <%= link_to "Delete", remove_from_cart_path(@cart.id, item.product.id), method: :delete %>
     </li>
   <% end %>
 </ul>

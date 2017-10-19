@@ -120,34 +120,36 @@ describe OrdersController do
       flash[:result_text].must_equal "#{product.name} quantity changed to #{product.quantity - 1}"
     end
   end
-  # it "should get index" do
-  #   get orders_index_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get create" do
-  #   get orders_create_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get new" do
-  #   get orders_new_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get edit" do
-  #   get orders_edit_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get update" do
-  #   get orders_update_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get show" do
-  #   get orders_show_url
-  #   value(response).must_be :success?
-  # end
+
+  describe "#remove_from_cart" do
+    before do
+      get root_path #do this to get session
+      Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+    end
+
+    it "won't remove an item from an invalid cart" do
+      skip
+    end
+
+    it "won't remove an item if the item doesn't exist in that cart" do
+      delete remove_from_cart_path(session[:order_id], product.id)
+      must_respond_with :redirect
+      flash[:status].must_equal :error
+      flash[:result_text].must_equal "This item is not in your cart"
+    end
+
+    it "will remove a valid item from a valid cart" do
+      #add product to cart
+      patch add_order_item_path(session[:order_id], product.id)
+      must_respond_with :success
+      order_item = Order.find_by(id: session[:order_id]).orderitems.first
+      order_item.product_id.must_equal product.id
+      order_item.quantity.must_equal 1
+      delete remove_from_cart_path(session[:order_id], product.id)
+      must_respond_with :redirect
+      flash[:status].must_equal :success
+      flash[:result_text].must_equal "#{product.name} was removed from your cart"
+    end
+  end
 
 end
