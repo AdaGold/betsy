@@ -20,14 +20,17 @@ class Product < ApplicationRecord
     elsif ["all", nil].include?(a_category)
       return Product.where(merchant_id: a_merchant)
     elsif ["all", nil, ""].include?(a_merchant)
-      return Product.where(categories: a_category)
+      return Product.where("categories @> ?", "{#{a_category}}")
     else
-      return Product.where(categories: a_category, merchant_id: a_merchant)
+      category_products = Product.where("categories @> ?", "{#{a_category}}")
+      merchant_products = Product.where(merchant_id: a_merchant)
+      return merchant_products & category_products
     end
   end
 
   def self.categories
-
+    categories = Product.pluck(:categories).flatten.uniq
   end
 
+  
 end
