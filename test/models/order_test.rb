@@ -1,4 +1,5 @@
 require "test_helper"
+require "pry"
 
 describe Order do
   let(:order) { Order.new }
@@ -24,7 +25,8 @@ describe Order do
     end
 
     it "has a billing datum if paid, shipped or canceled" do
-      order.status = "paid"
+      # binding.pry
+      order.order_status = "paid"
       (order.valid?).must_equal false
       order.errors.must_include :billing_data_id
       order.errors[:billing_data_id].must_equal ["must exist"]
@@ -36,7 +38,7 @@ describe Order do
     end
 
     it "does not need to have billing data if pending" do
-      order.status.must_equal "pending"
+      order.order_status.must_equal "pending"
       order.billing_data.must_equal nil
       order.valid?.must_equal true
 
@@ -55,50 +57,50 @@ describe Order do
     end
 
 
-    it "must have an order status of pending, paid, shipped or canceled" do
+    it "must have an order order_status of pending, paid, shipped or canceled" do
       orders.each do |test_order|
-        ["pending","paid", "shipped", "canceled"].must_include test_order.status
+        ["pending","paid", "shipped", "canceled"].must_include test_order.order_status
         test_order.valid?.must_equal true
-        test_order.status = nil
+        test_order.order_status = nil
         test_order.valid?.must_equal false
-        test_order.errors.must_include :status
+        test_order.errors.must_include :order_status
         #not sure what message would be
-        # test_order.errors[:status].must_equal "something"
-        test_order.status = ""
+        # test_order.errors[:order_status].must_equal "something"
+        test_order.order_status = ""
         test_order.valid?.must_equal false
-        test_order.status = 39085
+        test_order.order_status = 39085
         test_order.valid?.must_equal false
-        test_order.status = "pending"
+        test_order.order_status = "pending"
         test_order.valid?.must_equal true
       end
 
 
-      # pending_order.status.must_equal "pending"
+      # pending_order.order_status.must_equal "pending"
       # pendng_order.valid?.must_equal true
-      # pending_order.status = nil
+      # pending_order.order_status = nil
       # pending_order.valid?.must_equal false
       #
-      # paid_order.status.must_equal "paid"
+      # paid_order.order_status.must_equal "paid"
       # paid_order.valid?.must_equal true
-      # paid_order.status = 5
+      # paid_order.order_status = 5
       # paid_order.valid?.must_equal false
       #
-      # shipped_order.status.must_equal "shipped"
+      # shipped_order.order_status.must_equal "shipped"
       # shipped_order.valid?.must_equal true
-      # shipped_order.status = "wsup"
+      # shipped_order.order_status = "wsup"
       # paid_order.valid?.must_equal false
       #
-      # canceled_order.status.must_equal "canceled"
+      # canceled_order.order_status.must_equal "canceled"
       # canceled_order.valid?.must_equal true
-      # canceled_order.status = ""
+      # canceled_order.order_status = ""
       # canceled_order.valid?.must_equal false
 
     end
 
-    it "new orders should have status of pending" do
-      order.status.must_equal "pending"
+    it "new orders should have order_status of pending" do
+      order.order_status.must_equal "pending"
       another_order = Order.new
-      another_order.status.must_equal "pending"
+      another_order.order_status.must_equal "pending"
     end
 
 
@@ -108,9 +110,14 @@ describe Order do
     end
 
     it "must have an associated billing datum if paid, shipped or canceled" do
-      ["paid", "shipped", "canceled"].each do |test_status|
-        order.status = test_status
-        order.
+      ["paid", "shipped", "canceled"].each do |test_order_status|
+        order.order_status = test_order_status
+        order.valid?.must_equal false
+        binding.pry
+        order.billing_data = billing_data(:guest_billing_datum)
+        order.valid?.must_equal true
+        order.billing_data = nil
+      end
 
     end
 
