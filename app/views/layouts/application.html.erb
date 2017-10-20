@@ -18,7 +18,7 @@
       <% if session[:user_id]%>
         <% @user = session[:user_id]%>
         <%= link_to "Logged in as #{User.find(@user).username}", user_path(@user), class:"button" %>
-        <%= link_to "Log out", logout_path, method: :post, class:"button" %>
+        <%= link_to "Log out", logout_path, class:"button" %>
       <%else%>
         <%= link_to "Log in with Github", "/auth/github", class:"button"%>
       <%end%>
