@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :billing_data
   resources :products
 
-  get 'login', to: 'user#login', as: 'login'
+  get 'login', to: 'users#login', as: 'login'
   get 'logout', to: 'sessions#logout', as: 'logout'
   get "/auth/:provider/callback", to: "sessions#create"
 
