@@ -27,7 +27,7 @@ before_action :find_product, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @product = Product.new(review_params)
+    @product = Product.new(product_params)
     if @product.save
       redirect_to product_path(@product.id)
     else
@@ -45,7 +45,7 @@ before_action :find_product, only: [:show, :edit, :update, :destroy]
   end
 
   def product_params
-    return params.require(:review).permit(:name, :price, :merchant_id, :category, :quantity)
+    return params.require(:product).permit(:name, :price, :merchant_id, :category, :quantity)
   end
 
 end

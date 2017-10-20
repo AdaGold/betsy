@@ -1,13 +1,18 @@
 <%= form_for @product do |f| %>
   <%= f.label :Name %>
   <%= f.text_field :name %>
+  <%= f.hidden_field :merchant_id %>
   <%= f.label :Price %>
   <%= f.text_field :price %>
-  <%= f.label :Cagetory %>
-  <%= f.select :rating,  %>
-  <%= f.label :Name %>
-  <%= f.text_field :name %>
-  <%= f.submit submit_name %>
+  <%= f.label :"Choose a category" %>
+  <%= f.select(:category, Product.pluck(:category).uniq, {}, {multiple: true})  %>
+  <%= f.label :"Add a new category" %>
+  <%= f.text_field :category  %>
+  <%= f.label :Quantity %>
+  <%= f.text_field :quantity %>
+  <%= f.submit submit_name, class: "button"  %>
 <% end %>
 
-:name, :price, :merchant_id, :category, :quantity
+<%# TODO: Only the second category field info persist if both  Choose a category and Add a category are selected.%>
+
+  <%#f.select(:category, Product.pluck(:category).uniq)%>
