@@ -35,6 +35,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+  end 
+
   def update
     @user = User.find_by(id: params[:id].to_i)
     redirect_to root_path
@@ -43,6 +46,8 @@ class UsersController < ApplicationController
       redirect_to users_path
     end
   end
+
+
 
 
   # TODO if the user is to be deleted, me must then delete all of there products.
