@@ -1,0 +1,44 @@
+<h1>
+  checkout
+</h1>
+<h3>
+  Personal Information
+</h3>
+<%= form_tag(checkout_path, method: :patch) do %>
+  <%= label_tag(:customer_email, "Email") %>
+  <%= email_field_tag(:customer_email) %>
+
+  <%= label_tag(:address1, "Address 1") %>
+  <%= text_field_tag :address1 %>
+
+  <%= label_tag(:address2, "Address 2") %>
+  <%= text_field_tag :address2 %>
+
+  <%= label_tag(:city, "City") %>
+  <%= text_field_tag :city %>
+
+  <%= label_tag(:state, "State") %>
+  <%= text_field_tag :state %>
+
+  <%= label_tag(:zipcode, "Zip code") %>
+  <%= text_field_tag :zipcode, nil, maxlength: 5 %>
+<h3>
+  Payment Information
+</h3>
+  <%= label_tag(:cc_name, "Name on credit card") %>
+  <%= text_field_tag :cc_name %>
+
+  <%= label_tag(:cc_number, "Credit card number") %>
+  <%= text_field_tag :cc_number, nil, minlength: 16, maxlength: 16 %>
+
+  <%= label_tag(:cc_expiration, "Expiration date on credit card") %>
+  <%= text_field_tag :cc_expiration %>
+
+  <%= label_tag(:cc_security, "CVV code") %>
+  <%= text_field_tag :cc_security, nil, minlength: 3, maxlenth: 3 %>
+
+  <%= label_tag(:billingzip, "Billing zip code") %>
+  <%= text_field_tag :billingzip, nil, maxlength: 5  %>
+
+  <%= submit_tag("Submit", class: "button", method: :patch) %>
+<% end %>

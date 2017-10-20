@@ -10,14 +10,12 @@ Rails.application.routes.draw do
   delete 'orders/:id/:product_id', to: 'orders#remove_from_cart', as: 'remove_from_cart'
   patch '/orders/:id/add/:product_id', to: 'orders#add_item', as: 'add_order_item'
   resources :orders, :except => [:delete]
-  resources :reviews, :only => [:create]
+  resources :reviews, :except => [:delete]
+  get '/checkout', to: 'orders#checkout_form', as: 'checkout_form'
+  patch '/checkout', to: 'orders#checkout', as: 'checkout'
   get "/reviews/:product_id/new", to: "reviews#new", as: "new_review"
-
   get "/auth/:provider/callback", to: "sessions#create", as: "auth_callback"
-
   get 'sessions/create'
-
   get 'sessions/index'
-
   post '/logout', to: 'sessions#logout', as: 'logout'
 end
