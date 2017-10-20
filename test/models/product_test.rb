@@ -59,22 +59,30 @@ describe Product do
   describe "Product.get_products method" do
     let(:merchant) { merchants(:sappy1) }
     let(:categories) { products(:tree1).categories }
+    let(:product1) { products(:tree1)}
+
     it "returns all products when the user does not filter category or merchant" do
       products = Product.get_products()
       products.must_equal Product.all
     end
+
     it "filters products by category" do
       products = Product.get_products(a_category: categories)
-      products.must_equal Product.where(categories: categories)
+
+      products.must_equal Product.where("categories @> ?", "{#{categories}}")
     end
+
     it "filters products by merchant" do
       products = Product.get_products(a_merchant: merchant.id)
       products.must_equal Product.where(merchant_id: merchant.id)
     end
+
     it "filters products by category and merchant" do
       products = Product.get_products(a_category: categories, a_merchant: merchant.id)
 
-      products.must_equal Product.where(categories: categories, merchant_id: merchant.id)
+      # products = Product.where("categories @> {#{a_category}} AND merchant_id = #{a_merchant}")
+
+      products.must_equal [product1]
     end
     it "does returns all products when the user submits invalid filters" do
       skip

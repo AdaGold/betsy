@@ -22,9 +22,13 @@ class Product < ApplicationRecord
     elsif ["all", nil, ""].include?(a_merchant)
       return Product.where("categories @> ?", "{#{a_category}}")
     else
-      category_products = Product.where("categories @> ?", "{#{a_category}}")
-      merchant_products = Product.where(merchant_id: a_merchant)
-      return merchant_products & category_products
+      # category_products = Product.where("categories @> ?", "{#{a_category}}")
+      # merchant_products = Product.where(merchant_id: a_merchant)
+      #
+      # # products = Product.where("categories @> ARRAY#{a_category} AND merchant_id = #{a_merchant}")
+      #
+      # products = category_products & merchant_products
+      return Product.where("products.categories @> ARRAY[?]::varchar[]", a_category) & Product.where(merchant_id: a_merchant)
     end
   end
 
@@ -32,5 +36,5 @@ class Product < ApplicationRecord
     categories = Product.pluck(:categories).flatten.uniq
   end
 
-  
+
 end

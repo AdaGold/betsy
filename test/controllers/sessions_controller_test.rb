@@ -22,7 +22,6 @@ describe SessionsController do
 
     proc {login(@merchant, :github)}.must_change 'Merchant.count', +1
     must_redirect_to root_path
-    p flash
     session[:merchant_id].must_equal Merchant.find_by(username: "toolazytomakeone").id
   end
 
