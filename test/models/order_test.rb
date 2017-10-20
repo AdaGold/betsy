@@ -14,7 +14,7 @@ describe Order do
   describe "relations" do
     it "has a nil user if not logged in" do
       result = guest_pending_order.user
-      result.must_equal nil
+      result.must_be :==, nil
 
     end
 
@@ -26,38 +26,49 @@ describe Order do
 
     it "has a billing datum if paid, shipped or canceled" do
       # binding.pry
+      order.session_id = "test session"
       order.order_status = "paid"
       (order.valid?).must_equal false
-      order.errors.must_include :billing_data_id
-      order.errors[:billing_data_id].must_equal ["must exist"]
-      order.billing_data_id = billing_data(:guest_billing_datum).id
+      order.errors.must_include :billing_datum_id
+      order.errors[:billing_datum_id].must_equal ["is missing.  Please entire valid billing information."]
+      order.billing_datum_id = billing_data(:guest_billing_datum).id
       (order.valid?).must_equal true
-      order.billing_data.must_be_instance_of BillingDatum
+      order.billing_datum.must_be_instance_of BillingDatum
 
 
     end
 
     it "does not need to have billing data if pending" do
       order.order_status.must_equal "pending"
-      order.billing_data.must_equal nil
+      order.billing_datum.must_be :==, nil
+      order.session_id = "fake session"
       order.valid?.must_equal true
 
     end
     it "should have a collection of order_products" do
-      order.order_products.must_be_instance_of Array
-
+      # binding.pry
+      order.order_products.length.must_equal 0
+      paid_order.order_products.length.must_be :>, 0
+      paid_order.order_products.each do |entry|
+        entry.must_be_instance_of OrderProduct
+      end
+      guest_pending_order.order_products.length.must_be :>, 0
+      guest_pending_order.order_products.each do |entry|
+        entry.must_be_instance_of OrderProduct
+      end
     end
   end
 
   describe "validations" do
     it "must have session_id" do
-      order.session_id.must_equal nil
+      order.session_id.must_be :==, nil
       order.valid?.must_equal false
 
     end
 
 
     it "must have an order order_status of pending, paid, shipped or canceled" do
+
       orders.each do |test_order|
         ["pending","paid", "shipped", "canceled"].must_include test_order.order_status
         test_order.valid?.must_equal true
@@ -75,26 +86,6 @@ describe Order do
       end
 
 
-      # pending_order.order_status.must_equal "pending"
-      # pendng_order.valid?.must_equal true
-      # pending_order.order_status = nil
-      # pending_order.valid?.must_equal false
-      #
-      # paid_order.order_status.must_equal "paid"
-      # paid_order.valid?.must_equal true
-      # paid_order.order_status = 5
-      # paid_order.valid?.must_equal false
-      #
-      # shipped_order.order_status.must_equal "shipped"
-      # shipped_order.valid?.must_equal true
-      # shipped_order.order_status = "wsup"
-      # paid_order.valid?.must_equal false
-      #
-      # canceled_order.order_status.must_equal "canceled"
-      # canceled_order.valid?.must_equal true
-      # canceled_order.order_status = ""
-      # canceled_order.valid?.must_equal false
-
     end
 
     it "new orders should have order_status of pending" do
@@ -105,11 +96,12 @@ describe Order do
 
 
     it "must have a user if authenticated user is logged in" do
-      #maybe this should be in the controller instead?
+      #TODO: maybe this should be in the controller instead?
 
     end
 
     it "must have an associated billing datum if paid, shipped or canceled" do
+      order.session_id = "test session"
       ["paid", "shipped", "canceled"].each do |test_order_status|
         order.order_status = test_order_status
         order.valid?.must_equal false
