@@ -20,15 +20,18 @@ before_action :find_merchant
     unless @product
       return redirect_to root_path
     end
-    unless @merchant || @merchant == @product.merchant
+
+    unless @merchant == @product.merchant
       flash[:status] = :error
       flash[:result_text] = "Unauthorized user"
       return redirect_to root_path
     end
+
     @categories = Product.categories
   end
 
   def update
+
     unless @product
       flash[:status] = :error
       flash[:result_text] = "That is not a valid product"
@@ -54,6 +57,8 @@ before_action :find_merchant
         @product.categories << params[:category]
       end
     end
+
+    @product.save
 
     if @product.save
       flash[:status] = :success

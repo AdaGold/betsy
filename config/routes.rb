@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   get 'sessions/create'
 
   get 'sessions/index'
@@ -19,5 +17,4 @@ Rails.application.routes.draw do
   resources :reviews, :except => [:delete]
   get "/auth/:provider/callback", to: "sessions#create", as: "auth_callback"
 
-  patch "/products/:id", to: "products#update_categories", as: "update_categories"
 end

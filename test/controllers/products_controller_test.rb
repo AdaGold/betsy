@@ -47,8 +47,6 @@ describe ProductsController do
     end
 
     it "must redirect to root path if the merchant of the product is not signed in" do
-      skip
-
       # With no mercant signed in
       get edit_product_path(one.id)
       must_respond_with :redirect
@@ -59,6 +57,7 @@ describe ProductsController do
       login(invalid_merchant, :github)
 
       get edit_product_path(one.id)
+      flash[:status].must_equal :error
       must_respond_with :redirect
       must_redirect_to root_path
     end
@@ -79,7 +78,7 @@ describe ProductsController do
     let(:merchant2) {merchants(:sappy2)}
 
     it "will redirect if the product is invalid" do
-      patch update_categories_path(-1), params: { categories: ["Birthday"] }
+      patch product_path(-1), params: { categories: ["Birthday"] }
       flash[:status].must_equal :error
       flash[:result_text].must_equal "That is not a valid product"
       must_redirect_to root_path
@@ -89,7 +88,7 @@ describe ProductsController do
       #no merchant signed in
       categories = one.categories
 
-      patch update_categories_path(one.id), params:{categories: ["Birthday"]}
+      patch product_path(one.id), params:{categories: ["Birthday"]}
       flash[:status].must_equal :error
       must_redirect_to root_path
 
@@ -98,7 +97,7 @@ describe ProductsController do
       #Invalid merchant is signed in
       login(merchant2, :github)
 
-      patch update_categories_path(one.id), params:{categories: ["Birthday"]}
+      patch product_path(one.id), params:{categories: ["Birthday"]}
       flash[:status].must_equal :error
       must_redirect_to root_path
 
@@ -107,21 +106,27 @@ describe ProductsController do
     end
 
     it "must successfully updates the categories if the merchant is signed in" do
-      skip
       login(merchant1, :github)
+
+      session[:merchant_id].to_i.must_equal merchant1.id
+
       #format passed through params if chosen from a list
       before = one.categories.count
-      patch update_categories_path(one.id), params:{ categies: ["outdoor"]}
+      patch product_path(one.id), params:{ categories: ["outdoor"]}
 
-      one.categories.count.must_equal (before + 1)
-      one.categories.must_include "outdoor"
+      test_product = Product.find_by(id: one.id)
+
+      test_product.categories.length.must_equal (before + 1)
+      test_product.categories.must_include "outdoor"
 
       #format passed through params if typed in
       before = one.categories.count
-      patch update_categories_path(one.id), params:{ categies: "Birthday"}
+      patch product_path(one.id), params:{ category: "Birthday"}
 
-      one.categories.count.must_equal before + 1
-      one.categories.must_include "Birthday"
+      test_product = Product.find_by(id: one.id)
+
+      # test_product.categories.count.must_equal before + 1
+      test_product.categories.must_include "Birthday"
     end
 
     it "must return succes and redirect to root_path if saved" do
@@ -129,7 +134,7 @@ describe ProductsController do
 
       session[:merchant_id].to_i.must_equal merchant1.id
 
-      patch update_categories_path(one.id), params:{ categies: ["outdoor"]}
+      patch product_path(one.id), params:{ categories: ["outdoor"]}
 
       flash[:status].must_equal :success
       must_redirect_to product_path(one.id)
