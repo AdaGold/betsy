@@ -33,7 +33,7 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
   product.id = row['id']
   product.name = row['name']
   product.price = row['price']
-  product.category = row['category']
+  product.categories = row['categories']
   product.merchant_id = row['merchant_id']
   product.quantity = row['quantity']
   puts "Created product: #{product.inspect}"

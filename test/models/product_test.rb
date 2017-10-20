@@ -58,22 +58,23 @@ describe Product do
 
   describe "Product.get_products method" do
     let(:merchant) { merchants(:sappy1) }
-    let(:category) { products(:tree1).category }
+    let(:categories) { products(:tree1).categories }
     it "returns all products when the user does not filter category or merchant" do
       products = Product.get_products()
       products.must_equal Product.all
     end
     it "filters products by category" do
-      products = Product.get_products(a_category: category)
-      products.must_equal Product.where(category: category)
+      products = Product.get_products(a_category: categories)
+      products.must_equal Product.where(categories: categories)
     end
     it "filters products by merchant" do
       products = Product.get_products(a_merchant: merchant.id)
       products.must_equal Product.where(merchant_id: merchant.id)
     end
     it "filters products by category and merchant" do
-      products = Product.get_products(a_category: category, a_merchant: merchant.id)
-      products.must_equal Product.where(category: category, merchant_id: merchant.id)
+      products = Product.get_products(a_category: categories, a_merchant: merchant.id)
+
+      products.must_equal Product.where(categories: categories, merchant_id: merchant.id)
     end
     it "does returns all products when the user submits invalid filters" do
       skip
@@ -82,10 +83,25 @@ describe Product do
       products.must_equal Product.all
     end
   end
+
   it "can retrieve reviews" do
     tree1.reviews.each do |r|
       r.must_be_kind_of Review
     end
   end
 
+  describe "self.categories" do
+    it "returns an array the categories that products currently belong to" do
+      categories = Product.categories
+      categories.must_be_kind_of Array
+      Product.categories.must_include "indoor"
+      Product.categories.must_include "outdoor"
+    end
+    it "returns an empty array if there are no categories attached to any products" do
+
+    end
+    it "returns a unique array of categories" do
+      
+    end
+  end
 end
