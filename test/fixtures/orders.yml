@@ -2,24 +2,24 @@
 
 pending_order:
   order_status: pending
-  user_id: carl
+  user: carl
   billing_data_id: one
   session_id: 12e
 
 paid_order:
   order_status: paid
-  user_id: mia
+  user: mia
   billing_data_id: two
   session_id: 112sa
 
 shipped_order:
   order_status: shipped
-  user_id: carl
+  user: carl
   billing_data_id: one
   session_id: 1catDog
 
 canceled_order:
   order_status: canceled
-  user_id:
+  user:
   billing_data_id: three
   session_id: 2pipper232
