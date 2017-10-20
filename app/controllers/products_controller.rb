@@ -20,7 +20,7 @@ before_action :find_merchant
     unless @product
       return redirect_to root_path
     end
-    unless @merchant == @product.merchant
+    unless @merchant || @merchant == @product.merchant
       flash[:status] = :error
       flash[:result_text] = "Unauthorized user"
       return redirect_to root_path
