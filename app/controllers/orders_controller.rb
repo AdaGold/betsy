@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def checkout
+    #verify everything is in stock
     @cart.orderitems.each do |orderitem|
       if orderitem.product.quantity == 0
         flash[:status] = :error
@@ -23,9 +24,10 @@ class OrdersController < ApplicationController
         flash[:result_text] = "You attempted to purchase #{orderitem.quantity} #{orderitem.product.name}, but there are only #{orderitem.product.quantity} available."
         return redirect_to show_cart_path
       end
-
     end
+    #validate user input
 
+    #checkout the cart
     @cart.status = "paid"
     if @cart.save
       @cart.orderitems.each do |orderitem|

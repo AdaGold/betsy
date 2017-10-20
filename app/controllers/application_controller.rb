@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   private
   def assign_order
-    if session[:order_id] == nil
+    if session[:order_id] == nil or Order.find_by(id: session[:order_id], status: "pending") == nil
       order = Order.new(status: "pending")
       if order.save
         session[:order_id] = order.id
