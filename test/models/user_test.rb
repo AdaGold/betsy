@@ -25,12 +25,19 @@ describe User do
 
     it "Should  allow two users to have the same email" do
       user.valid?.must_equal true
-      new_user = User.new #(username: "Mr Magoo", email: "carl@carlcarle.me")
-      new_user.username = "Mr Magoo"
-      new_user.email = "carl@carlcarle.me"
+      new_user = User.new(username: "Mr Magoo", email: "carl@carlcarle.me")
 
       user.valid?.must_equal true
       new_user.valid?.must_equal true
+    end
+
+    it "Username must be unique" do
+      user.valid?.must_equal true
+      new_user = User.new(username: "carl carle", email: "sample@sample.com")
+
+      user.valid?.must_equal true
+      new_user.valid?.must_equal false
+
     end
   end
 end
