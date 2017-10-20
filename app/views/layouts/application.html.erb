@@ -15,12 +15,12 @@
     <%= link_to "Products", products_path, class:"button" %>
     <%= link_to "Users", users_path, class:"button"  %>
     <div class="float-right">
-      <% if session[:logged_in_user]%>
-        <% @user = session[:logged_in_user]%>
-        <%= link_to "Logged in as #{@user['name']}", user_path(@user['id']), class:"button" %>
-        <%= link_to "Log out", logout_path, method: :post, class:"button" %>
+      <% if session[:user_id]%>
+        <% @user = session[:user_id]%>
+        <%= link_to "Logged in as #{User.find(@user).username}", user_path(@user), class:"button" %>
+        <%= link_to "Log out", logout_path, class:"button" %>
       <%else%>
-        <%= link_to "Log in", login_path, class:"button"%>
+        <%= link_to "Log in with Github", "/auth/github", class:"button"%>
       <%end%>
     </div>
   </nav>
