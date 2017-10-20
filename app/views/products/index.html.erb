@@ -8,13 +8,14 @@
     <ul>
       <li>
         <%= product.name %>
+      </li>
+      <li>
         <%= product.price %>
-        <%= product.description %>
-        <%= product.user %>
+      </li>
+      <li>
+        <%= link_to product.name, product_path(product.id) %>
       </li>
     </ul>
-  <% end %>
   </article>
-
-
+  <% end %>
 </section>
