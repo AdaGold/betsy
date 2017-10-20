@@ -20,7 +20,7 @@
         <%= link_to "Logged in as #{@user['name']}", user_path(@user['id']), class:"button" %>
         <%= link_to "Log out", logout_path, method: :post, class:"button" %>
       <%else%>
-        <%= link_to "Log in", login_path, class:"button"%>
+        <%= link_to "Log in with Github", login_path, class:"button"%>
       <%end%>
     </div>
   </nav>
