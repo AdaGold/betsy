@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20171020181604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 20171020181604) do
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "billing_data"
   add_foreign_key "orders", "users"
-  add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
