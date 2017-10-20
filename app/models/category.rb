@@ -3,14 +3,14 @@ class Category < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
 
-  before_validation :fix_category
+  # before_validation :fix_category
 
 
-  private
-  def fix_category
-    if self.category
-      self.category = self.category.downcase.singularize
-    end
-  end
+  # private
+  # def fix_category
+  #   if self.category
+  #     self.category = self.category.downcase.singularize
+  #   end
+  # end
 
 end
