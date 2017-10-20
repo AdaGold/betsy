@@ -46,13 +46,13 @@ describe ItemsController do
 
 
   describe "Destroy" do
-    # it "Should be able to delete an item" do
-    #   proc  {
-    #       delete item_path(items(:converse_no_order).id)}.must_change 'Item.count', - 1
-    #
-    #       must_respond_with :redirect
-    #       must_redirect_to root_path
-    # end
+    it "Should be able to delete an item" do
+      proc  {
+          delete item_path(items(:converse_no_order).id)}.must_change 'Item.count', - 1
+
+          must_respond_with :redirect
+          must_redirect_to root_path
+    end
   end
 
 # ---------------------------------
