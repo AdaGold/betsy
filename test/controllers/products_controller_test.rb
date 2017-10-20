@@ -91,16 +91,21 @@ describe ProductsController do
           product: {
             name: "God Ugly Converse",
             price: 99,
-            description: "Great pink shoes!"
-            # user_id: user
+            user_id: user
           }
         }
 
-        product_data.each do |key, value|
-          value = nil
-          post products_path, params: product_data
+
+        nil_product = product_data.deep_dup
+
+        product_data[:product].each do |key, value|
+          nil_product = product_data.deep_dup
+          nil_product[:product][key] = nil
+          puts "#{key}, #{nil_product[:product][key]}"
+          post products_path, params: nil_product
           must_respond_with :bad_request
         end
+
       end
 
     end
