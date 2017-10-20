@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+body, h1, h2 {
+font-family: 'Slabo 27px', serif;
+}
+
+.page-header {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
