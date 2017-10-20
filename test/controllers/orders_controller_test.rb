@@ -178,7 +178,7 @@ describe OrdersController do
       it "reduces inventory" do
         patch checkout_path
         Product.find_by(name: product.name).quantity.must_equal product.quantity - 1
-        must_respond_with :success
+        must_respond_with :redirect 
       end
 
       it "won't allow purchase of out of stock items" do
@@ -214,9 +214,22 @@ describe OrdersController do
     end
 
     describe "clears the current cart" do
+      before do
+        get root_path #do this to get session
+        Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+        #add product to cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 1
+      end
 
       it "shows that the cart is now empty" do
-
+        patch checkout_path
+        order = Order.find_by(id: session[:order_id])
+        order.wont_equal nil
+        order.orderitems.count.must_equal 0
       end
 
       it "sets a new session order id when checkout process complete" do

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :find_orderitem, only: [:add_item, :update_quantity, :remove_from_cart]
   before_action :find_cart, only: [:show_cart, :update_quantity, :remove_from_cart, :checkout]
+  after_action :assign_order, only: [:checkout]
 
   def index
   end
@@ -30,7 +31,11 @@ class OrdersController < ApplicationController
       product.quantity -= orderitem.quantity
       product.save
     end
-  end
+
+    session[:order_id] = nil
+    redirect_to root_path
+
+  end #checkout
 
   def new
   end
