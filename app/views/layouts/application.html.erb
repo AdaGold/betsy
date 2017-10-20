@@ -6,22 +6,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
   </head>
 
   <body>
-    <header class="page-header row">
-  <h2 class="columns small-12"><%= link_to "NorthWesty", root_path %> <small> Ranking the best of everything</small></h2>
-  <nav class="columns small-12">
-    <%= link_to "Products", products_path, class:"button" %>
-    <%= link_to "Users", users_path, class:"button"  %>
-    <div class="float-right">
-      <% if session[:user_id]%>
-        <% @user = session[:user_id]%>
-        <%= link_to "Logged in as #{User.find(@user).username}", user_path(@user), class:"button" %>
-        <%= link_to "Log out", logout_path, class:"button" %>
-      <%else%>
-        <%= link_to "Log in with Github", "/auth/github", class:"button"%>
-      <%end%>
+
+    <header class="page-header row small-12 large-12">
+      <h2 class="columns small-12 large- 12"><%= link_to "NorthWesty", root_path %></h2>
+      <nav class="columns small-12">
+        <%= link_to "See Our Products", products_path, class:"button" %>
+        <%= link_to "See Our Users", users_path, class:"button"  %>
+
+        <div class="float-right">
+          <% if session[:logged_in_user]%>
+            <% @user = session[:logged_in_user]%>
+            <%= link_to "Logged in as #{@user['name']}", user_path(@user['id']), class:"button" %>
+            <%= link_to "Log out", logout_path, method: :post, class:"button" %>
+          <%else%>
+            <%= link_to "Log in", login_path, class:"button"%>
+          <%end%>
     </div>
   </nav>
 </header>
