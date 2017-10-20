@@ -25,9 +25,9 @@ class ActiveSupport::TestCase
   fixtures :all
   # Add more helper methods to be used by all tests here...xxx
 
-  # def setup #runs once at the beginning of testing
-  #   OmniAuth.config.test_mode = true
-  # end
+  def setup #runs once at the beginning of testing
+    OmniAuth.config.test_mode = true
+  end
 
   def mock_auth_hash(user)
     return {
