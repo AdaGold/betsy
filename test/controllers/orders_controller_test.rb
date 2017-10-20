@@ -178,7 +178,7 @@ describe OrdersController do
       it "reduces inventory" do
         patch checkout_path
         Product.find_by(name: product.name).quantity.must_equal product.quantity - 1
-        must_respond_with :redirect 
+        must_respond_with :redirect
       end
 
       it "won't allow purchase of out of stock items" do
@@ -210,7 +210,9 @@ describe OrdersController do
     end
 
     describe "changes the order state from pending to paid" do
-
+      it do
+        skip
+      end
     end
 
     describe "clears the current cart" do
@@ -233,13 +235,18 @@ describe OrdersController do
       end
 
       it "sets a new session order id when checkout process complete" do
-        skip
+        old_order_id = session[:order_id]
+        patch checkout_path
+        order = Order.find_by(id: session[:order_id])
+        order.id.wont_equal old_order_id
       end
 
     end
 
     describe "Properly validates for user input" do
-
+      it do
+        skip
+      end
     end
 
   end #checkout
