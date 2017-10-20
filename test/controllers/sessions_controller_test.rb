@@ -22,7 +22,10 @@ describe SessionsController do
 
     proc {login(@merchant, :github)}.must_change 'Merchant.count', +1
     must_redirect_to root_path
+<<<<<<< HEAD
+=======
 
+>>>>>>> e2c00737bd11b21d3f8d19795171355ccabadf6a
     session[:merchant_id].must_equal Merchant.find_by(username: "toolazytomakeone").id
   end
 

@@ -152,4 +152,151 @@ describe OrdersController do
     end
   end
 
-end
+  describe "#checkout_form" do
+
+    it "should get the checkout_form" do
+      get checkout_form_path
+      must_respond_with :success
+    end
+
+  end
+
+  describe "#checkout" do
+
+    describe "Reduces the number of inventory for each product" do
+      before do
+        get root_path #do this to get session
+        Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+        #add product to cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 1
+      end
+
+      it "reduces inventory" do
+        patch checkout_path
+        Product.find_by(name: product.name).quantity.must_equal product.quantity - 1
+        must_respond_with :redirect
+      end
+
+      it "won't allow purchase of out of stock items" do
+        out_of_stock_product = Product.find_by(name: product.name)
+        out_of_stock_product.quantity = 0
+        out_of_stock_product.save.must_equal true
+        patch checkout_path
+        flash[:status].must_equal :error
+        flash[:result_text].must_equal "#{product.name} is out of stock"
+        must_redirect_to show_cart_path
+      end
+
+      it "won't allow purchase of more items than are available" do
+        # add a second item to the cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 2
+        # set product quantity to 1
+        product.quantity = 1
+        product.save.must_equal true
+        patch checkout_path
+        flash[:status].must_equal :error
+        flash[:result_text].must_equal "You attempted to purchase #{order_item.quantity} #{product.name}, but there are only #{product.quantity} available."
+        must_redirect_to show_cart_path
+      end
+
+    end
+
+    describe "changes the order state from pending to paid" do
+      before do
+        get root_path #do this to get session
+        Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+        #add product to cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 1
+      end
+
+      it do
+        order = Order.find_by(id: session[:order_id])
+        order.status.must_equal "pending"
+        patch checkout_path
+        must_respond_with :redirect
+        flash[:status].must_equal :success
+        flash[:result_text].must_equal "Your order has been placed"
+        Order.find_by(id: order.id).status.must_equal "paid"
+      end
+    end
+
+    describe "clears the current cart" do
+      before do
+        get root_path #do this to get session
+        Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+        #add product to cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 1
+      end
+
+      it "shows that the cart is now empty" do
+        patch checkout_path
+        order = Order.find_by(id: session[:order_id])
+        order.wont_equal nil
+        order.orderitems.count.must_equal 0
+      end
+
+      it "sets a new session order id when checkout process complete" do
+        old_order_id = session[:order_id]
+        patch checkout_path
+        order = Order.find_by(id: session[:order_id])
+        order.id.wont_equal old_order_id
+      end
+
+    end
+
+    describe "Properly updates order for user input" do
+      before do
+        get root_path #do this to get session
+        Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+        #add product to cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 1
+      end
+
+      it "updates fields for user input" do
+        order = Order.find_by(id: session[:order_id])
+        patch checkout_path, params: {customer_email: "test@test.com", address1: "123 Test Street", address2: "Apt 2", city: "Seattle", state: "WA", zipcode: "98102", cc_name: "Test Name", cc_number: "4111111111111111", cc_expiration: "01/20", cc_security: "012", billingzip: "98101"}
+        must_respond_with :redirect
+        flash[:status].must_equal :success
+        flash[:result_text].must_equal "Your order has been placed"
+        paid_order = Order.find_by(id: order.id)
+        paid_order.customer_email.must_equal "test@test.com"
+        paid_order.address1.must_equal "123 Test Street"
+        paid_order.address2.must_equal "Apt 2"
+        paid_order.city.must_equal "Seattle"
+        paid_order.state.must_equal "WA"
+        paid_order.zipcode.must_equal "98102"
+        paid_order.cc_name.must_equal "Test Name"
+        paid_order.cc_number.must_equal "4111111111111111"
+        paid_order.cc_expiration.must_equal "01/20"
+        paid_order.cc_security.must_equal "012"
+        paid_order.billingzip.must_equal "98101"
+      end
+      it "validates user input" do
+        skip
+      end
+    end
+
+  end #checkout
+
+
+end #OrdersController

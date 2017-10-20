@@ -1,4 +1,9 @@
-<h1>Your Cart</h1>
+<h1>
+  <span>Your Cart</span>
+  <% if @cart.orderitems.length > 0 %>
+    <%= link_to "Check Out", checkout_form_path, class: 'button' %>
+  <% end %>
+</h1>
 <ul>
   <% @cart.orderitems.each do |item| %>
     <li>

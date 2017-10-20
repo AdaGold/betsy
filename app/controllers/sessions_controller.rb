@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     @auth_hash = request.env['omniauth.auth']
 
     @merchant = Merchant.find_by(oauth_uid: @auth_hash['uid'], oauth_provider: @auth_hash['provider'])
+
     if @merchant
       session[:merchant_id] = @merchant.id
       flash[:success] = "#{@merchant.username} is logged in!"
