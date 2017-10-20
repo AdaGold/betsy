@@ -22,6 +22,4 @@
 
 <% if session[:merchant_id] %>
   <%= link_to "Edit Product", edit_product_path(@product.id), class: :button %>
-<% else %>
-  <h1>not signed in</h1>
 <% end %>
