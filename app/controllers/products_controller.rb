@@ -7,7 +7,6 @@ before_action :find_merchant
     @products = Product.get_products(a_category: params[:category], a_merchant: params[:merchant])
 
     @categories = Product.categories
-
   end
 
   def show

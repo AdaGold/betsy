@@ -32,9 +32,22 @@ class Product < ApplicationRecord
     end
   end
 
+
   def self.categories
     categories = Product.pluck(:categories).flatten.uniq
   end
 
+  def average_rating
+    return "Nothing to show" if reviews.count == 0
+    sum = 0
+    reviews.each do |review|
+      sum += review.rating
+    end
+    return (sum.to_f/reviews.count).round(1)
+  end
+
+  # def first_10_reviews
+  #   return reviews.all.limit(10)
+  # end
 
 end
