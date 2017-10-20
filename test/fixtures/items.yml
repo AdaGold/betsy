@@ -3,23 +3,23 @@
 converse_no_order:
   shipping_status: false
   purchase_status: false
-  product_id: converse
-  order_id:
+  product: converse
+  order: one
 
 converse_ordered:
   shipping_status: false
   purchase_status: true
-  product_id: converse
-  order_id: two
+  product: converse
+  order: two
 
 flats_no_order:
   shipping_status: false
   purchase_status: false
-  product_id: flats
-  order_id:
+  product: flats
+  order:
 
 flats_ordered_shipped:
   shipping_status: true
   purchase_status: true
-  product_id: flats
-  order_id: two
+  product: flats
+  order: two
