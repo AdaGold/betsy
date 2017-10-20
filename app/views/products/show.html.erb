@@ -14,7 +14,7 @@
       <strong>Price:</strong> $<%= @product.price %>
     </li>
     <li>
-      <strong>Sold By: </strong><%= @product.user.username %>
+      <strong>Sold By: </strong><%= link_to @product.user.username, user_path(@user.id) %>
     </li>
   </ul>
 </section>

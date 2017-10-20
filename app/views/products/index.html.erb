@@ -5,15 +5,10 @@
 
 <% @products.each do |product| %>
   <article class="product_details">
+    <h3><%= link_to product.name, product_path(product.id) %></h3>
     <ul>
       <li>
-        <%= product.name %>
-      </li>
-      <li>
-        <%= product.price %>
-      </li>
-      <li>
-        <%= link_to product.name, product_path(product.id) %>
+        <strong>Price:</strong> $<%= product.price %>
       </li>
     </ul>
   </article>
