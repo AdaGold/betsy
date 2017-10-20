@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019173159) do
-
+ActiveRecord::Schema.define(version: 20171019222601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +40,12 @@ ActiveRecord::Schema.define(version: 20171019173159) do
     t.string "address2"
     t.string "city"
     t.string "state"
-    t.integer "zipcode"
+    t.string "zipcode"
     t.string "cc_name"
-    t.bigint "cc_number"
+    t.string "cc_number"
     t.string "cc_expiration"
-    t.integer "cc_security"
-    t.integer "billingzip"
+    t.string "cc_security"
+    t.string "billingzip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"

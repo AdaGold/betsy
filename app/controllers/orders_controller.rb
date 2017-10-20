@@ -1,11 +1,58 @@
 class OrdersController < ApplicationController
   before_action :find_orderitem, only: [:add_item, :update_quantity, :remove_from_cart]
-  before_action :find_cart, only: [:show_cart, :update_quantity, :remove_from_cart]
+  before_action :find_cart, only: [:show_cart, :update_quantity, :remove_from_cart, :checkout]
+  after_action :assign_order, only: [:checkout]
+  before_action :find_order, only: [:confirmation]
 
   def index
   end
 
   def create
+  end
+
+  def checkout_form
+  end
+
+  def checkout
+    puts params
+    #verify everything is in stock
+    @cart.orderitems.each do |orderitem|
+      if orderitem.product.quantity == 0
+        flash[:status] = :error
+        flash[:result_text] = "#{orderitem.product.name} is out of stock"
+        return redirect_to show_cart_path
+      elsif orderitem.quantity > orderitem.product.quantity
+        flash[:status] = :error
+        flash[:result_text] = "You attempted to purchase #{orderitem.quantity} #{orderitem.product.name}, but there are only #{orderitem.product.quantity} available."
+        return redirect_to show_cart_path
+      end
+    end
+    #validate user input
+
+    #modify the cart
+    @cart.status = "paid"
+    @cart.update_attributes(checkout_params)
+    #checkout the cart
+    if @cart.save
+      @cart.orderitems.each do |orderitem|
+        product = orderitem.product
+        product.quantity -= orderitem.quantity
+        product.save
+      end
+
+      session[:order_id] = nil
+      flash[:status] = :success
+      flash[:result_text] = "Your order has been placed"
+      return redirect_to order_confirmation_path(@cart.id)
+    else
+      flash[:status] = :error
+      flash[:result_text] = "Your order could not be placed at this time"
+      return redirect_to show_cart_path
+    end
+
+  end #checkout
+
+  def confirmation
   end
 
   def new
@@ -119,5 +166,13 @@ class OrdersController < ApplicationController
 
   def find_cart
     @cart = Order.find_by(id: session[:order_id], status: "pending")
+  end
+
+  def find_order
+    @order = Order.find_by(id: params[:id])
+  end
+
+  def checkout_params
+    params.permit(:customer_email, :address1, :address2, :city, :state, :zipcode, :cc_name, :cc_number, :cc_expiration, :cc_security, :billingzip)
   end
 end
