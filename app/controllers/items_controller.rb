@@ -45,11 +45,13 @@ class ItemsController < ApplicationController
   # def update
   # end
 
-  # def destroy
-  #   # item = Item.find_by(id: params[:id].to_i)
-  #   # @item.destroy
-  #   # redirect_to root_path
-  # end
+  def destroy
+    item = Item.find_by(id: params[:id].to_i)
+                            
+    @item.destroy
+
+    redirect_to root_path
+  end
 
   private
 

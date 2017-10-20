@@ -14,9 +14,9 @@ describe ItemsController do
       must_respond_with :success
     end
 
-    it "renders 404 not_found for a item not found" do
-      item_work_id = Item.last.id + 1
-      get item_path(item_work_id)
+    it "Cannot show an Item that does not exist" do
+      item_id = Item.last.id + 1
+      get item_path(item_id)
 
       must_respond_with :redirect
       must_redirect_to root_path
@@ -35,17 +35,25 @@ describe ItemsController do
 
   # TODO
   describe "Create" do
-    it "Should be able to create a new item" do
-      proc {
-        post items_path, params: {item: {shipping_status: false, purchase_status: false, product_id: nil, order_id: nil }}}.must_change 'Item.count', 1
-
-        must_respond_with :redirect
-        must_redirect_to root_path
-    end
+    # it "Should be able to create a new item" do
+    #   proc {
+    #     post items_path, params: {item: {shipping_status: false, purchase_status: false, product_id: nil, order_id: nil }}}.must_change 'Item.count', 1
+    #
+    #     must_respond_with :redirect
+    #     must_redirect_to root_path
+    # end
   end
 
 
-
+  describe "Destroy" do
+    # it "Should be able to delete an item" do
+    #   proc  {
+    #       delete item_path(items(:converse_no_order).id)}.must_change 'Item.count', - 1
+    #
+    #       must_respond_with :redirect
+    #       must_redirect_to root_path
+    # end
+  end
 
 # ---------------------------------
 
@@ -60,8 +68,6 @@ describe ItemsController do
 
 
 
-  # it "should get destroy" do
-  #
-  # end
+
 
 end

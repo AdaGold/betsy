@@ -1,27 +1,31 @@
 require "test_helper"
 
 describe UsersController do
-  it "should get index" do
-    get users_path
-    must_respond_with :success
+
+  describe "INDEX" do
+    it "should get index" do
+      get users_path
+      must_respond_with :success
+    end
   end
 
-  it "should get show" do
-    get user_path(users(:carl).id)
-    must_respond_with :success
+  describe "SHOW" do
+    it "should get show" do
+      get user_path(users(:carl).id)
+      must_respond_with :success
+    end
+
+  # TODO
+    it "Cannot show a user that doesnt exist" do
+        # User.last gives the user with the highest ID
+        user_id = User.last.id + 1
+        get user_path(user_id)
+        # must_respond_with :not_found
+
+        must_respond_with :redirect
+        must_redirect_to root_path
+      end
   end
-
-# TODO
-  # it "Cannot show a user that doesnt exist" do
-  #     # User.last gives the user with the highest ID
-  #     user = User.last.id + 1
-  #     get user_path(user)
-  #     must_respond_with :not_found
-  #
-  #     # must_respond_with :redirect
-  #     # must_redirect_to root_path
-  #   end
-
 
   it "should successfully create a new user" do
     proc  {
