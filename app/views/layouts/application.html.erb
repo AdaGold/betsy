@@ -9,6 +9,23 @@
   </head>
 
   <body>
+    <header class="page-header row">
+  <h2 class="columns small-12"><%= link_to "NorthWesty", root_path %> <small> Ranking the best of everything</small></h2>
+  <nav class="columns small-12">
+    <%= link_to "Products", products_path, class:"button" %>
+    <%= link_to "Users", users_path, class:"button"  %>
+    <div class="float-right">
+      <% if session[:logged_in_user]%>
+        <% @user = session[:logged_in_user]%>
+        <%= link_to "Logged in as #{@user['name']}", user_path(@user['id']), class:"button" %>
+        <%= link_to "Log out", logout_path, method: :post, class:"button" %>
+      <%else%>
+        <%= link_to "Log in", login_path, class:"button"%>
+      <%end%>
+    </div>
+  </nav>
+</header>
+
     <section class="flash">
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
