@@ -3,7 +3,7 @@
 pending_order:
   order_status: pending
   user: carl
-  billing_data_id: one
+  billing_data_id: 
   session_id: 12e
 
 paid_order:
@@ -23,3 +23,9 @@ canceled_order:
   user:
   billing_data_id: three
   session_id: 2pipper232
+
+  guest_pending_order:
+    order_status: pending
+    user_id:
+    billing_data_id:
+    session_id: 12e
