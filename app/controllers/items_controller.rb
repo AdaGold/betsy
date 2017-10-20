@@ -21,8 +21,7 @@ class ItemsController < ApplicationController
     item = Item.new
   end
 
-
-
+# ---------------------------------------------
   def create
     @item = Item.new item_params
 
@@ -31,11 +30,13 @@ class ItemsController < ApplicationController
       flash[:success] = "Item added successfully"
       redirect_to root_path
     else
-      puts @item.errors.full_messages
+      puts "fail"
+      puts @item.errors.messages
       flash.now[:error] = "Item not added"
       render :new
     end
   end
+# ---------------------------------------------
 
 
   # def edit
