@@ -80,6 +80,21 @@ before_action :find_merchant
 
   def create
     @product = Product.new(product_params)
+
+    if params[:categories]
+      params[:categories].each do |category|
+        unless @product.categories.include?(category)
+          @product.categories << category
+        end
+      end
+    end
+
+    if params[:category]
+      unless @product.categories.include?(params[:category])
+        @product.categories << params[:category]
+      end
+    end
+
     if @product.save
       redirect_to product_path(@product.id)
     else
@@ -98,7 +113,7 @@ before_action :find_merchant
 
 
   def product_params
-    return params.require(:product).permit(:name, :price, :merchant_id, :category, :quantity)
+    return params.require(:product).permit(:name, :price, :merchant_id, :quantity)
   end
 
   def find_merchant

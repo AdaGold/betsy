@@ -5,7 +5,7 @@
   <%= f.label :Price %>
   <%= f.text_field :price %>
   <%= f.label :"Choose a category" %>
-  <%= f.select(:category, Product.pluck(:category).uniq, {}, {multiple: true})  %>
+  <%= f.select(:categories, Product.categories, {include_blank: "none"}, {multiple: true})  %>
   <%= f.label :"Add a new category" %>
   <%= f.text_field :category  %>
   <%= f.label :Quantity %>
