@@ -1,16 +1,14 @@
 class CategoriesController < ApplicationController
 
-  #home page shows all categories and a sampling of their products
-  def root
-  end
-
   #displays all categories in alphabetical order
   def index
-    @categories = Categories.order(name: :desc)
+    @categories = Categories.order(:id)
   end
 
   #show all products in a specific category
   def show
+    @category = Category.find_by(id: params[:id])
+
   end
 
   #makes changes to a category that's already created

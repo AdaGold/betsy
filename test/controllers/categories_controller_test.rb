@@ -2,34 +2,35 @@ require "test_helper"
 
 describe CategoriesController do
 
-    it "succeeds with all category types" do
-      %w(clothes shoes music).each do |category|
-          Category.by_category(category).length.must_be :>, 0, "No #{category.pluralize} in the test fixtures"
-      end
-
-    get root_path
-    must_respond_with :success
-    end
-
-    it "succeeds with no categories" do
-      Category.destroy_all
-      get root_path
-      must_respond_with :success
-    end
-
     describe "index" do
       it "succeeds when there are categories" do
-        Category.count.must_be :>, 0, "There are no categories in the test fixtures"
         get categories_path
         must_respond_with :success
       end
 
-      it "succeeds when there are no categories" do
-        Category.destroy_all
-        get categories_path
-        must_respond_with :success
-      end
+      # it "succeeds when there are no categories" do
+      #   @categories.destroy_all
+      #   get categories_path
+      #   must_respond_with :success
+      # end
     end
+
+    # describe "show" do
+    #   it "can show one category" do
+    #     get category_path(categories(:one).id)
+    #     must_respond_with :success
+    #   end
+
+      # it "cannot show a category that does not exist" do
+      #   category_id = Category.last.id + 1
+      #   get category_path(category_id)
+      #   must_respond_with :redirect
+      #   must_redirect_to root_path
+      # end
+
+    # end
+
+
 
   #only allow auth-users (not guests) should be able to create new categories (vendors)
   # describe "new" do
