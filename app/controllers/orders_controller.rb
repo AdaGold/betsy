@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def checkout
+    puts params
     #verify everything is in stock
     @cart.orderitems.each do |orderitem|
       if orderitem.product.quantity == 0
@@ -27,8 +28,10 @@ class OrdersController < ApplicationController
     end
     #validate user input
 
-    #checkout the cart
+    #modify the cart
     @cart.status = "paid"
+    @cart.update_attributes(checkout_params)
+    #checkout the cart
     if @cart.save
       @cart.orderitems.each do |orderitem|
         product = orderitem.product
@@ -159,5 +162,9 @@ class OrdersController < ApplicationController
 
   def find_cart
     @cart = Order.find_by(id: session[:order_id], status: "pending")
+  end
+
+  def checkout_params
+    params.permit(:customer_email, :address1, :address2, :city, :state, :zipcode, :cc_name, :cc_number, :cc_expiration, :cc_security, :billingzip)
   end
 end

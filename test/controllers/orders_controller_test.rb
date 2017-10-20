@@ -260,8 +260,38 @@ describe OrdersController do
 
     end
 
-    describe "Properly validates for user input" do
-      it do
+    describe "Properly updates order for user input" do
+      before do
+        get root_path #do this to get session
+        Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+        #add product to cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 1
+      end
+
+      it "updates fields for user input" do
+        order = Order.find_by(id: session[:order_id])
+        patch checkout_path, params: {customer_email: "test@test.com", address1: "123 Test Street", address2: "Apt 2", city: "Seattle", state: "WA", zipcode: "98102", cc_name: "Test Name", cc_number: "4111111111111111", cc_expiration: "01/20", cc_security: "012", billingzip: "98101"}
+        must_respond_with :redirect
+        flash[:status].must_equal :success
+        flash[:result_text].must_equal "Your order has been placed"
+        paid_order = Order.find_by(id: order.id)
+        paid_order.customer_email.must_equal "test@test.com"
+        paid_order.address1.must_equal "123 Test Street"
+        paid_order.address2.must_equal "Apt 2"
+        paid_order.city.must_equal "Seattle"
+        paid_order.state.must_equal "WA"
+        paid_order.zipcode.must_equal "98102"
+        paid_order.cc_name.must_equal "Test Name"
+        paid_order.cc_number.must_equal "4111111111111111"
+        paid_order.cc_expiration.must_equal "01/20"
+        paid_order.cc_security.must_equal "012"
+        paid_order.billingzip.must_equal "98101"
+      end
+      it "validates user input" do
         skip
       end
     end
