@@ -23,4 +23,18 @@ class Product < ApplicationRecord
       return Product.where(category: a_category, merchant_id: a_merchant)
     end
   end
+
+  def average_rating
+    return "Nothing to show" if reviews.count == 0
+    sum = 0
+    reviews.each do |review|
+      sum += review.rating
+    end
+    return (sum.to_f/reviews.count).round(1)
+  end
+
+  # def first_10_reviews
+  #   return reviews.all.limit(10)
+  # end
+
 end

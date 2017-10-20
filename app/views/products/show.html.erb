@@ -1,3 +1,21 @@
 <h1><%= @product.name %></h1>
 <h3>$<%= @product.price %></h3>
+
+<%= link_to("Leave a review", new_review_path(@product.id), method: :get, class: "button") %>
+
+<h3>Average Rating: <%= @product.average_rating%></h3>
+
+<h3>Reviews: </h3>
+<% if @product.reviews.count < 1  %>
+  <p>Nothing to show!</p>
+<% else %>
+  <ul>
+    <% @product.reviews.each do |review| %>
+      <li>Title:  <%=review.title%></li>
+      <li>Rating:  <%=review.rating.to_s%></li>
+      <li><%=review.review_text%></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= link_to "Add to cart", add_order_item_path(session[:order_id], @product.id), method: :patch, class: :button %>

@@ -68,6 +68,7 @@ group :development do
   gem 'better_errors'
   gem 'pry-rails'
   gem 'binding_of_caller'
+  gem 'dotenv-rails'
 end
 
 group :test do
