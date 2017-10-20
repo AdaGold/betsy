@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'products#index'
 
   resources :products, :except => [:delete]
@@ -14,9 +13,9 @@ Rails.application.routes.draw do
   resources :reviews, :except => [:delete]
   get '/checkout', to: 'orders#checkout_form', as: 'checkout_form'
   patch '/checkout', to: 'orders#checkout', as: 'checkout'
-
+  get "/reviews/:product_id/new", to: "reviews#new", as: "new_review"
   get "/auth/:provider/callback", to: "sessions#create", as: "auth_callback"
+  get 'sessions/create'
+  get 'sessions/index'
   post '/logout', to: 'sessions#logout', as: 'logout'
-
-
 end

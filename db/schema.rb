@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 20171019222601) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
     t.integer "quantity"
     t.bigint "merchant_id"
+    t.string "categories", default: [], array: true
     t.index ["merchant_id"], name: "index_products_on_merchant_id"
   end
 
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20171019222601) do
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "review_text"
+    t.string "title"
     t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 

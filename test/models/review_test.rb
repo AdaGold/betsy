@@ -39,5 +39,51 @@ describe Review do
     review1.valid?.must_equal false
   end
 
+  it "title must be present" do
+    review1.valid?.must_equal true
+    review1.title = nil
+    review1.valid?.must_equal false
+    review1.save
+    review1.errors.keys.must_include :title
+  end
+
+  it "title should be at least 2 characters long" do
+    review1.valid?.must_equal true
+    review1.title = "a"
+    review1.valid?.must_equal false
+    review1.save
+    review1.errors.keys.must_include :title
+  end
+
+  it "title should be at shorter than 100 characters " do
+    review1.valid?.must_equal true
+    review1.title = "a" * 101
+    review1.valid?.must_equal false
+    review1.save
+    review1.errors.keys.must_include :title
+  end
+  it "review_text must be present" do
+    review1.valid?.must_equal true
+    review1.review_text = nil
+    review1.valid?.must_equal false
+    review1.save
+    review1.errors.keys.must_include :review_text
+  end
+
+  it "review_text should be at least 2 characters long" do
+    review1.valid?.must_equal true
+    review1.review_text = "t"
+    review1.valid?.must_equal false
+    review1.save
+    review1.errors.keys.must_include :review_text
+  end
+
+  it "review_text should be at shorter than 700 characters " do
+    review1.valid?.must_equal true
+    review1.review_text = "n" * 701
+    review1.valid?.must_equal false
+    review1.save
+    review1.errors.keys.must_include :review_text
+  end
 
 end

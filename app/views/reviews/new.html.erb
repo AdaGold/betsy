@@ -1,2 +1,13 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<%# <h1>Leave a review for <%=Product.find_by_id(params[:pass_product_id]).name </h1> %>
+<h1>Leave a review for <%= @review.product.name %></h1>
+
+<%= form_for @review do |f| %>
+  <%= f.hidden_field :product_id %>
+  <%= f.label :Rating %>
+  <%= f.select :rating, options_for_select(1..5) %>
+  <%= f.label :Title %>
+  <%= f.text_field :title %>
+  <%= f.label :Review %>
+  <%= f.text_area :review_text %>
+  <%= f.submit("submit", class: "button") %>
+<% end %>
