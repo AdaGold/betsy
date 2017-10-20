@@ -43,7 +43,7 @@ describe CategoriesController do
   describe "create" do
     it "creates a product with valid data for a real category" do
       proc {
-        post categories_path, params: {category: {name: "Bandanas"} }
+        post categories_path, params: {category: {name: "bandanas"} }
       }.must_change 'Category.count', 1
 
       must_respond_with :redirect
