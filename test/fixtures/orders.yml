@@ -3,23 +3,53 @@
 one:
   order_status: pending
   user_id: carl
-  billing_data_id: one
+  billing_datum_id: one
   session_id: 12e
 
 two:
   order_status: paid
   user_id: mia
-  billing_data_id: two
+  billing_datum_id: two
   session_id: 112sa
 
 three:
   order_status: shipped
   user_id: carl
-  billing_data_id: one
+  billing_datum_id: one
   session_id: 1catDog
 
 four:
   order_status: canceled
-  user_id: 
-  billing_data_id: three
+  user_id:
+  billing_datum_id: three
   session_id: 2pipper232
+
+pending_order:
+  order_status: pending
+  user: carl
+  billing_datum_id:
+  session_id: 12e
+
+paid_order:
+  order_status: paid
+  user: mia
+  billing_datum_id: two
+  session_id: 112sa
+
+shipped_order:
+  order_status: shipped
+  user: carl
+  billing_datum_id: one
+  session_id: 1catDog
+
+canceled_order:
+  order_status: canceled
+  user:
+  billing_datum_id: three
+  session_id: 2pipper232
+
+guest_pending_order:
+  order_status: pending
+  user_id:
+  billing_datum_id:
+  session_id: 12e
