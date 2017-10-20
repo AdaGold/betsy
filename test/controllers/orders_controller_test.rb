@@ -210,8 +210,25 @@ describe OrdersController do
     end
 
     describe "changes the order state from pending to paid" do
+      before do
+        get root_path #do this to get session
+        Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
+        #add product to cart
+        patch add_order_item_path(session[:order_id], product.id)
+        must_respond_with :success
+        order_item = Order.find_by(id: session[:order_id]).orderitems.first
+        order_item.product_id.must_equal product.id
+        order_item.quantity.must_equal 1
+      end
+
       it do
-        skip
+        order = Order.find_by(id: session[:order_id])
+        order.status.must_equal "pending"
+        patch checkout_path
+        must_respond_with :redirect
+        flash[:status].must_equal :success
+        flash[:result_text].must_equal "Your order has been placed"
+        Order.find_by(id: order.id).status.must_equal "paid"
       end
     end
 

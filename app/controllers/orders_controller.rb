@@ -26,14 +26,23 @@ class OrdersController < ApplicationController
 
     end
 
-    @cart.orderitems.each do |orderitem|
-      product = orderitem.product
-      product.quantity -= orderitem.quantity
-      product.save
-    end
+    @cart.status = "paid"
+    if @cart.save
+      @cart.orderitems.each do |orderitem|
+        product = orderitem.product
+        product.quantity -= orderitem.quantity
+        product.save
+      end
 
-    session[:order_id] = nil
-    redirect_to root_path
+      session[:order_id] = nil
+      flash[:status] = :success
+      flash[:result_text] = "Your order has been placed"
+      return redirect_to root_path
+    else
+      flash[:status] = :error
+      flash[:result_text] = "Your order could not be placed at this time"
+      return redirect_to show_cart_path
+    end
 
   end #checkout
 
