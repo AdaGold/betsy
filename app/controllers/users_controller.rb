@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id].to_i)
+    @user = User.find_by(id: params[:id].to_i)
     # render_404 unless @user
 
     unless @user

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :users
   resources :orders
+  resources :items
 
   resources :billing_data
   resources :products
