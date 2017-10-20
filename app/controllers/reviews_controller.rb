@@ -1,10 +1,9 @@
 class ReviewsController < ApplicationController
   def show
   end
-  
+
   def new
     @review = Review.new(product_id: params[:product_id])
-
   end
 
   def create
