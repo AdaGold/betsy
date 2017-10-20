@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+carl_billing_datum:
   email: carl@carlcarle.com
   mailing_address: 4223 Carl Street, Seattle, Washington 98112
   credit_card_name: Carl Carle
@@ -9,7 +9,7 @@ one:
   billing_zip_code: 98112
   user_id: mia
 
-two:
+mia_billing_datum:
   email: mia@mommamia.com
   mailing_address: 2929 Mia Street, Tacoma, Washington 02020
   credit_card_name: Momma Mia
@@ -18,11 +18,11 @@ two:
   billing_zip_code: 02020
   user_id: carl
 
-three:
+guest_billing_datum:
   email: star@lightbright.com
   mailing_address: 2929 StarLight Street, Tacoma, Washington 02020
   credit_card_name: StarLight StarBright
   credit_card_number: 2392 2932 1010 2020
   credit_card_cvv: 232
   billing_zip_code: 02020
-  user_id: 
+  user_id:
