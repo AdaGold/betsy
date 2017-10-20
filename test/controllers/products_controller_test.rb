@@ -128,13 +128,11 @@ describe ProductsController do
       login(merchant1, :github)
 
       session[:merchant_id].to_i.must_equal merchant1.id
+
       patch update_categories_path(one.id), params:{ categies: ["outdoor"]}
 
       flash[:status].must_equal :success
-
-      must_redirect_to products_path(one.id)
+      must_redirect_to product_path(one.id)
     end
-
-
   end
 end

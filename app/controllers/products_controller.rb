@@ -58,7 +58,7 @@ before_action :find_merchant
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} updated."
-      redirect_to product_path(@product.id), status: 200
+      redirect_to product_path(@product.id)
     else
       flash[:status] = :error
       redirect_to edit_product_path(@product.id)
