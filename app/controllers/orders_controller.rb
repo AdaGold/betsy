@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :find_orderitem, only: [:add_item, :update_quantity, :remove_from_cart]
   before_action :find_cart, only: [:show_cart, :update_quantity, :remove_from_cart, :checkout]
   after_action :assign_order, only: [:checkout]
+  before_action :find_order, only: [:confirmation]
 
   def index
   end
@@ -42,7 +43,7 @@ class OrdersController < ApplicationController
       session[:order_id] = nil
       flash[:status] = :success
       flash[:result_text] = "Your order has been placed"
-      return redirect_to root_path
+      return redirect_to order_confirmation_path(@cart.id)
     else
       flash[:status] = :error
       flash[:result_text] = "Your order could not be placed at this time"
@@ -50,6 +51,9 @@ class OrdersController < ApplicationController
     end
 
   end #checkout
+
+  def confirmation
+  end
 
   def new
   end
@@ -162,6 +166,10 @@ class OrdersController < ApplicationController
 
   def find_cart
     @cart = Order.find_by(id: session[:order_id], status: "pending")
+  end
+
+  def find_order
+    @order = Order.find_by(id: params[:id])
   end
 
   def checkout_params
