@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019015943) do
+ActiveRecord::Schema.define(version: 20171020175115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 20171019015943) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.bigint "billing_data_id"
     t.string "session_id"
-    t.index ["billing_data_id"], name: "index_orders_on_billing_data_id"
+    t.bigint "billing_datum_id"
+    t.index ["billing_datum_id"], name: "index_orders_on_billing_datum_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20171019015943) do
   add_foreign_key "items", "products"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
-  add_foreign_key "orders", "billing_data", column: "billing_data_id"
+  add_foreign_key "orders", "billing_data"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"

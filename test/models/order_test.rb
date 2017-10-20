@@ -113,10 +113,10 @@ describe Order do
       ["paid", "shipped", "canceled"].each do |test_order_status|
         order.order_status = test_order_status
         order.valid?.must_equal false
-        binding.pry
-        order.billing_data = billing_data(:guest_billing_datum)
+        # binding.pry
+        order.billing_datum = billing_data(:guest_billing_datum)
         order.valid?.must_equal true
-        order.billing_data = nil
+        order.billing_datum = nil
       end
 
     end
