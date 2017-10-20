@@ -1,2 +1,17 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+
+<h3>details for:</h3>
+<section class="product-details">
+  <h3><%= @product.name.upcase %> </h3>
+  <p>
+    <%= @product.description %>
+  </p>
+
+  <ul>
+    <li>
+      <strong>Price:</strong> $<%= @product.price %>
+    </li>
+    <li>
+      <strong>Sold By: </strong><%= link_to @product.user.username, user_path(@user.id) %>
+    </li>
+  </ul>
+</section>

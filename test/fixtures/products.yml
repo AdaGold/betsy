@@ -1,15 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 converse:
-  name: black converse
-  price: 10.99
+  name: converse
+  price: 10
   description: some black converses
   category_id: shoes
-  user_id: carl
+  user: carl
 
 flats:
-  name: yellow flats
-  price: 9.99
+  name: flats
+  price: 9
   description: a pair of yellow flats
-  category_id: shoes
-  user_id: carl
+  user: carl

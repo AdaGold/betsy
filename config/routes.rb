@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :billing_data
-  resources :product
+  resources :products
+
+  get 'login', to: 'user#login', as: 'login'
 
 
   # get 'items/index'
