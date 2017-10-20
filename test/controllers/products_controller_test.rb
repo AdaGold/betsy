@@ -86,7 +86,21 @@ describe ProductsController do
       end
 
       it "should throw an error when not given valid data" do
+        user = users(:carl).id
+        product_data = {
+          product: {
+            name: "God Ugly Converse",
+            price: 99,
+            description: "Great pink shoes!"
+            # user_id: user
+          }
+        }
 
+        product_data.each do |key, value|
+          value = nil
+          post products_path, params: product_data
+          must_respond_with :bad_request
+        end
       end
 
     end
