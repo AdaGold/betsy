@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @user = @product.user
     unless @product
       render :not_found
     end
