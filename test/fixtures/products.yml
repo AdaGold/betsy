@@ -11,5 +11,4 @@ flats:
   name: flats
   price: 9
   description: a pair of yellow flats
-  category_id: shoes
   user: carl
