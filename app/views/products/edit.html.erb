@@ -1,0 +1,17 @@
+
+<h2>Edit product</h2>
+
+<h3>Add categories</h3>
+<%= form_tag(product_path(@product.id), method: :patch) do %>
+  <%= label_tag(:categories, "Categories") %>
+  <%= select_tag "categories", options_for_select(@categories, params["categories"]), include_blank: "none", :multiple => true %>
+  <%= submit_tag("Submit", class: "button") %>
+<% end %>
+
+
+<h3>Create a new category</h3>
+<%= form_tag(product_path(@product.id), method: :patch) do %>
+  <%= label_tag(:category, "Category") %>
+  <%= text_field_tag(:category) %>
+  <%= submit_tag("Submit", class: "button") %>
+<% end %>

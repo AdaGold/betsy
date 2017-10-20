@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'products#index'
 
   resources :products, :except => [:delete]
@@ -15,5 +14,10 @@ Rails.application.routes.draw do
   get "/reviews/:product_id/new", to: "reviews#new", as: "new_review"
 
   get "/auth/:provider/callback", to: "sessions#create", as: "auth_callback"
+
+  get 'sessions/create'
+
+  get 'sessions/index'
+
   post '/logout', to: 'sessions#logout', as: 'logout'
 end
