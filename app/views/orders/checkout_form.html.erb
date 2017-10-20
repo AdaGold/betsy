@@ -4,7 +4,7 @@
 <h3>
   Personal Information
 </h3>
-<%= form_tag do %>
+<%= form_tag(checkout_path, method: :patch) do %>
   <%= label_tag(:customer_email, "Email") %>
   <%= email_field_tag(:customer_email) %>
 
