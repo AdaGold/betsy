@@ -1,7 +1,6 @@
 require "test_helper"
 
 describe UsersController do
-
   describe "INDEX" do
     it "should get index" do
       get users_path
@@ -15,7 +14,7 @@ describe UsersController do
       must_respond_with :success
     end
 
-  # TODO
+
     it "Cannot show a user that doesnt exist" do
         # User.last gives the user with the highest ID
         user_id = User.last.id + 1

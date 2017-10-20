@@ -8,7 +8,7 @@ describe ReviewsController do
 
     end
 
-    it "does NOT allow authenticated users who are the product vendors to review their own products" do
+    it "does NOT allow authenticated users who are the product vendors to create reviews for their own products" do
 
     end
 
