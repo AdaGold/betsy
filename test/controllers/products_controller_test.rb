@@ -112,6 +112,9 @@ describe ProductsController do
 
     describe "destroy" do
       it "Destroys a product that exists" do
+        to_destroy = products(:converse)
+        to_destroy.destroy
+        must_redirect_to root_path
 
       end
 
