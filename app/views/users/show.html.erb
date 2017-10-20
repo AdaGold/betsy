@@ -1,2 +1,9 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<section class="user_show">
+  <h2><%=@user.username%></h2>
+  <article>
+    <p>
+      Want to contanct <%=@user.username%>? Email them at <%=link_to @user.email%>
+    </p>
+  </article>
+</section>
