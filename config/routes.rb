@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :products
 
   get 'login', to: 'user#login', as: 'login'
+  get "/auth/:provider/callback", to: "sessions#create"
 
 
   # get 'items/index'
