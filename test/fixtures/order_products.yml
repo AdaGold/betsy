@@ -9,3 +9,13 @@ two:
   quantity: 1
   product_id: flats
   order_id: four
+
+three:
+  quantity: 3
+  product: converse
+  order: paid_order
+
+four:
+  quantity: 5
+  product: flats
+  order: guest_pending_order

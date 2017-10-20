@@ -63,13 +63,13 @@ ActiveRecord::Schema.define(version: 20171020002826) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "order_status"
+    t.string "order_status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.bigint "billing_data_id"
     t.string "session_id"
-    t.index ["billing_data_id"], name: "index_orders_on_billing_data_id"
+    t.bigint "billing_datum_id"
+    t.index ["billing_datum_id"], name: "index_orders_on_billing_datum_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20171020002826) do
   add_foreign_key "items", "products"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
-  add_foreign_key "orders", "billing_data", column: "billing_data_id"
+  add_foreign_key "orders", "billing_data"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
