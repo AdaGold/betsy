@@ -4,6 +4,12 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new(product_id: params[:product_id])
+
+    if session[:merchant_id] == @review.product.merchant_id
+      flash[:status] = :error
+      flash[:result_text] = "Merchant can't leave reviews of their own products, sorry! Wink-wink."
+      redirect_to product_path(@review.product_id) #, status: 403
+    end
   end
 
   def create
