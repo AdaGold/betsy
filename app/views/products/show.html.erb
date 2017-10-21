@@ -1,5 +1,6 @@
 <h1><%= @product.name %></h1>
 <h3>$<%= @product.price %></h3>
+<h3>Categories: <%= @product.categories %></h3>
 
 <%= link_to("Leave a review", new_review_path(@product.id), method: :get, class: "button") %>
 
@@ -18,10 +19,9 @@
   </ul>
 <% end %>
 
-<%= link_to "Add to cart", add_order_item_path(session[:order_id], @product.id), method: :patch, class: :button %>
-
-<% if session[:merchant_id] %>
+<% #if session[:merchant_id] %>
+<% if @merchant == @product.merchant %>
   <%= link_to "Edit Product", edit_product_path(@product.id), class: :button %>
 <% else %>
-  <h1>not signed in</h1>
+  <%= link_to "Add to cart", add_order_item_path(session[:order_id], @product.id), method: :patch, class: :button %>
 <% end %>
