@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
   end #checkout
 
   def confirmation
+    @total = @order.orderitems.sum { |orderitem| (orderitem.quantity * orderitem.product.price) }
   end
 
   def new
