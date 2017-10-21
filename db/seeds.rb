@@ -29,6 +29,10 @@ user_failures.each do |failure|
   end
 end
 
+puts " "
+puts "--------------------------------------"
+puts " "
+
 PRODUCT_FILE = Rails.root.join('db', 'seed_data', 'product_seeds.csv')
 puts "Loading raw work data from #{PRODUCT_FILE}"
 
@@ -56,6 +60,9 @@ product_failures.each do |failure|
   end
 end
 
+puts " "
+puts "--------------------------------------"
+puts " "
 
 
 CATEGORY_FILE = Rails.root.join('db', 'seed_data', 'category_seeds.csv')
@@ -76,7 +83,9 @@ end
 puts "Added #{Category.count} category records"
 puts "#{category_failures.length} categories failed to save"
 
-
+puts " "
+puts "--------------------------------------"
+puts " "
 
 
 REVIEW_FILE = Rails.root.join('db', 'seed_data', 'reviews_seeds.csv')
@@ -100,7 +109,9 @@ end
 puts "Added #{Review.count} review records"
 puts "#{review_failures.length} review failed to save"
 
-
+puts " "
+puts "--------------------------------------"
+puts " "
 
 
 BILLING_DATA_FILE = Rails.root.join('db', 'seed_data', 'billing_data_seeds.csv')
@@ -128,7 +139,9 @@ end
 puts "Added #{BillingDatum.count} billing_data records"
 puts "#{billing_data_failures.length} billing_data records failed to save"
 
-
+puts " "
+puts "--------------------------------------"
+puts " "
 
 
 ORDER_FILE = Rails.root.join('db', 'seed_data', 'order_seeds.csv')
@@ -152,7 +165,9 @@ end
 puts "Added #{Order.count} order records"
 puts "#{order_failures.length} order failed to save"
 
-
+puts " "
+puts "--------------------------------------"
+puts " "
 
 
 ORDER_PRODUCTS_FILE = Rails.root.join('db', 'seed_data', 'order_products_seeds.csv')
@@ -176,11 +191,9 @@ puts "Added #{OrderProduct.count} order_product records"
 puts "#{order_product_failures.length} order_products failed to save"
 
 
-
-
-
-
-
+puts " "
+puts "--------------------------------------"
+puts " "
 
 
 ITEM_FILE = Rails.root.join('db', 'seed_data', 'items_seeds.csv')
@@ -205,6 +218,9 @@ end
 puts "Added #{Item.count} item records"
 puts "#{item_failures.length} item records failed to save"
 
+puts " "
+puts "--------------------------------------"
+puts " "
 #
 # # Since we set the primary key (the ID) manually on each of the
 # # tables, we've got to tell postgres to reload the latest ID
