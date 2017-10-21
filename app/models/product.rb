@@ -15,13 +15,6 @@ class Product < ApplicationRecord
 
 
   def self.get_products(a_category: "all", a_merchant: "all")
-    puts "!!!!!!!!!!!!!!!!!!"
-    puts "a_category: #{a_category}"
-    puts a_category.class
-    p a_category
-    puts "a_merchant: #{a_merchant}"
-    puts a_merchant.class
-    p a_merchant
     if ["all", nil, ""].include?(a_category) && ["all", nil, ""].include?(a_merchant)
       return Product.all
     elsif ["all", nil,""].include?(a_category)
