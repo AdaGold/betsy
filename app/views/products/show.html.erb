@@ -19,7 +19,6 @@
   </ul>
 <% end %>
 
-<% #if session[:merchant_id] %>
 <% if @merchant == @product.merchant %>
   <%= link_to "Edit Product", edit_product_path(@product.id), class: :button %>
 <% else %>
