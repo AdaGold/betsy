@@ -1,5 +1,31 @@
-<h2>All Products</h2>
+<!-- TODO : CATEGORIES NOT FUNCTIONING AS A LINK TO THE CATEOGRY SHOW PAGES -->
+<h6>Shop by category</h6>
+<!-- <select>
+  <% Category.all.each do |category| %>
+  <option><%# link_to category.name, categories_path(categories.id) %></option>
+  <% end %>
+</select> -->
 
+
+
+<!-- --------------------------------------------------------- -->
+  <% Category.all.each do |category| %>
+    <%= link_to category.name, category_path(category.id) %>
+  <% end %>
+<!-- --------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>All Products</h2>
 
 <section class="products">
 <% @products.each do |product| %>

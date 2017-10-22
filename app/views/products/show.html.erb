@@ -13,5 +13,8 @@
     <li>
       <strong>Sold By: </strong><%= link_to @product.user.username, user_path(@user.id) %>
     </li>
+    <li>
+      Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
+    </li>
   </ul>
 </section>
