@@ -6,54 +6,54 @@ describe Product do
   let(:tree1) {products(:tree1)}
   let(:tree2) {products(:tree2)}
 
+  describe "validations" do
+    it "must have a name" do
+      tree1.valid?.must_equal true
+      tree1.name = nil
+      tree1.valid?.must_equal false
+      tree1.save
+      tree1.errors.keys.must_include :name
+    end
 
-  it "must have a name" do
-    tree1.valid?.must_equal true
-    tree1.name = nil
-    tree1.valid?.must_equal false
-    tree1.save
-    tree1.errors.keys.must_include :name
-  end
+    it "must have a unique name" do
+      tree1.name = "Tree2"
+      tree1.valid?.must_equal false
 
-  it "must have a unique name" do
-    tree1.name = "Tree2"
-    tree1.valid?.must_equal false
+    end
 
-  end
+    it "must have a price" do
+      tree1.valid?.must_equal true
+      tree1.price = nil
+      tree1.valid?.must_equal false
+    end
 
-  it "must have a price" do
-    tree1.valid?.must_equal true
-    tree1.price = nil
-    tree1.valid?.must_equal false
+    it "price must be a number" do
+      tree1.valid?.must_equal true
+      tree1.price = nil
+      tree1.valid?.must_equal false
+      tree1.price = "haha"
+      tree1.valid?.must_equal false
+    end
 
-  end
+    it "price must be greater than 0" do
+      tree1.valid?.must_equal true
+      tree1.price = 1
+      tree1.valid?.must_equal true
+      tree1.price = 0
+      tree1.valid?.must_equal false
+      tree1.price = -1
+      tree1.valid?.must_equal false
+    end
 
-  it "price must be a number" do
-    tree1.valid?.must_equal true
-    tree1.price = nil
-    tree1.valid?.must_equal false
-    tree1.price = "haha"
-    tree1.valid?.must_equal false
-  end
+    it "must belong to a merchant" do
+      tree1.valid?.must_equal true
+      tree1.merchant = nil
+      tree1.valid?.must_equal false
+    end
 
-  it "price must be greater than 0" do
-    tree1.valid?.must_equal true
-    tree1.price = 1
-    tree1.valid?.must_equal true
-    tree1.price = 0
-    tree1.valid?.must_equal false
-    tree1.price = -1
-    tree1.valid?.must_equal false
-  end
-
-  it "must belong to a merchant" do
-    tree1.valid?.must_equal true
-    tree1.merchant = nil
-    tree1.valid?.must_equal false
-  end
-
-  it "merchant must be a kind of merchant object" do
-    tree1.merchant.must_be_kind_of Merchant
+    it "merchant must be a kind of merchant object" do
+      tree1.merchant.must_be_kind_of Merchant
+    end
   end
 
   describe "Product.get_products method" do
@@ -138,5 +138,28 @@ describe Product do
       Product.categories.must_be_kind_of Array
       Product.categories.length.must_equal 0
     end
+  end
+
+  describe "update categories method" do
+
+    it "updates the categories of a product" do
+      tree = products(:tree1)
+      before = tree.categories.count
+
+      tree.update_categories("spooky")
+
+      tree.categories.count.must_equal (before + 1)
+      tree.categories.must_include "spooky"
+    end
+
+    it "will not update the categories if the category is already present" do
+      tree = products(:tree1)
+      before = tree.categories.count
+
+      tree.update_categories("indoor")
+
+      tree.categories.count.must_equal before
+    end
+
   end
 end

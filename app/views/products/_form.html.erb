@@ -1,12 +1,12 @@
   <%= hidden_field_tag(:merchant_id, @product.merchant.id) %>
   <%= label_tag(:name, "Name") %>
-  <%= text_field_tag(:name, @product.name) %>
+  <%= text_field_tag(:name, @product.name, :maxlength => 30) %>
   <%= label_tag(:price, "Price") %>
-  <%= text_field_tag(:price, @product.price) %>
+  <%= number_field_tag(:price, @product.price, min: 0.01, step: 0.01) %>
   <%= label_tag(:quantity, "Quantity") %>
-  <%=  text_field_tag(:quantity, @product.quantity) %>
+  <%= number_field_tag(:quantity, @product.quantity, min: 1, step: 1) %>
   <%= label_tag(:categories, "Categories") %>
   <%= select_tag "categories", options_for_select(@categories, params["categories"]), include_blank: "none", :multiple => true %>
   <%= label_tag(:category, "Category") %>
   <%= text_field_tag(:category) %>
-  <%= submit_tag("Submit", class: "button") %>
+  <%= submit_tag("Submit", class: "button", :maxlength => 30) %>

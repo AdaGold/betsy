@@ -1,5 +1,5 @@
 <h1>Edit your product: <%= @product.name %></h1>
 
 <%= form_tag(product_path(@product.id), method: :patch) do %>
-<%= render partial: "form", locals: { submit_name: "Add product" }%>
+<%= render partial: "form", locals: { submit_name: "Edit product" }%>
 <% end %>

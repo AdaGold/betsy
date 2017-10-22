@@ -170,6 +170,15 @@ describe ProductsController do
       test_product.categories.count.must_equal (before + 2)
     end
 
+    it "can update when multiple categories are selected" do
+      before = one.categories.count
+      patch product_path(one.id), params:{categories: ["outdoor", "spooky", "fiesta"] }
+
+      test_product = Product.find_by(id: one.id)
+
+      test_product.categories.count.must_equal (before + 3)
+    end
+
     it "updates all categories available if the merchant writes in" do
       Product.categories.include?("Birthday").must_equal false
       patch product_path(one.id), params:{ category: "Birthday"}
