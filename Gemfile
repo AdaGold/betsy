@@ -32,7 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'foundation-rails'
+gem 'foundation-rails', '6.4.1.2'
+
+gem 'omniauth'
+gem 'omniauth-github'
 
 
 # Use Capistrano for deployment
@@ -45,6 +48,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry-rails'
+  gem 'dotenv-rails'
 end
 
 group :development do

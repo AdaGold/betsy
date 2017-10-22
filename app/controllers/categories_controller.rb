@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
 
-  #displays all categories in alphabetical order
   def index
     @categories = Category.order(:id)
   end

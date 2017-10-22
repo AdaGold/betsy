@@ -1,11 +1,11 @@
 product_id,category_id,user_id,name,price,description
-1,6,1,Mack Daddy,12.99,"Mack Daddy is the third album by Sir Mix-a-Lot, and his first album with a Parental Advisory label. It was released on February 4, 1992, on Def American Recordings. The album is particularly notable for the hit single ""Baby Got Back.",
+1,6,1,Mack Daddy,12.99,"Mack Daddy is the third album by Sir Mix-a-Lot, and his first album with a Parental Advisory label. It was released on February 4, 1992, on Def American Recordings. The album is particularly notable for the hit single Baby Got Back.",
 2,6,1,Nevermind,9.95,"Nevermind is the second studio album by American grunge rock band Nirvana, released on September 24, 1991 by DGC Records. Produced by Butch Vig, Nevermind was the band's first release on DGC. It was also their first album to feature drummer Dave Grohl.",
 3,1,2,Red Plaid Shirt- Size S,49.95,"Classic lumberjack shirt that you wear to the bar, of course.",
 4,1,2,Red Plaid Shirt- Size M,49.95,"Classic lumberjack shirt that you wear to the bar, of course.",
-5,1,2,Red Plaid Shirt- Size L,49.95,"Classic lumberjack shirt that you wear to the bar, of course.",
+5,1,2,Red Plaid Shirt- Size L,49.95,"Classic lumberjack shirt that you wear to the bar, of course.",
 6,4,7,Framed Bigfoot Sighting Photo,119.5,"Proof that Sasquatch is real.",
 7,4,10,Sasquatch Action Figure,14.99,"Plastic figurine",
 8,7,8,Red Plaid Dog Bandana,5.25,"Every PNW dog needs one of these!",
 9,6,4,Crash,8.5,"Crash is the second studio album by American rock group Dave Matthews Band, released on April 30, 1996. By March 16, 2000, the album had sold seven million copies, and was certified 7_ platinum by the RIAA.[1] This is currently Dave Matthews Band's best-selling album.",
-10,6,4,Live at Red Rocks,15,"Live at Red Rocks 8.15.95 is an album by the Dave Matthews Band, released on October 28, 1997. It was recorded live at Red Rocks Amphitheatre in Morrison, Colorado on August 15, 1995."
+10,6,4,Live at Red Rocks,15,"Live at Red Rocks 8.15.95 is an album by the Dave Matthews Band, released on October 28, 1997. It was recorded live at Red Rocks Amphitheatre in Morrison, Colorado on August 15, 1995.",
