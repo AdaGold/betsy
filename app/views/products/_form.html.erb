@@ -1,3 +1,4 @@
+<%= form_tag(path, method: method) do %>
   <%= hidden_field_tag(:merchant_id, @product.merchant.id) %>
   <%= label_tag(:name, "Name") %>
   <%= text_field_tag(:name, @product.name, :maxlength => 30) %>
@@ -9,4 +10,5 @@
   <%= select_tag "categories", options_for_select(@categories, params["categories"]), include_blank: "none", :multiple => true %>
   <%= label_tag(:category, "Category") %>
   <%= text_field_tag(:category) %>
-  <%= submit_tag("Submit", class: "button", :maxlength => 30) %>
+  <%= submit_tag(submit_name, class: "button", :maxlength => 30) %>
+<% end %>
