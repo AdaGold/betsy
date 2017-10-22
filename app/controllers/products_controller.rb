@@ -80,16 +80,12 @@ before_action :find_merchant
 
     if params[:categories]
       params[:categories].each do |category|
-        unless @product.categories.include?(category)
-          @product.categories << category
-        end
+        @product.update_categories(category)
       end
     end
 
     if params[:category]
-      unless @product.categories.include?(params[:category])
-        @product.categories << params[:category]
-      end
+      @product.update_categories(params[:category])
     end
 
     if @product.save
