@@ -5,7 +5,7 @@
   <%= label_tag(:price, "Price") %>
   <%= number_field_tag(:price, @product.price, min: 0.01, step: 0.01) %>
   <%= label_tag(:quantity, "Quantity") %>
-  <%= number_field_tag(:quantity, @product.quantity, min: 1, step: 1) %>
+  <%= number_field_tag(:quantity, @product.quantity, min: 0, step: 1) %>
   <%= label_tag(:categories, "Categories") %>
   <%= select_tag "categories", options_for_select(@categories, params["categories"]), include_blank: "none", :multiple => true %>
   <%= label_tag(:category, "Category") %>

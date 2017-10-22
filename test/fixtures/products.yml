@@ -6,7 +6,7 @@ tree1:
   merchant: sappy1
   categories: [indoor]
   quantity: 12
-  merchant: sappy1
+
 
 tree2:
   name: Tree2
@@ -14,4 +14,3 @@ tree2:
   merchant: sappy2
   categories: [outdoor]
   quantity: 10
-  merchant: sappy2
