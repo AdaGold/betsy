@@ -40,4 +40,30 @@ describe User do
 
     end
   end
+
+  describe "find_pending_order" do
+    it "if a user has a single pending order, it should return one pending order" do
+      result = users(:mia).find_pending_order
+      result.must_be_instance_of Order
+
+    end
+
+    it "should return false if a user does not have a pending order" do
+      result = users(:sophie_no_pending_order).find_pending_order
+      result.must_equal false
+    end
+
+    it "if a user has multiple pending orders, it should return one pending order" do
+
+    end
+
+    it "if a user has multiple pending orders, it should return a combination of the two orders" do
+
+    end
+
+    it "if a user has multiple pending orders, it should combine them and delete the other ones?" do
+
+    end
+
+  end
 end

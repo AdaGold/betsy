@@ -53,3 +53,9 @@ guest_pending_order:
   user_id:
   billing_datum_id:
   session_id: 12e
+
+mias_pending_order:
+  order_status: pending
+  user: mia
+  billing_datum_id: mia_billing_datum
+  session_id: 23908sdklj
