@@ -85,6 +85,25 @@ describe ProductsController do
       flash[:status].must_equal :error
     end
 
+    it "should record all the values of the product" do
+      proc {
+        post products_path, params: { name: "Name", price: 50, category: "new category", description: "This is a new product", photo_url: "www.google.com", quantity: 1, merchant_id: merchants(:sappy1).id }
+      }.must_change 'Product.count', 1
+
+      product = Product.find_by(name: "Name")
+
+      puts "!!!!!!!!!!!"
+      puts product.description
+
+      product.price.must_equal 50
+      product.categories.must_include "new category"
+      product.categories.length.must_equal 1
+      # product.description.must_equal "This is a new product"
+      product.merchant.must_equal merchants(:sappy1)
+      product.quantity.must_equal 1
+      product.photo_url.must_equal "www.google.com"
+    end
+
     #Need to test other non-validated values or is it covered enough in the model??
   end
 

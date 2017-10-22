@@ -54,8 +54,6 @@ before_action :find_merchant
       @product.update_categories(params[:category])
     end
 
-    @product.save
-
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} updated."
@@ -112,7 +110,7 @@ before_action :find_merchant
 
 
   def product_params
-    return params.permit(:name, :price, :merchant_id, :quantity)
+    return params.permit(:name, :price, :merchant_id, :quantity, :description, :photo_url)
   end
 
   def find_merchant

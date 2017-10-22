@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019222601) do
+ActiveRecord::Schema.define(version: 20171022161050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20171019222601) do
     t.integer "quantity"
     t.bigint "merchant_id"
     t.string "categories", default: [], array: true
+    t.text "description"
+    t.string "photo_url"
     t.index ["merchant_id"], name: "index_products_on_merchant_id"
   end
 
