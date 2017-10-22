@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe BillingDatum do
-  let(:datum) { billing_data(:one) }
+  let(:datum) { billing_data(:carl_billing_datum) }
 
   it "billing data should be valid" do
     datum.must_be :valid?
