@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
   def create
     @auth_hash = request.env['omniauth.auth']
-    ap @auth_hash
+    # ap @auth_hash
 
     @user = User.find_by(uid: @auth_hash['uid'], provider: @auth_hash['provider'])
 
@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
       @user.save
       if @user.save
         session[:user_id] = @user.id
-        flash[:result_text] = "#{@user.name} has been logged in!"
+        flash[:result_text] = "#{@user.username} has been logged in!"
       else
         flash[:result_text] = "Unable to save user!"
       end
