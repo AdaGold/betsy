@@ -1,0 +1,27 @@
+<%= form_for @review do |f| %>
+
+  <%= f.hidden_field :product_id, value: @product.id %>
+
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
+
+  <%= f.label :review %>
+  <%= f.text_field :text %>
+
+  <%= f.radio_button :rating, 1 %>
+  <%= f.label :rating, "1", :value => 1 %>
+
+  <%= f.radio_button :rating, 2 %>
+  <%= f.label :rating, "2", :value => 2 %>
+
+  <%= f.radio_button :rating, 3 %>
+  <%= f.label :rating, "3", :value => 3 %>
+
+  <%= f.radio_button :rating, 4 %>
+  <%= f.label :rating, "4", :value => 4 %>
+
+  <%= f.radio_button :rating, 5 %>
+  <%= f.label :rating, "5", :value => 5 %>
+
+  <%= f.submit "submit" %>
+
+<% end %>

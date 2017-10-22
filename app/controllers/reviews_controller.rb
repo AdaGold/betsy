@@ -31,13 +31,15 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @product = Product.find(params[:product_id])
   end
 
   def create
     @review = Review.new review_params
 
     if @review.save
-      redirect_to root_path
+      # redirect_to root_path
+      redirect_to product_path(review_params[:product_id])
     else
       flash.now[:error] = "Could not create Review"
       render :new
