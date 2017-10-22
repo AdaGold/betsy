@@ -75,7 +75,9 @@ before_action :find_merchant
       flash[:result_text] = "You need to be logged in to create a product!"
        redirect_back fallback_location: root_path, status: 403
     end
+
     @product = Product.new(merchant_id: session[:merchant_id])
+    @categories = Product.categories
   end
 
   def create
@@ -113,7 +115,7 @@ before_action :find_merchant
 
 
   def product_params
-    return params.require(:product).permit(:name, :price, :merchant_id, :quantity)
+    return params.permit(:name, :price, :merchant_id, :quantity)
   end
 
   def find_merchant

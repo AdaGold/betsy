@@ -1,3 +1,5 @@
 <h1>Create a new product</h1>
 
+<%= form_tag(products_path(@product.id), method: :post) do %>
 <%= render partial: "form", locals: { submit_name: "Add product" }%>
+<% end %>

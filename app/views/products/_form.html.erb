@@ -1,16 +1,12 @@
-<%= form_for @product do |f| %>
-  <%= f.label :Name %>
-  <%= f.text_field :name %>
-  <%= f.hidden_field :merchant_id %>
-  <%= f.label :Price %>
-  <%= f.text_field :price %>
-  <%= f.label :"Choose a category" %>
-  <%= f.select(:categories, Product.categories, {include_blank: "none"}, {multiple: true})  %>
-  <%= f.label :"Add a new category" %>
-  <%= f.text_field :category  %>
-  <%= f.label :Quantity %>
-  <%= f.text_field :quantity %>
-  <%= f.submit submit_name, class: "button"  %>
-<% end %>
-
-<%# TODO: Only the second category field info persist if both  Choose a category and Add a category are selected.%>
+  <%= hidden_field_tag(:merchant_id, @product.merchant.id) %>
+  <%= label_tag(:name, "Name") %>
+  <%= text_field_tag(:name, @product.name) %>
+  <%= label_tag(:price, "Price") %>
+  <%= text_field_tag(:price, @product.price) %>
+  <%= label_tag(:quantity, "Quantity") %>
+  <%=  text_field_tag(:quantity, @product.quantity) %>
+  <%= label_tag(:categories, "Categories") %>
+  <%= select_tag "categories", options_for_select(@categories, params["categories"]), include_blank: "none", :multiple => true %>
+  <%= label_tag(:category, "Category") %>
+  <%= text_field_tag(:category) %>
+  <%= submit_tag("Submit", class: "button") %>
