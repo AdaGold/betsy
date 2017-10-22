@@ -1,10 +1,26 @@
 <!-- TODO : CATEGORIES NOT FUNCTIONING AS A LINK TO THE CATEOGRY SHOW PAGES -->
 <h6>Shop by category</h6>
-<select>
+<!-- <select>
   <% Category.all.each do |category| %>
-  <option><%= link_to(category.name, category_path(category.id)) %></option>
+  <option><%# link_to category.name, categories_path(categories.id) %></option>
   <% end %>
-</select>
+</select> -->
+
+
+
+<!-- --------------------------------------------------------- -->
+  <% Category.all.each do |category| %>
+    <%= link_to category.name, category_path(category.id) %>
+  <% end %>
+<!-- --------------------------------------------------------- -->
+
+
+
+
+
+
+
+
 
 
 

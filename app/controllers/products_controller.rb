@@ -31,6 +31,9 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # as long as this exists: session[:user_id]
+    # product_params.user_id = session[:user_id]
+
     @product = Product.new(product_params)
     if @product.save
       flash[:status] = :success
