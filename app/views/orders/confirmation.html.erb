@@ -1,5 +1,6 @@
 <h1>Thank you for your order!</h1>
 <p>Order Status: <%= @order.status.titleize %></p>
+<p>Order Placed: <%= @order.purchase_datetime %></p>
 <ul>
   <% @order.orderitems.each do |orderitem| %>
     <li>
