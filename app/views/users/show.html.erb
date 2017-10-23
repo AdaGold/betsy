@@ -6,7 +6,7 @@ users_controller_tests_and_methods
 <div class="user_show">
   <section class="users_products">
     <h2><%=@user.username%>'s Products</h2>
-      <% @user.products.each do |product|%>
+      <% @user.products.show_available.each do |product|%>
         <article class="product">
           <h3><%= link_to product.name, product_path(product.id) %></h3>
             <ul>
