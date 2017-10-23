@@ -119,8 +119,12 @@ nav ul li a:hover + .hidden,
   border-bottom: 1px solid white;
 }
 
-input[type="checkbox"] {
+#show-menu {
   display: none;
+}
+
+input[type="checkbox"] {
+  // display: none;
 }
 
 input[type="checkbox"]:checked ~ #menu {
