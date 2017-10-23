@@ -2,6 +2,7 @@
 <h3>details for:</h3>
 <section class="product-details">
   <h3><%= @product.name.upcase %> </h3>
+
   <p>
     <%= @product.description %>
   </p>
@@ -13,5 +14,25 @@
     <li>
       <strong>Sold By: </strong><%= link_to @product.user.username, user_path(@user.id) %>
     </li>
+    <li>
+
+      <%=link_to "Add to Cart", add_product_path(@product.id), method: :post %>
+    </li>
   </ul>
+</section>
+
+<section class="reviews">
+  <h4>What People are Saying!</h4>
+  <% @product.reviews.each do |review| %>
+  <ul>
+    <li>
+      Rating: <%= review.rating %> / 5
+    </li>
+    <li>
+      <%= review.text %>
+    </li>
+  </ul>
+  <% end %>
+
+  <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
 </section>

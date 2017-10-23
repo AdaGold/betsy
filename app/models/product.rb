@@ -2,7 +2,8 @@ class Product < ApplicationRecord
   has_many :reviews
   has_many :items
   belongs_to :user
-  has_and_belongs_to_many :categories
+  # add through: to associate join table
+  has_and_belongs_to_many :categories, through: :categories_products
   validates :user_id, presence: true
   validates :name, uniqueness: true
   validates :name, presence: true

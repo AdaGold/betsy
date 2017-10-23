@@ -6,7 +6,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order(:id)
+    @users = []
+    User.all.each do |user|
+      if user.products.length > 0
+        @users.push(user)
+      end
+    end
+    return @users
   end
 
 
@@ -37,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def login
-  end 
+  end
 
   def update
     @user = User.find_by(id: params[:id].to_i)

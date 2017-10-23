@@ -101,7 +101,6 @@ describe ProductsController do
         product_data[:product].each do |key, value|
           nil_product = product_data.deep_dup
           nil_product[:product][key] = nil
-          puts "#{key}, #{nil_product[:product][key]}"
           post products_path, params: nil_product
           must_respond_with :bad_request
         end

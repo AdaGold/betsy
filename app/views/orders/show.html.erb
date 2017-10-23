@@ -1,2 +1,15 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h2>Your Order</h2>
+
+<section class="">
+
+<% if @cart.order_products.length == 0 %>
+  <%= "Get to shopping! Your cart is empty!" %>
+<% else %>>
+<% @cart.order_products.each do |item| %>
+  <p>
+    THING: <%= Product.find(item.product_id) %>
+  </p>
+<% end %>
+<% end %>
+
+</section>

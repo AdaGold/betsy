@@ -5,6 +5,7 @@
 <%= link_to "New Category" ,new_category_path %>
 
 <% @categories.each do |category| %>
+<%# category.products.to_json %>
   <ul>
     <li><%= link_to category.name, category_path(category.id) %></li>
   </ul>

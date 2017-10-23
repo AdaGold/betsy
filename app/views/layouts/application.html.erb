@@ -6,8 +6,8 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Northwesty" %></title>
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+
+
     <%= csrf_meta_tags %>
   </head>
 
@@ -19,8 +19,9 @@
       <nav class="columns small-12">
           <%= link_to "Browse All Products", products_path, class:"button" %>
           <%= link_to "Browse By Category", products_path, class:"button"  %>
-          <%= link_to "Browse By Vendor", products_path, class:"button"  %>
+          <%= link_to "Browse by Merchant", users_path, class: "button"%>
           <%= link_to "See Our Users", users_path, class:"button"  %>
+          <%= link_to "My Cart", order_path(@pending_order), class: "button" %>
       <div class="float-right">
         <% if session[:user_id]%>
           <% @user = session[:user_id]%>
