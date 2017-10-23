@@ -5,11 +5,15 @@
 <% if @cart.order_products.length == 0 %>
   <%= "Get to shopping! Your cart is empty!" %>
 <% else %>>
-<% @cart.order_products.each do |item| %>
-  <p>
-    THING: <%= Product.find(item.product_id) %>
-  </p>
-<% end %>
+  <% @cart.order_products.each do |item| %>
+    <p>
+      THING: <%= Product.find(item.product_id).name %>
+      Quantity:
+    </p>
+    å<% end %>
 <% end %>
 
 </section>
+
+
+<!-- item.product -->
