@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   get '/users/profile/:id', to: 'users#profile', as: 'profile'
   resources :users
   resources :orders
-  resources :items, except: [:create]
+  resources :items, except: [:create, :destroy]
   post '/items/:id', to: 'items#create', as: 'create_item'
+  delete '/items/:id', to: 'items#destroy', as: 'destroy_item'
 
   resources :billing_data
   resources :products

@@ -27,12 +27,12 @@ class ItemsController < ApplicationController
 
     if @item.save
       # puts "success"
-      flash[:success] = "Item added successfully"
+      flash[:success] = "#{Product.find(params[:id]).name} item added successfully"
       redirect_back(fallback_location: root_path)
     else
       # puts "fail"
       # puts @item.errors.messages
-      flash.now[:error] = "Item not added"
+      flash.now[:error] = "Item not added to #{Product.find(params[:id])}"
       render :new
     end
   end
@@ -47,11 +47,11 @@ class ItemsController < ApplicationController
   # end
 
   def destroy
-    @item = Item.find_by(id: params[:id].to_i)
+    @items = Item.where(product_id: params[:id])
+    @items.last.destroy
 
-    @item.destroy
-
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
+    flash[:result_text] = "1 #{Product.find(params[:id]).name} removed from inventory!"
   end
 
   private
