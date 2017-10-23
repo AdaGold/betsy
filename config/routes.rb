@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :reviews
+  get '/reviews/new/:id', to: 'reviews#new', as: 'new_new_review'
   resources :users
   resources :orders
   post '/add-product/:id', to: 'orders#add_product', as: 'add_product'
