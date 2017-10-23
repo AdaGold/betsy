@@ -3,35 +3,42 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title><%= content_for?(:title) ? yield(:title) : "Northwesty" %></title>
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-
-
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
-  <header class="page-header row small-12 large-12">
-    <div class = "columns small-12 large-12">
-      <h2 class="columns small-10 large-10"><%= link_to "NorthWesty", root_path %></h2>
-      <input class="shopping-cart float-right columns small-2 large-2" type="image" src="https://i.imgur.com/lcX9z7x.png" alt="shopping_cart" />
-    </div>
-      <nav class="columns small-12">
-          <%= link_to "Browse All Products", products_path, class:"button" %>
-          <%= link_to "Browse By Category", products_path, class:"button"  %>
-          <%= link_to "Browse by Merchant", users_path, class: "button"%>
-          <%= link_to "See Our Users", users_path, class:"button"  %>
-          <%= link_to "My Cart", order_path(@pending_order), class: "button" %>
-      <div class="float-right">
-        <% if session[:user_id]%>
-          <% @user = session[:user_id]%>
-          <%= link_to "Logged in as #{User.find(@user).username}", user_path(@user), class:"button" %>
-          <%= link_to "Log out", logout_path, class:"button" %>
-        <%else%>
-          <%= link_to "Log in with Github", "/auth/github", class:"button"%>
-        <%end%>
-      </div>
-    </nav>
+  <header>
+    <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="example-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li class="has-submenu">
+        <a href="#0">One</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="#0">One</a></li>
+          <li><a href="#0">Two</a></li>
+          <li><a href="#0">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#0">Two</a></li>
+      <li><a href="#0">Three</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><button type="button" class="button">Login</button
+        </li>
+    </ul>
+  </div>
+</div>
   </header>
 
   <section class="flash">
