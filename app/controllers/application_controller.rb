@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :find_user
   before_action :find_cart
-  before_action :make_guest_cart
   before_action :set_session_to_cart
 
 
@@ -20,13 +19,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def make_guest_cart
-    if !(session[:user_id]) && !(session[:pending_order_id])
-      # @pending_order = Order.new
-      # @pending_order.session_id = session[:session_id]
-      # session[:pending_order_id] = @pending_order_id if @pending_order.save
-    end
-  end
+
 
   def find_cart
     if @user #find auth_user cart
