@@ -1,5 +1,5 @@
 <%= form_tag(path, method: method) do %>
-  <%= hidden_field_tag(:merchant_id, @product.merchant.id) %>
+  <%= hidden_field_tag(:merchant_id, @merchant.id) %>
   <%= label_tag(:name, "Name") %>
   <%= text_field_tag(:name, @product.name, :maxlength => 30) %>
   <%= label_tag(:price, "Price") %>

@@ -48,7 +48,7 @@ class Product < ApplicationRecord
   end
 
   def update_categories(category)
-    unless categories.include?(category)
+    if categories.include?(category) == false && category != ""
       categories << category
     end
   end

@@ -104,7 +104,6 @@ before_action :find_merchant
     @product = Product.find_by_id(params[:id])
   end
 
-
   def product_params
     return params.permit(:name, :price, :merchant_id, :quantity, :description, :photo_url)
   end
