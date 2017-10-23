@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   get 'login', to: 'users#login', as: 'login'
   get 'logout', to: 'sessions#logout', as: 'logout'
-  get "/auth/:provider/callback", to: "sessions#create",  as: 'auth_callback'
+  get '/auth/:provider/callback', to: 'sessions#create',  as: 'auth_callback'
 
 
   # get 'items/index'
