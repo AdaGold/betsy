@@ -10,4 +10,22 @@ class Product < ApplicationRecord
   validates :price, presence: true
   # validates :category_id, presence: true
   validates :price, numericality: true
+
+  def num_available
+    available = available_items
+    if available
+      return available.length
+    else
+      return 0
+    end
+  end
+
+  def available_items
+    available = []
+    self.items.each do |item|
+      available << item if !(item.shipping_status) && !(item.purchase_status)
+    end
+    return available if available.first != nil
+    return false
+  end
 end
