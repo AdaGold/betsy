@@ -1,34 +1,18 @@
 require "test_helper"
 
 describe MerchantsController do
-  # it "should get new" do
-  #   get merchants_new_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get create" do
-  #   get merchants_create_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get index" do
-  #   get merchants_index_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get edit" do
-  #   get merchants_edit_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get update" do
-  #   get merchants_update_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get show" do
-  #   get merchants_show_url
-  #   value(response).must_be :success?
-  # end
+
+  describe "logged in merchants" do
+
+    it "merchants can access their own account page" do
+        @merchant = merchants(:sappy1)
+        login(@merchant, :github)
+
+        get merchant_path(@merchant.id)
+        must_respond_with :success
+
+    end
+
+  end
 
 end

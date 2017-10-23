@@ -29,7 +29,7 @@ class MerchantsController < ApplicationController
     unless session[:merchant_id] == find_merchant.id
       flash[:status] = :error
       flash[:result_text] = "Unauthorized user"
-      return redirect_to root_path
+      return redirect_back :fallback_location
     end
   end
 
