@@ -2,7 +2,6 @@
 <h3>details for:</h3>
 <section class="product-details">
   <h3><%= @product.name.upcase %> </h3>
-
   <p>
     <%= @product.description %>
   </p>
@@ -25,6 +24,19 @@
 
 <section class="reviews">
   <h4>What People are Saying!</h4>
+
+
+
+  <% if session[:user_id] != @product.user_id %>
+
+    Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
+    <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
+    
+ <% end %>
+
+
+
+
   <% @product.reviews.each do |review| %>
   <ul>
     <li>
@@ -36,5 +48,5 @@
   </ul>
   <% end %>
 
-  <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
+
 </section>

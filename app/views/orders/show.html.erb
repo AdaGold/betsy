@@ -5,6 +5,7 @@
 <% if @cart.order_products.length == 0 %>
   <%= "Get to shopping! Your cart is empty!" %>
 <% else %>>
+
 <% @cart.order_products.each do |entry| %>
   <ol>
     <li>
@@ -38,3 +39,6 @@
 <% end %>
 
 </section>
+
+
+<!-- item.product -->

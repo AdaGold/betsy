@@ -1,26 +1,29 @@
-users_controller_tests_and_methods
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
 
 <div class="user_show">
   <section class="users_products">
-    <h2><%=@user.username%>'s Products</h2>
-      <% @user.products.each do |product|%>
-        <article class="product">
-          <h3><%= link_to product.name, product_path(product.id) %></h3>
+    <div class="row large-12 columns storename">
+      <h2><%=@user.username%>'s store</h2>
+    </div>
+      <% @user.products.show_available.each do |product|%>
+        <aside class="productinfo-container row large-12 columns" >
+          <a href="https://www.fillmurray.com/100/100"><img src="http://fillmurray.com/100/100"></a>
+          <div class="productinfo">
             <ul>
+              <li>
+                <h3 class="productname"><%= link_to product.name, product_path(product.id) %></h3>
+              </li>
               <li>
                 <strong>Price:</strong> $<%= product.price %>
               </li>
             </ul>
-          </article>
+          </div>
+        </aside>
       <% end %>
   </section>
 
   <section>
     <p>
-      Want to contanct <%=@user.username%>? Email them at <%=link_to @user.email%>
+      Want to contact <%=@user.username%>? Email them at <%=link_to @user.email%>
     </p>
   </section>
 </div>
