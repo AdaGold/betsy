@@ -47,11 +47,15 @@ class ItemsController < ApplicationController
   # end
 
   def destroy
-    @items = Item.where(product_id: params[:id])
-    @items.last.destroy
-
-    redirect_back(fallback_location: root_path)
-    flash[:result_text] = "1 #{Product.find(params[:id]).name} removed from inventory!"
+    if Item.where(product_id: params[:id]).length > 0
+      @item = Item.where(product_id: params[:id])
+      @items.last.destroy
+      redirect_back(fallback_location: root_path)
+      flash[:result_text] = "1 #{Product.find(params[:id]).name} removed from inventory!"
+    else
+      flash[:result_text] = "There are no more items to remove"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
