@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    puts params
     #verify everything is in stock
     @cart.orderitems.each do |orderitem|
       if orderitem.product.quantity == 0
