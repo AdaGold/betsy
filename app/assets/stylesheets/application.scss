@@ -34,7 +34,7 @@ footer {
 
 //Nav--------------------------------------
 nav {
-  background: #adead1;
+  background: #8c4511;
   width: 100%;
   height: 40px;
   text-transform: uppercase;
@@ -65,7 +65,7 @@ nav li a {
   text-align: center;
   line-height: 40px;
   text-decoration: none;
-  color: red;
+  color: #e7e8a6;
   border-bottom: 1px solid white;
 }
 
@@ -74,9 +74,14 @@ nav li a {
   // float: left;
 }
 
+.companyname {
+  color: #e2e6e4;
+}
+
 /*Dropdown*/
 .menu_item a:hover{
-  background: #c2e7da;
+  background: #8c4511;
+  color: #e2e6e4;
 }
 
 nav li:hover ul a {
@@ -87,7 +92,7 @@ nav li:hover ul a {
 nav li ul li {
   display: block;
   float: none;
-  background: #adead1;
+  background: #141c11;
 }
 
 /*Hide*/
@@ -114,8 +119,12 @@ nav ul li a:hover + .hidden,
   border-bottom: 1px solid white;
 }
 
-input[type="checkbox"] {
+#show-menu {
   display: none;
+}
+
+input[type="checkbox"] {
+  // display: none;
 }
 
 input[type="checkbox"]:checked ~ #menu {

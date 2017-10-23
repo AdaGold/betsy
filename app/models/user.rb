@@ -35,4 +35,8 @@ class User < ApplicationRecord
     end
     return has_products
   end
+
+  def show_available
+    Product.where(visibility: true)
+  end
 end

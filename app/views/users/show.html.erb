@@ -1,9 +1,10 @@
+
 <div class="user_show">
   <section class="users_products">
     <div class="row large-12 columns storename">
       <h2><%=@user.username%>'s store</h2>
     </div>
-      <% @user.products.each do |product|%>
+      <% @user.products.show_available.each do |product|%>
         <aside class="productinfo-container row large-12 columns" >
           <a href="https://www.fillmurray.com/100/100"><img src="http://fillmurray.com/100/100"></a>
           <div class="productinfo">

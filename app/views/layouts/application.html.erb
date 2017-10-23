@@ -16,14 +16,14 @@
         <label for="show-menu" class="show-menu">Menu</label>
         <input type="checkbox" id="show-menu" role="button">
         <ul id="menu">
-          <li>
-            <h1><%= link_to "NorthWesty", root_path %></h1>
+          <li class="companyname">
+            <h1 ><%= link_to "NorthWesty", root_path %></h1>
           </li>
           <li class="menu_item">
             <%= link_to "Products", products_path %>
             <ul class="hidden">
               <li class="menu_item"><%= link_to "Browse All Products", products_path%></li>
-              <li class="menu_item"><%= link_to "Browse By Category", products_path%></li>
+              <li class="menu_item"><%= link_to "Browse By Category", categories_path%></li>
               <li class="menu_item"><%= link_to "Browse by Merchant", users_path%></li>
             </ul>
           </li>
@@ -36,10 +36,10 @@
           <li class="menu_item" id="Login-Logout">
             <% if session[:user_id]%>
               <% @user = session[:user_id]%>
-              <%= link_to "Logged in as #{User.find(@user).username}", user_path(@user), class:"button" %>
+              <%= link_to "Your Profile", profile_path(@user), class:"button" %>
               <%= link_to "Log out", logout_path, class:"button float-right" %>
             <%else%>
-              <%= link_to "Log in with Github", "/auth/github", class:"button float-right"%>
+              <%= link_to "Login/SignUp with Github", "/auth/github", class:"button float-right"%>
             <%end%>
           </li>
           <li>

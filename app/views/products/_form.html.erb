@@ -12,8 +12,8 @@
   <%= f.text_field :description %>
 
   <% Category.all.each do |category| %>
-    <%= f.label :to, category.name %>
-        <%= check_box_tag 'to[]', category.name %>
+    <%= f.label :to, category.name, class:"checkbox"%>
+    <%= check_box_tag 'to[]', category.name, class:"checkbox"%>
   <% end %>
 
   <%= f.submit "submit" %>

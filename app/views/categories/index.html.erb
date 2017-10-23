@@ -1,8 +1,10 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<h1>Browse by Category</h1>
 
 <section>
-<%= link_to "New Category" ,new_category_path %>
+
+<% if @user != nil %>
+  <%= link_to("Create Category", new_category_path) %>
+<% end %>
 
 <% @categories.each do |category| %>
 <%# category.products.to_json %>
