@@ -19,3 +19,17 @@
     </li>
   </ul>
 </section>
+
+<section class="reviews">
+  <h4>What People are Saying!</h4>
+  <% @product.reviews.each do |review| %>
+  <ul>
+    <li>
+      Rating: <%= review.rating %> / 5
+    </li>
+    <li>
+      <%= review.text %>
+    </li>
+  </ul>
+  <% end %>
+</section>
