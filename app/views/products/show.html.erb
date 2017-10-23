@@ -2,7 +2,7 @@
 <h3>$<%= @product.price %></h3>
 <h3>Categories: <%= @product.categories.join(", ") %></h3>
 <h3>Description:</h3>
-<p> <%= product_description(@product) %> </p>
+<p><%= product_description(@product) %></p>
 
 <img src= "<%= @product.photo_url %>" alt "<%= @product.photo_url %>" height: "250" width: "250" />
 
