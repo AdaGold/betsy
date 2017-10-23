@@ -11,34 +11,40 @@
   </head>
 
   <header>
-    <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
-  <div class="title-bar-title">Menu</div>
-</div>
+    <div class="container">
+      <nav>
+        <label for="show-menu" class="show-menu">Menu</label>
+        <input type="checkbox" id="show-menu" role="button">
+        <ul id="menu">
+          <li>
+            <h1><%= link_to "NorthWesty", root_path %></h1>
+          </li>
+          <li class="menu_item">
+            <%= link_to "Products", products_path %>
+            <ul class="hidden">
+              <li class="menu_item"><%= link_to "Browse All Products", products_path%></li>
+              <li class="menu_item"><%= link_to "Browse By Category", products_path%></li>
+              <li class="menu_item"><%= link_to "Browse by Merchant", users_path%></li>
+            </ul>
+          </li>
+          <li class="menu_item">
+            <%= link_to "Users", users_path %>
+            <ul class="hidden">
+              <li class="menu_item"><%= link_to "Users", users_path%></li>
+            </ul>
+          </li>
+          <li class="menu_item" id="Login-Logout">
+            <% if session[:user_id]%>
+              <% @user = session[:user_id]%>
+              <%= link_to "Logged in as #{User.find(@user).username}", user_path(@user), class:"button" %>
+              <%= link_to "Log out", logout_path, class:"button" %>
+            <%else%>
+              <%= link_to "Log in with Github", "/auth/github", class:"button"%>
+            <%end%>
+          </li>
 
-<div class="top-bar" id="example-menu">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">Site Title</li>
-      <li class="has-submenu">
-        <a href="#0">One</a>
-        <ul class="submenu menu vertical" data-submenu>
-          <li><a href="#0">One</a></li>
-          <li><a href="#0">Two</a></li>
-          <li><a href="#0">Three</a></li>
         </ul>
-      </li>
-      <li><a href="#0">Two</a></li>
-      <li><a href="#0">Three</a></li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><button type="button" class="button">Login</button
-        </li>
-    </ul>
-  </div>
-</div>
+      </nav>
   </header>
 
   <section class="flash">
