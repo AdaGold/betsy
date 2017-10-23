@@ -19,4 +19,6 @@ class Order < ApplicationRecord
       self.errors[:order_status] << "is invalid."
     end
   end
+
+private
 end

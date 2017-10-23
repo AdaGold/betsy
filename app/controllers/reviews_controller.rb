@@ -32,11 +32,10 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @product = Product.find(params[:product_id])
-
   end
 
   def create
-    @review = Review.new review_params
+    @review = Review.new(review_params)
 
     if @review.save
       # redirect_to root_path
@@ -59,4 +58,5 @@ class ReviewsController < ApplicationController
   def review_params
     return params.require(:review).permit(:user_id, :product_id, :text, :rating)
   end
+  
 end

@@ -1,10 +1,7 @@
-@charset 'utf-8';
-
-@import 'settings';
-@import 'foundation';
-
-// If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
+// @charset 'utf-8';
 //
+
+@import 'foundation';
 @import 'motion-ui/motion-ui';
 
 // We include everything by default.  To slim your CSS, remove components you don't use.
@@ -24,6 +21,8 @@
 @include foundation-callout;
 @include foundation-card;
 @include foundation-close-button;
+@include foundation-menu;
+@include foundation-menu-icon;
 @include foundation-drilldown-menu;
 @include foundation-dropdown;
 @include foundation-dropdown-menu;
@@ -35,8 +34,7 @@
 @include foundation-responsive-embed;
 @include foundation-label;
 @include foundation-media-object;
-@include foundation-menu;
-@include foundation-menu-icon;
+
 @include foundation-off-canvas;
 @include foundation-orbit;
 @include foundation-pagination;
@@ -54,5 +52,6 @@
 
 // If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
 //
+@import 'motion-ui/motion-ui';
 @include motion-ui-transitions;
 @include motion-ui-animations;

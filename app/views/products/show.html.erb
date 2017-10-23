@@ -15,7 +15,9 @@
     </li>
     <li>
 
-      <%=link_to "Add to Cart", add_product_path(@product.id), method: :post %>
+      <%= button_to("Add to Cart", add_product_path(@product.id)) %>
+      <%= link_to("Add to Cart", add_product_path(@product.id), method: :post, class:'button') %>
+
     </li>
   </ul>
 </section>
@@ -36,9 +38,15 @@
 
 
   <% @product.reviews.each do |review| %>
-    <ul>
-      <li>Rating: <%= review.rating %> / 5</li>
-      <li><%= review.text %></li>
-    </ul>
+  <ul>
+    <li>
+      Rating: <%= review.rating %> / 5
+    </li>
+    <li>
+      <%= review.text %>
+    </li>
+  </ul>
   <% end %>
+
+  <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
 </section>

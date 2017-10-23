@@ -3,35 +3,48 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title><%= content_for?(:title) ? yield(:title) : "Northwesty" %></title>
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-
-
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
-  <header class="page-header row small-12 large-12">
-    <div class = "columns small-12 large-12">
-      <h2 class="columns small-10 large-10"><%= link_to "NorthWesty", root_path %></h2>
-      <input class="shopping-cart float-right columns small-2 large-2" type="image" src="https://i.imgur.com/lcX9z7x.png" alt="shopping_cart" />
-    </div>
-      <nav class="columns small-12">
-          <%= link_to "Browse All Products", products_path, class:"button" %>
-          <%= link_to "Browse By Category", products_path, class:"button"  %>
-          <%= link_to "Browse By Vendor", products_path, class:"button"  %>
-          <%= link_to "See Our Users", users_path, class:"button"  %>
-          <%= link_to "My Cart", order_path(@pending_order), class: "button" %>
-      <div class="float-right">
-        <% if session[:user_id]%>
-          <% @user = session[:user_id]%>
-          <%= link_to "Logged in as #{User.find(@user).username}", user_path(@user), class:"button" %>
-          <%= link_to "Log out", logout_path, class:"button" %>
-        <%else%>
-          <%= link_to "Log in with Github", "/auth/github", class:"button"%>
-        <%end%>
-      </div>
-    </nav>
+  <header>
+    <div class="container">
+      <nav>
+        <label for="show-menu" class="show-menu">Menu</label>
+        <input type="checkbox" id="show-menu" role="button">
+        <ul id="menu">
+          <li>
+            <h1><%= link_to "NorthWesty", root_path %></h1>
+          </li>
+          <li class="menu_item">
+            <%= link_to "Products", products_path %>
+            <ul class="hidden">
+              <li class="menu_item"><%= link_to "Browse All Products", products_path%></li>
+              <li class="menu_item"><%= link_to "Browse By Category", products_path%></li>
+              <li class="menu_item"><%= link_to "Browse by Merchant", users_path%></li>
+            </ul>
+          </li>
+          <li class="menu_item">
+            <%= link_to "Users", users_path %>
+            <ul class="hidden">
+              <li class="menu_item"><%= link_to "Users", users_path%></li>
+            </ul>
+          </li>
+          <li class="menu_item" id="Login-Logout">
+            <% if session[:user_id]%>
+              <% @user = session[:user_id]%>
+              <%= link_to "Logged in as #{User.find(@user).username}", user_path(@user), class:"button" %>
+              <%= link_to "Log out", logout_path, class:"button" %>
+            <%else%>
+              <%= link_to "Log in with Github", "/auth/github", class:"button"%>
+            <%end%>
+          </li>
+
+        </ul>
+      </nav>
   </header>
 
   <section class="flash">

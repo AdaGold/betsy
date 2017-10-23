@@ -1,5 +1,4 @@
 class OrdersProductsController < ApplicationController
-
   def create
     @cart_entry = OrderProduct.new(product_id: params[:id], order_id: @pending_order)
     if @cart_entry.save

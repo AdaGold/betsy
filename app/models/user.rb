@@ -26,6 +26,13 @@ class User < ApplicationRecord
     end
   end
 
-
-
+  def has_products
+    has_products = []
+    User.all.each do |user|
+      if user.products.length > 0
+        has_products.push(user)
+      end
+    end
+    return has_products
+  end
 end
