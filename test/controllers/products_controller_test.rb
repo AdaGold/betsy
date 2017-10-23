@@ -30,12 +30,16 @@ describe ProductsController do
     it "must get the show view" do
       get product_path(one.id)
       must_respond_with :success
+    end
 
+    it "must redirect with an error status if the product is not valid" do
       get product_path(-1)
       must_respond_with :redirect
       must_redirect_to root_path
+      flash[:status] = :error
     end
-  end
+   end
+
 
   describe "new product" do
     it "should get new if a mercant is signed in" do
@@ -94,7 +98,7 @@ describe ProductsController do
       product.price.must_equal 50
       product.categories.must_include "new category"
       product.categories.length.must_equal 1
-      # product.description.must_equal "This is a new product"
+      product.description.must_equal "This is a new product"
       product.merchant.must_equal merchants(:sappy1)
       product.quantity.must_equal 1
       product.photo_url.must_equal "www.google.com"
@@ -248,8 +252,6 @@ describe ProductsController do
 
         #no merchant signed in
         logout_path
-        categories = one.categories
-
         patch product_path(one.id), params:{categories: ["Birthday"]}
         flash[:status].must_equal :error
         must_redirect_to root_path

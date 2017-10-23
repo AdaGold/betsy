@@ -13,6 +13,6 @@
   <%= label_tag(:category, "Category") %>
   <%= text_field_tag(:category) %>
   <%= label_tag(:photo_url, "Photo URL") %>
-  <%= text_field_tag(:photo_url) %>
+  <%= text_field_tag(:photo_url, @product.photo_url) %>
   <%= submit_tag(submit_name, class: "button", :maxlength => 30) %>
 <% end %>

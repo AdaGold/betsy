@@ -1,11 +1,10 @@
 class ProductsController < ApplicationController
 before_action :find_product, only: [:show, :edit, :update]
 before_action :find_merchant, except: [:index, :destroy]
+before_action :get_categories, only: [:index, :edit, :new]
 
   def index
     @products = Product.get_products(a_category: params[:category], a_merchant: params[:merchant])
-
-    @categories = Product.categories
   end
 
   def show
@@ -18,8 +17,6 @@ before_action :find_merchant, except: [:index, :destroy]
       flash[:result_text] = "Unauthorized user"
       return redirect_to root_path
     end
-
-    @categories = Product.categories
   end
 
   def update
@@ -60,7 +57,6 @@ before_action :find_merchant, except: [:index, :destroy]
     end
 
     @product = Product.new(merchant_id: session[:merchant_id])
-    @categories = Product.categories
   end
 
   def create
@@ -109,6 +105,10 @@ before_action :find_merchant, except: [:index, :destroy]
 
   def find_merchant
     @merchant = Merchant.find_by(id: session[:merchant_id])
+  end
+
+  def get_categories
+    @categories = Product.categories
   end
 
 end
