@@ -19,10 +19,20 @@ describe ApplicationController do
     guest_cart_id = session[:pending_order_id]
     log_in(user, :github)
     get root_path
+    # binding.pry
+
     session[:user_id].must_equal  user.id
     session[:pending_order_id].must_be :!=, guest_cart_id
     session[:pending_order_id].must_equal orders(:mias_pending_order).id
 
+  end
+
+  it "should create a new pending_order for a guest user" do
+    get root_path
+    guest_cart_id = session[:pending_order_id]
+    # puts session
+    # binding.pry
+    guest_cart_id.must_be :!=, nil
   end
 
   it "should assign pending order from guest session to logged in user if they do not have pending orders" do
