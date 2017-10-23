@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   validates :order_status, presence: true
   validate :has_billing_datum?
   validate :has_valid_order_status?
+  validate :has_valid_order_products?
 
   def has_billing_datum?
     if self.order_status != "pending"
@@ -20,5 +21,19 @@ class Order < ApplicationRecord
     end
   end
 
-private
+  def has_valid_order_products?
+    if self.order_status = "paid"
+      invalid_entries = []
+      order_products = self.order_products
+      order_products.each do |entry|
+        invalid_entries << entry if !(entry.valid?)
+      end
+      if invalid_entries.first != nil
+        self.errors[:entries] << "are invalid."
+        invalid_entries.each {|entry| self.errors[:entries] << entries.errors}
+      end
+    end
+  end
+
+  private
 end
