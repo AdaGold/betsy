@@ -14,4 +14,7 @@ class Category < ApplicationRecord
   #   end
   # end
 
+  def show_available
+    Product.where(visibility: true)
+  end
 end
