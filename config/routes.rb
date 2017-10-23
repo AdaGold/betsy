@@ -1,18 +1,5 @@
 Rails.application.routes.draw do
 
-  # get 'users/index'
-  #
-  # get 'users/show'
-  #
-  # get 'users/create'
-  #
-  # get 'users/update'
-  #
-  # get 'users/destroy'
-  #
-  # get 'users/edit'
-  #
-  # get 'users/new'
 
   root to: "main_page#index"
 
@@ -21,10 +8,11 @@ Rails.application.routes.draw do
   end
 
   resources :reviews
+  post 'orders/add-product/:id', to: 'orders#add_product', as: 'add_product'
+
   get '/reviews/new/:id', to: 'reviews#new', as: 'new_new_review'
   resources :users
   resources :orders
-  post '/add-product/:id', to: 'orders#add_product', as: 'add_product'
   resources :items
 
   resources :billing_data
