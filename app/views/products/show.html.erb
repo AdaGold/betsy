@@ -2,7 +2,6 @@
 <h3>details for:</h3>
 <section class="product-details">
   <h3><%= @product.name.upcase %> </h3>
-
   <p>
     <%= @product.description %>
   </p>
@@ -16,13 +15,28 @@
     </li>
     <li>
 
-      <%=link_to "Add to Cart", add_product_path(@product.id), method: :post %>
+      <%= button_to("Add to Cart", add_product_path(@product.id)) %>
+      <%= link_to("Add to Cart", add_product_path(@product.id), method: :post, class:'button') %>
+
     </li>
   </ul>
 </section>
 
 <section class="reviews">
   <h4>What People are Saying!</h4>
+
+<!-- ---------NEEDS TO BE TESTED WHILE LOGGED IN---------- -->
+<!-- TODO test this once the OAuth has been fixed -->
+
+  <% if session[:user_id] != @product.user_id %>
+
+    Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
+
+ <% end %>
+<!-- ------------------------------------------------------ -->
+
+
+
   <% @product.reviews.each do |review| %>
   <ul>
     <li>

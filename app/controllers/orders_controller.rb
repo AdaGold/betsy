@@ -24,15 +24,16 @@ class OrdersController < ApplicationController
   end
 
   def add_product
-    @cart_entry = OrderProduct.new(product_id: params[:id], order_id: @pending_order.id)
+
+    @cart_entry = OrderProduct.new(product_id: params[:id].to_i, order_id: @pending_order.id)
     if @cart_entry.save
       flash[:status] = :success
       flash[:result_text] = "Successfully added to your cart!"
       redirect_to order_path(@pending_order)
-      # redirect_to product_path(params[:id])
+      redirect_to product_path(params[:id])
     else
       flash[:result_text] = "Could not add that product to your cart"
-      flash[:messages] = @cart_entry.errors.message
+      flash[:messages] = @cart_entry.errors
       redirect_to root_path
     end
   end

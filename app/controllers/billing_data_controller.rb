@@ -5,7 +5,7 @@ class BillingDataController < ApplicationController
   # end
 
   def show
-    @billing_data = Billing_data.find_by(id: params[:id].to_i)
+    @billing_data = BillingDatum.find_by(id: params[:id].to_i)
 
     unless @billing_data
       flash[:error] = "Billing data not found"
@@ -14,7 +14,7 @@ class BillingDataController < ApplicationController
   end
 
   def edit
-    @billing_data = Billing_data.find_by(id: params[:id].to_i)
+    @billing_data = BillingDatum.find_by(id: params[:id].to_i)
 
     unless @billing_data
       redirect_to root_path
@@ -23,7 +23,7 @@ class BillingDataController < ApplicationController
 
 
   def update
-    @billing_data = Billing_data.find_by(id: params[:id].to_i)
+    @billing_data = BillingDatum.find_by(id: params[:id].to_i)
 
     if @billing_data.update_attributes billing_data_params
       redirect_to root_path
@@ -34,12 +34,12 @@ class BillingDataController < ApplicationController
 
 
   def new
-    @billing_data = Billingdata.new
+    @billing_data = BillingDatum.new
   end
 
 
   def create
-    @billing_data = Billing_data.new billing_data_params
+    @billing_data = BillingDatum.new billing_data_params
 
     if @billing_data.save
       redirect_to root_path
@@ -51,7 +51,7 @@ class BillingDataController < ApplicationController
 
 
   def destroy
-    @billing_data = Billing_data.find_by(id: params[id].to_i)
+    @billing_data = BillingDatum.find_by(id: params[id].to_i)
     @billing_data.destroy
     redirect_to root_path
   end
