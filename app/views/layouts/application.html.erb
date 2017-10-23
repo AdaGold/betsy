@@ -14,12 +14,13 @@
   <body>
     <%= session[:order_id] %>
     <header>
-      <h2>Treebay</h2>
+      <h2><%= link_to "Treebay", root_path%></h2>
       <nav>
         <ul>
           <li><%= link_to "Cart", show_cart_path%></li>
           <li>  <% if session[:merchant_id] %>
               <%= link_to "Log Out", logout_path, method: :post, class: "button" %>
+              <%= link_to "Add new product", new_product_path, method: :get, class: "button" %>
             <% else %>
               <%= link_to "Log in with Github", '/auth/github', class: "button" %>
             <% end %>
