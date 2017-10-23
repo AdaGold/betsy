@@ -209,7 +209,7 @@ describe OrdersController do
 
     end
 
-    describe "changes the order state from pending to paid" do
+    describe "changes the order status and purchase_datetime" do
       before do
         get root_path #do this to get session
         Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
@@ -219,16 +219,27 @@ describe OrdersController do
         order_item = Order.find_by(id: session[:order_id]).orderitems.first
         order_item.product_id.must_equal product.id
         order_item.quantity.must_equal 1
+        @order = Order.find_by(id: session[:order_id])
       end
 
-      it do
-        order = Order.find_by(id: session[:order_id])
-        order.status.must_equal "pending"
+      it "changes the order status from pending to paid" do
+        @order.status.must_equal "pending"
         patch checkout_path
         must_respond_with :redirect
         flash[:status].must_equal :success
         flash[:result_text].must_equal "Your order has been placed"
-        Order.find_by(id: order.id).status.must_equal "paid"
+        Order.find_by(id: @order.id).status.must_equal "paid"
+      end
+
+      it "changes the purchase_datetime to the datetime the order was placed" do
+        @order.purchase_datetime.must_equal nil
+        patch checkout_path
+        must_respond_with :redirect
+        flash[:status].must_equal :success
+        flash[:result_text].must_equal "Your order has been placed"
+        order_datetime = Order.find_by(id: @order.id).purchase_datetime
+        order_datetime.to_date.must_equal Date.today
+        order_datetime.must_be :<, DateTime.now
       end
     end
 

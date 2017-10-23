@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    puts params
     #verify everything is in stock
     @cart.orderitems.each do |orderitem|
       if orderitem.product.quantity == 0
@@ -31,6 +30,7 @@ class OrdersController < ApplicationController
 
     #modify the cart
     @cart.status = "paid"
+    @cart.purchase_datetime = DateTime.now
     @cart.update_attributes(checkout_params)
     #checkout the cart
     if @cart.save
@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
   end #checkout
 
   def confirmation
+    @total = @order.orderitems.sum { |orderitem| (orderitem.quantity * orderitem.product.price) }
   end
 
   def new
