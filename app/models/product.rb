@@ -12,6 +12,7 @@ class Product < ApplicationRecord
   validates :price, numericality: { only_float: true }
   #may need to include integers as well
   validates :merchant_id, presence: true
+  validates :quantity, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0 }
 
 
   def self.get_products(a_category: "all", a_merchant: "all")
@@ -44,6 +45,12 @@ class Product < ApplicationRecord
       sum += review.rating
     end
     return (sum.to_f/reviews.count).round(1)
+  end
+
+  def update_categories(category)
+    if categories.include?(category) == false && category != ""
+      categories << category
+    end
   end
 
   # def first_10_reviews
