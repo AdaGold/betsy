@@ -8,7 +8,6 @@ before_action :get_categories, only: [:index, :edit, :new]
   end
 
   def show
-
   end
 
   def edit
@@ -20,7 +19,6 @@ before_action :get_categories, only: [:index, :edit, :new]
   end
 
   def update
-
     unless @merchant == @product.merchant
       flash[:status] = :error
       flash[:result_text] = "Unauthorized user"
@@ -28,16 +26,7 @@ before_action :get_categories, only: [:index, :edit, :new]
     end
 
     @product.update_attributes(product_params)
-
-    if params[:categories]
-      params[:categories].each do |category|
-        @product.update_categories(category)
-      end
-    end
-
-    if params[:category]
-      @product.update_categories(params[:category])
-    end
+    update_categories
 
     if @product.save
       flash[:status] = :success
@@ -63,28 +52,20 @@ before_action :get_categories, only: [:index, :edit, :new]
     unless @merchant
       flash[:status] = :error
       flash[:result_text] = "You need to be logged in to create a product!"
-      redirect_back fallback_location: root_path, status: 403
+      return redirect_back fallback_location: root_path, status: 403
     end
 
     @product = Product.new(product_params)
 
-    if params[:categories]
-      params[:categories].each do |category|
-        @product.update_categories(category)
-      end
-    end
-
-    if params[:category]
-      @product.update_categories(params[:category])
-    end
+    update_categories
 
     if @product.save
-      redirect_to product_path(@product.id)
+      return redirect_to product_path(@product.id)
     else
       flash[:status] = :error
       flash[:result_text] = "Product failed to be added"
       flash[:messages] = @product.errors.messages
-      redirect_to new_product_path
+      return redirect_to new_product_path
     end
   end
 
@@ -92,11 +73,7 @@ before_action :get_categories, only: [:index, :edit, :new]
 
   def find_product
     @product = Product.find_by_id(params[:id])
-    unless @product
-      flash[:status] = :error
-      flash[:result_text] = "That is not a valid product"
-      return redirect_to root_path
-    end
+    render_404 unless @product
   end
 
   def product_params
@@ -109,6 +86,18 @@ before_action :get_categories, only: [:index, :edit, :new]
 
   def get_categories
     @categories = Product.categories
+  end
+
+  def update_categories
+    if params[:categories]
+      params[:categories].each do |category|
+        @product.add_category(category)
+      end
+    end
+
+    if params[:category]
+      @product.add_category(params[:category])
+    end
   end
 
 end
