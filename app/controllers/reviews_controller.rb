@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     @reviews = Review.order(:id)
   end
 
-  def show
+  def show    
     @review = Review.find_by(id: params[:id].to_i)
 
     unless @review
@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:product_id])
   end
 
   def create
