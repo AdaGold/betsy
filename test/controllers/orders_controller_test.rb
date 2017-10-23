@@ -27,7 +27,7 @@ describe OrdersController do
     it "won't add item if the product is invalid" do
       invalid_id = -1
       patch add_order_item_path(session[:order_id], invalid_id)
-      must_respond_with :bad_request
+      must_respond_with :redirect
       flash[:status].must_equal :error
       flash[:result_text].must_equal "That is not a valid product"
     end
@@ -36,14 +36,14 @@ describe OrdersController do
       product.quantity = 0
       product.save.must_equal true
       patch add_order_item_path(session[:order_id], product.id)
-      must_respond_with :bad_request
+      must_respond_with :redirect
       flash[:status].must_equal :error
       flash[:result_text].must_equal "#{product.name} is out of stock"
     end
 
     it "will add the item if the product is valid and the product quantity is > 0" do
       patch add_order_item_path(session[:order_id], product.id)
-      must_respond_with :success
+      must_respond_with :redirect
       flash[:status].must_equal :success
       flash[:result_text].must_equal "1 #{product.name} added to your cart"
     end
@@ -53,7 +53,7 @@ describe OrdersController do
       product.save.must_equal true
       #adding first time
       patch add_order_item_path(session[:order_id], product.id)
-      must_respond_with :success
+      must_respond_with :redirect
       flash[:status].must_equal :success
       flash[:result_text].must_equal "1 #{product.name} added to your cart"
       order_item = Order.find_by(id: session[:order_id]).orderitems.first
@@ -61,7 +61,7 @@ describe OrdersController do
       order_item.quantity.must_equal 1
       #adding second time
       patch add_order_item_path(session[:order_id], product.id)
-      must_respond_with :success
+      must_respond_with :redirect
       flash[:status].must_equal :success
       flash[:result_text].must_equal "1 #{product.name} added to your cart"
       order_item = Order.find_by(id: session[:order_id]).orderitems.first
@@ -76,7 +76,8 @@ describe OrdersController do
       Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
       #add product to cart
       patch add_order_item_path(session[:order_id], product.id)
-      must_respond_with :success
+      must_respond_with :redirect
+      flash[:result_text].must_equal "1 #{product.name} added to your cart"
       order_item = Order.find_by(id: session[:order_id]).orderitems.first
       order_item.product_id.must_equal product.id
       order_item.quantity.must_equal 1
@@ -85,7 +86,7 @@ describe OrdersController do
     it "won't allow action if item is not in cart" do
       invalid_id = -1
       patch update_quantity_path(session[:order_id], invalid_id)
-      must_respond_with :bad_request
+      must_respond_with :redirect
       flash[:status].must_equal :error
       flash[:result_text].must_equal "This item is not in your cart"
     end
@@ -100,14 +101,14 @@ describe OrdersController do
 
     it "won't allow the quantity to be changed to < 1" do
       patch update_quantity_path(session[:order_id], product.id), params: {quantity: 0}
-      must_respond_with :error
+      must_respond_with :success
       flash[:status].must_equal :error
       flash[:result_text].must_equal "#{product.name} quantity was not changed"
     end
 
     it "won't allow the quantity to be changed to > product quantity" do
       patch update_quantity_path(session[:order_id], product.id), params: {quantity: (product.quantity + 1)}
-      must_respond_with :bad_request
+      must_respond_with :success
       flash[:status].must_equal :error
       flash[:result_text].must_equal "You can only order up to #{product.quantity} of #{product.name}"
     end
@@ -141,7 +142,8 @@ describe OrdersController do
     it "will remove a valid item from a valid cart" do
       #add product to cart
       patch add_order_item_path(session[:order_id], product.id)
-      must_respond_with :success
+      must_respond_with :redirect
+      flash[:result_text].must_equal "1 #{product.name} added to your cart"
       order_item = Order.find_by(id: session[:order_id]).orderitems.first
       order_item.product_id.must_equal product.id
       order_item.quantity.must_equal 1
@@ -169,7 +171,8 @@ describe OrdersController do
         Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
         #add product to cart
         patch add_order_item_path(session[:order_id], product.id)
-        must_respond_with :success
+        must_respond_with :redirect
+        flash[:result_text].must_equal "1 #{product.name} added to your cart"
         order_item = Order.find_by(id: session[:order_id]).orderitems.first
         order_item.product_id.must_equal product.id
         order_item.quantity.must_equal 1
@@ -194,7 +197,7 @@ describe OrdersController do
       it "won't allow purchase of more items than are available" do
         # add a second item to the cart
         patch add_order_item_path(session[:order_id], product.id)
-        must_respond_with :success
+        flash[:result_text].must_equal "1 #{product.name} added to your cart"
         order_item = Order.find_by(id: session[:order_id]).orderitems.first
         order_item.product_id.must_equal product.id
         order_item.quantity.must_equal 2
@@ -215,7 +218,8 @@ describe OrdersController do
         Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
         #add product to cart
         patch add_order_item_path(session[:order_id], product.id)
-        must_respond_with :success
+        must_respond_with :redirect
+        flash[:result_text].must_equal "1 #{product.name} added to your cart"
         order_item = Order.find_by(id: session[:order_id]).orderitems.first
         order_item.product_id.must_equal product.id
         order_item.quantity.must_equal 1
@@ -249,7 +253,8 @@ describe OrdersController do
         Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
         #add product to cart
         patch add_order_item_path(session[:order_id], product.id)
-        must_respond_with :success
+        must_respond_with :redirect
+        flash[:result_text].must_equal "1 #{product.name} added to your cart"
         order_item = Order.find_by(id: session[:order_id]).orderitems.first
         order_item.product_id.must_equal product.id
         order_item.quantity.must_equal 1
@@ -277,7 +282,8 @@ describe OrdersController do
         Order.find_by(id: session[:order_id]).orderitems.count.must_equal 0
         #add product to cart
         patch add_order_item_path(session[:order_id], product.id)
-        must_respond_with :success
+        must_respond_with :redirect
+        flash[:result_text].must_equal "1 #{product.name} added to your cart"
         order_item = Order.find_by(id: session[:order_id]).orderitems.first
         order_item.product_id.must_equal product.id
         order_item.quantity.must_equal 1
