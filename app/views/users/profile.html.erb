@@ -18,7 +18,13 @@
           <%= product.description %>
         </li>
         <li>
+          Number in Stock: <%=product.items.count%>
+        </li>
+        <li>
           <%= link_to "Edit this Product", edit_product_path(product.id), class:"button"%>
+        </li>
+        <li>
+         <%= link_to "Edit Inventory", inventory(product.id), class:"button"%>
         </li>
       </ul>
       <%end%>
