@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.order(:id)
+    @user = session[:user_id]
   end
 
   #show all products in a specific category
@@ -45,7 +46,9 @@ class CategoriesController < ApplicationController
     if @category.save
       puts "SUCCESS"
       flash[:success] = "Category created!"
-      redirect_to categories_path
+
+      redirect_to user_path(@user)
+
     else
       puts "FAIL"
       flash.now[:error] = "Could not create category"
