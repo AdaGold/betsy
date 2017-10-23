@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def add_product
-    @cart_entry = OrderProduct.new(product_id: params[:id], order_id: @pending_order)
+    @cart_entry = OrderProduct.new(product_id: params[:id], order_id: @pending_order.id)
     if @cart_entry.save
       flash[:status] = :success
       flash[:result_text] = "Successfully added to your cart!"
