@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'login', to: 'users#login', as: 'login'
   get 'logout', to: 'sessions#logout', as: 'logout'
   get '/auth/:provider/callback', to: 'sessions#create',  as: 'auth_callback'
+  post 'products/:id', to: 'products#add_to_order', as: 'add_to_order'
 
   # post 'order-product/:id', to: 'ordersproducts#create', as: 'order_product'
 
