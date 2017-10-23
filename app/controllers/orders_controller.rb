@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    puts params
     #verify everything is in stock
     @cart.orderitems.each do |orderitem|
       if orderitem.product.quantity == 0
@@ -31,6 +30,7 @@ class OrdersController < ApplicationController
 
     #modify the cart
     @cart.status = "paid"
+    @cart.purchase_datetime = DateTime.now
     @cart.update_attributes(checkout_params)
     #checkout the cart
     if @cart.save
@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
   end #checkout
 
   def confirmation
+    @total = @order.orderitems.sum { |orderitem| (orderitem.quantity * orderitem.product.price) }
   end
 
   def new
@@ -87,7 +88,7 @@ class OrdersController < ApplicationController
         if @order_item.save
           flash[:status] = :success
           flash[:result_text] = "1 #{product.name} added to your cart"
-          redirect_back(fallback_location: root_path, status: 200)
+          redirect_back(fallback_location: root_path)
         else
           flash[:status] = :error
           flash[:result_text] = "Unable to add #{product.name} to your cart"
@@ -96,12 +97,12 @@ class OrdersController < ApplicationController
       else
         flash[:status] = :error
         flash[:result_text] = "#{product.name} is out of stock"
-        redirect_back(fallback_location: root_path, status: 400)
+        redirect_back(fallback_location: root_path)
       end
     else
       flash[:status] = :error
       flash[:result_text] = "That is not a valid product"
-      redirect_back(fallback_location: root_path, status: 400)
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -117,21 +118,21 @@ class OrdersController < ApplicationController
         if @order_item.save
           flash.now[:status] = :success
           flash.now[:result_text] = "#{@order_item.product.name} quantity changed to #{params[:quantity]}"
-          return render :show_cart, status: 200
+          return render :show_cart
         else
           flash.now[:status] = :error
           flash.now[:result_text] = "#{@order_item.product.name} quantity was not changed"
-          return render :show_cart, status: 500
+          return render :show_cart
         end
       else
         flash.now[:status] = :error
         flash.now[:result_text] = "You can only order up to #{@order_item.product.quantity} of #{@order_item.product.name}"
-        return render :show_cart, status: 400
+        return render :show_cart
       end
     else
       flash[:status] = :error
       flash[:result_text] = "This item is not in your cart"
-      return redirect_back(fallback_location: root_path, status: 400)
+      return redirect_back(fallback_location: root_path)
     end
   end
 

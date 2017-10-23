@@ -25,11 +25,12 @@ class MerchantsController < ApplicationController
   def find_merchant
     @merchant = Merchant.find_by_id(params[:id])
   end
+  
   def account_owner?
     unless session[:merchant_id] == find_merchant.id
       flash[:status] = :error
       flash[:result_text] = "Unauthorized user"
-      return redirect_to root_path
+      return redirect_back fallback_location: root_path
     end
   end
 
