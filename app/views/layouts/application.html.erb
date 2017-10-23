@@ -37,10 +37,13 @@
             <% if session[:user_id]%>
               <% @user = session[:user_id]%>
               <%= link_to "Your Profile", profile_path(@user), class:"button" %>
-              <%= link_to "Log out", logout_path, class:"button" %>
+              <%= link_to "Log out", logout_path, class:"button float-right" %>
             <%else%>
-              <%= link_to "Login/SignUp with Github", "/auth/github", class:"button"%>
+              <%= link_to "Login/SignUp with Github", "/auth/github", class:"button float-right"%>
             <%end%>
+          </li>
+          <li>
+            <%= link_to "Cart", order_path(@pending_order.id), class:"button" %>
           </li>
 
         </ul>
