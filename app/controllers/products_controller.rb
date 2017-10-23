@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
   def index
-    @products = Product.all
+    @products = Product.show_available
   end
 
   def show

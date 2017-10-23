@@ -11,4 +11,9 @@ class Product < ApplicationRecord
   # validates :category_id, presence: true
   validates :price, numericality: true
   validates :visibility, inclusion: {in: [true,false]}
+
+
+  def self.show_available
+    Product.where(visibility: true)
+  end
 end
