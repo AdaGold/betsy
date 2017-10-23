@@ -7,7 +7,7 @@
 <%= link_to "Create a New Product", new_product_path, class:"button" %>
 
 <section class="my_products">
-  <% @user.products.each do |product| %>
+  <% @user.products.order(:id).each do |product| %>
     <article class="products">
       <h3><%= product.name %></h3>
       <ul>
@@ -28,6 +28,11 @@
         </li>
         <li>
           <%= button_to "Reduce Inventory", destroy_item_path(product.id), method: :delete, class: "button" %>
+        </li>
+        <li> Currently on the Market: <strong>
+          <%= product.visibility %></strong>
+          <%= button_to "Retire from Visibility", change_visibility_path(product.id), class:"button"%>
+
         </li>
       </ul>
       <%end%>

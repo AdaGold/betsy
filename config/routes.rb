@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   post '/items/:id', to: 'items#create', as: 'create_item'
   delete '/items/:id', to: 'items#destroy', as: 'destroy_item'
 
+
   resources :billing_data
   resources :products
+  post 'products/visibility/:id', to: 'products#change_visibility', as: 'change_visibility'
 
   get 'login', to: 'users#login', as: 'login'
   get 'logout', to: 'sessions#logout', as: 'logout'

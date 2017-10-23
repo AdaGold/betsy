@@ -10,4 +10,5 @@ class Product < ApplicationRecord
   validates :price, presence: true
   # validates :category_id, presence: true
   validates :price, numericality: true
+  validates :visibility, inclusion: {in: [true,false]}
 end
