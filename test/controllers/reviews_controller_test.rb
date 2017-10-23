@@ -1,10 +1,19 @@
 require "test_helper"
 
 describe ReviewsController do
+  let(:product) {products(:tree1)}
+  let(:merchant) {merchants(:sappy1)}
 
-  it "should get new" do
+  it "should get new if no one is signed in" do
     get new_review_path(products(:tree1).id)
     must_respond_with :success
+  end
+
+  it "should redirect to the product page if the merchant of the product is signed in" do
+    login(merchant, :github)
+    flash[:status] = :error
+    must_respond_with :redirect
+    # must_redirect_to product_path(product.id)
   end
 
   it "should be able to successfully create a review" do
