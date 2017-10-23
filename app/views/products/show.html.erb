@@ -1,0 +1,32 @@
+<h1><%= @product.name %></h1>
+<h3>$<%= @product.price %></h3>
+<h3>Categories: <%= @product.categories.join(", ") %></h3>
+<h3>Description:</h3>
+<p><%= product_description(@product) %></p>
+
+<img src= "<%= @product.photo_url %>" alt "<%= @product.photo_url %>" height: "250" width: "250" />
+
+<% if @merchant != @product.merchant %>
+  <%= link_to("Leave a review", new_review_path(@product.id), method: :get, class: "button") %>
+<% end %>
+
+<h3>Average Rating:</h3>
+<p><%= @product.average_rating%></p>
+
+<h3>Reviews: </h3>
+<% if @product.reviews.count < 1  %>
+  <p>Nothing to show!</p>
+<% else %>
+  <ul>
+    <% @product.reviews.each do |review| %>
+      <li>Title:  <%=review.title%></li>
+      <li>Rating:  <%=review.rating.to_s%></li>
+      <li><%=review.review_text%></li>
+    <% end %>
+  </ul>
+<% end %>
+<% if @merchant == @product.merchant %>
+  <%= link_to "Edit Product", edit_product_path(@product.id), class: :button %>
+<% else %>
+  <%= link_to "Add to cart", add_order_item_path(session[:order_id], @product.id), method: :patch, class: :button %>
+<% end %>

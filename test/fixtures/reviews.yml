@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+review1:
+  rating: 2
+  title: Super review
+  review_text: Ohlala
+  product: tree1
+
+
+review2:
+  rating: 5
+  title: Mediocre review
+  review_text: Boooooh
+  product: tree2
