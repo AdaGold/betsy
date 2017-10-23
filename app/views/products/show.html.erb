@@ -2,6 +2,7 @@
 <h3>details for:</h3>
 <section class="product-details">
   <h3><%= @product.name.upcase %> </h3>
+  <%=params%>
   <p>
     <%= @product.description %>
   </p>
@@ -12,6 +13,9 @@
     </li>
     <li>
       <strong>Sold By: </strong><%= link_to @product.user.username, user_path(@user.id) %>
+    </li>
+    <li>
+      <%=link_to "Add to Cart", add_product_path(@product.id), method: :post %>
     </li>
   </ul>
 </section>

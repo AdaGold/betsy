@@ -2,6 +2,10 @@ class SessionsController < ApplicationController
   def login_form
   end
 
+  def not_logged_in
+
+  end 
+
   def login
     username = params[:username]
     if username && user = User.find_by(user: username)

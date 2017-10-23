@@ -1,2 +1,21 @@
 <h1>Products#new</h1>
 <p>Find me in app/views/products/new.html.erb</p>
+
+<section>
+  <%= form_for @product do |f| %>
+    <%= f.label :category %>
+    <%= f.select :category_ids, Category.all.name %>
+    <!-- this needs to have a checkbox-->
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :price %>
+    <%= f.text_field :price%>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.submit class: "button" %>
+  <% end %>
+</section>
