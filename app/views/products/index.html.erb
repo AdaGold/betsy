@@ -6,23 +6,9 @@
   <% end %>
 </select> -->
 
-
-
-<!-- --------------------------------------------------------- -->
-  <% Category.all.each do |category| %>
-    <%= link_to category.name, category_path(category.id) %>
-  <% end %>
-<!-- --------------------------------------------------------- -->
-
-
-
-
-
-
-
-
-
-
+<% Category.all.each do |category| %>
+  <%= link_to category.name, category_path(category.id) %>
+<% end %>
 
 
 <h2>All Products</h2>
