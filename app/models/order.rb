@@ -21,8 +21,7 @@ class Order < ApplicationRecord
     end
   end
 
-  def has_valid_order_products?
-    if self.order_status = "paid"
+  def has_invalid_entries?
       invalid_entries = []
       order_products = self.order_products
       order_products.each do |entry|
@@ -31,6 +30,9 @@ class Order < ApplicationRecord
       if invalid_entries.first != nil
         self.errors[:entries] << "are invalid."
         invalid_entries.each {|entry| self.errors[:entries] << entries.errors}
+        return true #is NOT a valid order
+      else
+        return false #is a valid order
       end
     end
   end
