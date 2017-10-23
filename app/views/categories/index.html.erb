@@ -2,7 +2,11 @@
 <p>Find me in app/views/categories/index.html.erb</p>
 
 <section>
-<%= link_to "New Category" ,new_category_path %>
+
+<% if @user != nil %>
+  <%= link_to("Create Category", new_category_path) %>
+<% end %>
+
 
 <% @categories.each do |category| %>
 <%# category.products.to_json %>
