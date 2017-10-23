@@ -8,6 +8,6 @@
 <% end %>
 <ul>
   <% @products.each do |product| %>
-    <li><%= link_to(product.name, product_path(product.id)) %> <%= product.categories %> <%= product.merchant.username %></li>
+    <li><%= link_to(product.name, product_path(product.id)) %> <%= product.categories.join(", ") %> <%= product.merchant.username %></li>
   <% end %>
 </ul>

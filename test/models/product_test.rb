@@ -158,7 +158,7 @@ describe Product do
       tree = products(:tree1)
       before = tree.categories.count
 
-      tree.update_categories("spooky")
+      tree.add_category("spooky")
 
       tree.categories.count.must_equal (before + 1)
       tree.categories.must_include "spooky"
@@ -168,7 +168,7 @@ describe Product do
       tree = products(:tree1)
       before = tree.categories.count
 
-      tree.update_categories("indoor")
+      tree.add_category("indoor")
 
       tree.categories.count.must_equal before
     end
