@@ -13,7 +13,7 @@
 
   <% Category.all.each do |category| %>
     <%= f.label :to, category.name %>
-        <%= check_box_tag 'to[]', category.name %>
+    <%= check_box_tag 'to[]', category.name %>
   <% end %>
 
   <%= f.submit "submit" %>

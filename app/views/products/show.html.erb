@@ -25,15 +25,13 @@
 <section class="reviews">
   <h4>What People are Saying!</h4>
 
-<!-- ---------NEEDS TO BE TESTED WHILE LOGGED IN---------- -->
-<!-- TODO test this once the OAuth has been fixed -->
+
 
   <% if session[:user_id] != @product.user_id %>
-
     Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
-
+    <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
  <% end %>
-<!-- ------------------------------------------------------ -->
+
 
 
 
@@ -48,5 +46,5 @@
   </ul>
   <% end %>
 
-  <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
+
 </section>

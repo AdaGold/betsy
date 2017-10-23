@@ -3,7 +3,9 @@ class ReviewsController < ApplicationController
     @reviews = Review.order(:id)
   end
 
-  def show    
+
+
+  def show
     @review = Review.find_by(id: params[:id].to_i)
 
     unless @review
@@ -12,12 +14,16 @@ class ReviewsController < ApplicationController
     end
   end
 
+
+
   def edit
     @review = Review.find_by(id: params[:id].to_i)
     unless @review
       redirect_to root_path
     end
   end
+
+
 
   def update
     @review = Review.find_by(id: params[:id].to_i)
@@ -29,10 +35,14 @@ class ReviewsController < ApplicationController
     end
   end
 
+
+
   def new
     @review = Review.new
-    @product = Product.find(params[:product_id])
+    @product = Product.find_by(id: params[:product_id].to_i)
   end
+
+
 
   def create
     @review = Review.new(review_params)
@@ -46,6 +56,8 @@ class ReviewsController < ApplicationController
     end
   end
 
+
+
   def destroy
     @review = Review.find_by(id: params[:id].to_i)
     @review.destroy
@@ -53,10 +65,11 @@ class ReviewsController < ApplicationController
   end
 
 
+
   private
 
   def review_params
     return params.require(:review).permit(:user_id, :product_id, :text, :rating)
   end
-  
+
 end
