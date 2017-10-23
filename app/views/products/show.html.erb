@@ -28,8 +28,10 @@
 
 
   <% if session[:user_id] != @product.user_id %>
+
     Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
     <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
+    
  <% end %>
 
 
