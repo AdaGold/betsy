@@ -20,7 +20,6 @@
 <% end %>
 <% if @merchant == @product.merchant %>
   <%= link_to "Edit Product", edit_product_path(@product.id), class: :button %>
-
 <% else %>
   <%= link_to "Add to cart", add_order_item_path(session[:order_id], @product.id), method: :patch, class: :button %>
 <% end %>

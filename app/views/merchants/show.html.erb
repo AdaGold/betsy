@@ -1,2 +1,32 @@
-<h1>Merchants#show</h1>
-<p>Find me in app/views/merchants/show.html.erb</p>
+<h1><%=@merchant.username%>'s account</h1>
+
+<ul>
+  <li> <strong>Joined: </strong> <%= @merchant.created_at.strftime('%a %d %b %Y') %></li>
+  <li> <strong>Email: </strong>  <%= @merchant.email %></li>
+</ul>
+
+<% if @merchant.products.count > 0 %>
+    <table>
+      <tr>
+        <th scope="columns">Product</th>
+        <th scope="columns">Quantities</th>
+        <th scope="columns">Launched</th>
+        <th scope="columns">Update</th>
+        <th scope="columns">Retire</th>
+      </tr>
+      <%  @merchant.products.each do |product| %>
+        <tr>
+          <td><%= link_to product.name %></td>
+          <td><%= link_to product.quantity%></td>
+          <td><%= link_to product.created_at.strftime('%a %d %b %Y')%></td>
+          <td><%= link_to "Update", edit_product_path(product.id), class: "button" %></td>
+          <td><%= link_to "Retire", class: "button" %></td> <%# TODO: ADD RETIRE PATH %>
+        </tr>
+      <%  end %>
+    </table>
+  <% else %>
+    <p>No product to show yet!</p>
+  <% end %>
+
+<%= link_to "Create a product", new_product_path, class: "button" %>
+<%= link_to "See orders", class: "button" %> <%# TODO: ADD ORDER FUFILLEMENT PATH %>
