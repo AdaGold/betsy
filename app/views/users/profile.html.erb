@@ -25,7 +25,9 @@
         </li>
         <li>
          <%= button_to "Add Inventory", create_item_path(product.id), method: :post, class:"button"%>
-         <%= button_to "Reduce Inventory", destroy_item_path(product.id), method: :delete, class: "button" %>
+        </li>
+        <li>
+          <%= button_to "Reduce Inventory", destroy_item_path(product.id), method: :delete, class: "button" %>
         </li>
       </ul>
       <%end%>
