@@ -2,7 +2,9 @@
 <h3>$<%= @product.price %></h3>
 <h3>Categories: <%= @product.categories %></h3>
 
-<%= link_to("Leave a review", new_review_path(@product.id), method: :get, class: "button") %>
+<% if @merchant != @product.merchant %>
+  <%= link_to("Leave a review", new_review_path(@product.id), method: :get, class: "button") %>
+<% end %>
 
 <h3>Average Rating: <%= @product.average_rating%></h3>
 
