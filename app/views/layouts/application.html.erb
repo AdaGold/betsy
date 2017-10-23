@@ -42,6 +42,9 @@
               <%= link_to "Log in with Github", "/auth/github", class:"button float-right"%>
             <%end%>
           </li>
+          <li>
+            <%= link_to "Cart", order_path(@pending_order.id), class:"button" %>
+          </li>
 
         </ul>
       </nav>
