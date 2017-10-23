@@ -19,3 +19,8 @@ four:
   quantity: 5
   product: flats
   order: guest_pending_order
+
+mias_pending_products:
+  quantity: 2
+  product_id: converse
+  order: mias_pending_order
