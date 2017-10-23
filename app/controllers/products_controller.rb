@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
-before_action :find_product, only: [:show, :edit, :update, :destroy]
-
-before_action :find_merchant
+before_action :find_product, only: [:show, :edit, :update]
+before_action :find_merchant, except: [:index, :destroy]
 
   def index
     @products = Product.get_products(a_category: params[:category], a_merchant: params[:merchant])
@@ -10,16 +9,10 @@ before_action :find_merchant
   end
 
   def show
-    unless @product
-      redirect_to root_path
-    end
+
   end
 
   def edit
-    unless @product
-      return redirect_to root_path
-    end
-
     unless @merchant == @product.merchant
       flash[:status] = :error
       flash[:result_text] = "Unauthorized user"
@@ -30,11 +23,6 @@ before_action :find_merchant
   end
 
   def update
-    unless @product
-      flash[:status] = :error
-      flash[:result_text] = "That is not a valid product"
-      return redirect_to root_path
-    end
 
     unless @merchant == @product.merchant
       flash[:status] = :error
@@ -65,9 +53,9 @@ before_action :find_merchant
   end
 
   def new
-    unless session[:merchant_id]
+    unless @merchant
       flash[:status] = :error
-      flash[:result_text] = "You need to be logged in to create a product!"
+      flash[:result_text] = "You need to be logged in to edit or create a product!"
       redirect_back fallback_location: root_path, status: 403
     end
 
@@ -76,6 +64,12 @@ before_action :find_merchant
   end
 
   def create
+    unless @merchant
+      flash[:status] = :error
+      flash[:result_text] = "You need to be logged in to create a product!"
+      redirect_back fallback_location: root_path, status: 403
+    end
+
     @product = Product.new(product_params)
 
     if params[:categories]
@@ -102,6 +96,11 @@ before_action :find_merchant
 
   def find_product
     @product = Product.find_by_id(params[:id])
+    unless @product
+      flash[:status] = :error
+      flash[:result_text] = "That is not a valid product"
+      return redirect_to root_path
+    end
   end
 
   def product_params

@@ -33,7 +33,6 @@ class Product < ApplicationRecord
     end
   end
 
-
   def self.categories
     categories = Product.pluck(:categories).flatten.uniq
   end
