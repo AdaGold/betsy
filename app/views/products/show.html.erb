@@ -1,7 +1,8 @@
 <h1><%= @product.name %></h1>
 <h3>$<%= @product.price %></h3>
 <h3>Categories: <%= @product.categories.join(", ") %></h3>
-<h3>Description: <%= @product.description %></h3>
+<h3>Description:</h3>
+<p> <%= product_description(@product) %> </p>
 
 <img src= "<%= @product.photo_url %>" alt "<%= @product.photo_url %>" height: "250" width: "250" />
 
@@ -9,7 +10,8 @@
   <%= link_to("Leave a review", new_review_path(@product.id), method: :get, class: "button") %>
 <% end %>
 
-<h3>Average Rating: <%= @product.average_rating%></h3>
+<h3>Average Rating:</h3>
+<p><%= @product.average_rating%></p>
 
 <h3>Reviews: </h3>
 <% if @product.reviews.count < 1  %>

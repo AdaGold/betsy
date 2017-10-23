@@ -52,6 +52,8 @@ class Product < ApplicationRecord
     end
   end
 
+
+
   # def first_10_reviews
   #   return reviews.all.limit(10)
   # end
