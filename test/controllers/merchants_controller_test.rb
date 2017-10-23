@@ -8,12 +8,14 @@ describe MerchantsController do
 
     it "merchants can access their own account page" do
         login(merchant, :github)
+        flash[:success].must_equal "sappy1 is logged in!"
         get merchant_path(merchant.id)
         must_respond_with :success
     end
 
     it "merchants can't access other merchants account page" do
         login(merchant, :github)
+        flash[:success].must_equal "sappy1 is logged in!"
         get merchant_path(other_merchant.id)
         flash[:status].must_equal :error
         flash[:result_text].must_equal "Unauthorized user"
