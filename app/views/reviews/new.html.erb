@@ -1,8 +1,11 @@
 <h1>Reviews#new</h1>
 <p>Find me in app/views/reviews/new.html.erb</p>
 
+<!--
 <section>
 <%=form_for @review do |f| %>
+
+
   <%= f.label :rating %>
   <%=f.select :rating, (1..5) %>
 
@@ -14,4 +17,7 @@
 
 
   <%= params %>
-</section>
+</section> -->
+
+<%= render partial: "form", locals: {button_name: "New Review"} %>
+<%= params %>

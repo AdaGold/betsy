@@ -1,0 +1,20 @@
+<%= form_for @product do |f| %>
+
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <% Category.all.each do |category| %>
+    <%= f.label :to, category.name %>
+        <%= check_box_tag 'to[]', category.name %>
+  <% end %>
+
+  <%= f.submit "submit" %>
+<% end %>

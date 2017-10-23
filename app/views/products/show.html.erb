@@ -15,6 +15,7 @@
       <strong>Sold By: </strong><%= link_to @product.user.username, user_path(@user.id) %>
     </li>
     <li>
+
       <%=link_to "Add to Cart", add_product_path(@product.id), method: :post %>
     </li>
   </ul>
@@ -29,9 +30,10 @@
     </li>
     <li>
       <%= review.text %>
+      Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
     </li>
   </ul>
   <% end %>
 
-  <h3><%= link_to "Leave a Review!", new_new_review_path %></h3>
+  <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
 </section>

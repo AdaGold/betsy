@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
-  has_and_belongs_to_many :products
+  # add through: to associate join table
+  has_and_belongs_to_many :products, through: :categories_products
   validates :name, presence: true
   validates :name, uniqueness: true
 
