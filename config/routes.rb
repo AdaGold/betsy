@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   post 'orders/add-product/:id', to: 'orders#add_product', as: 'add_product'
 
   get '/reviews/new/:id', to: 'reviews#new', as: 'new_new_review'
-  get '/users/profile', to: 'users#profile', as: 'profile'
+  get '/users/profile/:id', to: 'users#profile', as: 'profile'
   resources :users
   resources :orders
-  resources :items
+  resources :items, except: [:create]
+  post '/items/:id', to: 'items#create', as: 'create_item'
 
   resources :billing_data
   resources :products

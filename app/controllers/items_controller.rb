@@ -23,12 +23,12 @@ class ItemsController < ApplicationController
 
 # ---------------------------------------------
   def create
-    @item = Item.new item_params
+    @item = Item.new(product_id: params[:id])
 
     if @item.save
       # puts "success"
       flash[:success] = "Item added successfully"
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
       # puts "fail"
       # puts @item.errors.messages
@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    return params.require(:item).permit(:shipping_status, :purchase_status, :product_id, :order_id)
+    return params.require(:items).permit(:shipping_status, :purchase_status, :product_id, :order_id)
   end
 
 end
