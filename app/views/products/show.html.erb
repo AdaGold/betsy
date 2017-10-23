@@ -23,15 +23,13 @@
 
 <section class="reviews">
   <h4>What People are Saying!</h4>
+
+  Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
+
   <% @product.reviews.each do |review| %>
-  <ul>
-    <li>
-      Rating: <%= review.rating %> / 5
-    </li>
-    <li>
-      <%= review.text %>
-      Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
-    </li>
-  </ul>
+    <ul>
+      <li>Rating: <%= review.rating %> / 5</li>
+      <li><%= review.text %></li>
+    </ul>
   <% end %>
 </section>
