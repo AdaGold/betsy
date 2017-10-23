@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     @reviews = Review.order(:id)
   end
 
-  def show    
+  def show
     @review = Review.find_by(id: params[:id].to_i)
 
     unless @review
@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:id])
   end
 
   def create
@@ -58,5 +58,5 @@ class ReviewsController < ApplicationController
   def review_params
     return params.require(:review).permit(:user_id, :product_id, :text, :rating)
   end
-  
+
 end

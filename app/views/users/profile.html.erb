@@ -3,4 +3,24 @@
   Not <%=@user.username%>? <%=link_to "Log out!", logout_path%>
 </p>
 
+<%= link_to "Manage your Orders" %>
 <%= link_to "Create a New Product", new_product_path, class:"button" %>
+
+<section class="my_products">
+  <% @user.products.each do |product| %>
+    <article class="products">
+      <h3><%= product.name %></h3>
+      <ul>
+        <li>
+          <%= product.price %>
+        </li>
+        <li>
+          <%= product.description %>
+        </li>
+        <li>
+          <%= link_to "Edit this Product", edit_product_path(product.id), class:"button"%>
+        </li>
+      </ul>
+      <%end%>
+    </article>
+</section>
