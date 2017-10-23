@@ -33,7 +33,6 @@ class Product < ApplicationRecord
     end
   end
 
-
   def self.categories
     categories = Product.pluck(:categories).flatten.uniq
   end
@@ -47,7 +46,7 @@ class Product < ApplicationRecord
     return (sum.to_f/reviews.count).round(1)
   end
 
-  def update_categories(category)
+  def add_category(category)
     if categories.include?(category) == false && category != ""
       categories << category
     end

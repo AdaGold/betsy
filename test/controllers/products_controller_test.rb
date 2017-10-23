@@ -30,12 +30,14 @@ describe ProductsController do
     it "must get the show view" do
       get product_path(one.id)
       must_respond_with :success
+    end
 
+    it "must render a 404 not found for nonvalid product id" do
       get product_path(-1)
-      must_respond_with :redirect
-      must_redirect_to root_path
+      must_respond_with :not_found
     end
   end
+
 
   describe "new product" do
     it "should get new if a mercant is signed in" do
@@ -54,7 +56,7 @@ describe ProductsController do
     end
   end
 
-  describe "create product" do
+  describe "create product with signed in merchant" do
     before do
       @merchant = merchants(:sappy1)
       login(@merchant, :github)
@@ -94,26 +96,35 @@ describe ProductsController do
       product.price.must_equal 50
       product.categories.must_include "new category"
       product.categories.length.must_equal 1
-      # product.description.must_equal "This is a new product"
+      product.description.must_equal "This is a new product"
       product.merchant.must_equal merchants(:sappy1)
       product.quantity.must_equal 1
       product.photo_url.must_equal "www.google.com"
     end
+  end
 
-    #Need to test other non-validated values or is it covered enough in the model??
+  describe "create product without signed in merchant" do
+    it "should not create a product if a merchant is not signed in" do
+
+      proc {
+        post products_path, params: { name: "Name", price: 50, category: "new category", description: "This is a new product", photo_url: "www.google.com", quantity: 1, merchant_id: merchants(:sappy1).id }
+      }.must_change 'Product.count', 0
+
+      must_respond_with :forbidden
+      flash[:status].must_equal :error
+    end
   end
 
   describe "edit with a merchant signed in" do
     let(:one) {products(:tree1)}
     let(:two) {products(:tree2)}
 
-    it "must redirect to root path if there is no product" do
+    it "must return status :not_found if there is no product" do
       @merchant = merchants(:sappy1)
       login(@merchant, :github)
 
-      get edit_product_path(-1)
-      must_respond_with :redirect
-      must_redirect_to root_path
+      get product_path(-1)
+      must_respond_with :not_found
     end
 
     it "must show edit view if the merchant is logged in and there is a product" do
@@ -140,12 +151,13 @@ describe ProductsController do
 
       get edit_product_path(one.id)
       flash[:status].must_equal :error
+      flash[:result_text] = "Unauthorized user"
       must_respond_with :redirect
       must_redirect_to root_path
     end
   end
 
-  describe "update a product with a valid merchant signed in" do
+  describe "update action with a valid merchant signed in" do
       let(:merchant1) {merchants(:sappy1)}
       let(:one) {products(:tree1)}
 
@@ -231,11 +243,10 @@ describe ProductsController do
       let(:merchant2) {merchants(:sappy2)}
       let(:one) {products(:tree1)}
 
-      it "will redirect if the product is invalid" do
+      it "will render_404 if the product is invalid" do
         patch product_path(-1), params: { categories: ["Birthday"] }
-        flash[:status].must_equal :error
-        flash[:result_text].must_equal "That is not a valid product"
-        must_redirect_to root_path
+        get product_path(-1)
+        must_respond_with :not_found
       end
 
       it "will redirect if the merchant of the product is not signed in" do
@@ -244,14 +255,14 @@ describe ProductsController do
 
         patch product_path(one.id), params:{categories: ["Birthday"]}
         flash[:status].must_equal :error
+        flash[:result_text].must_equal "Unauthorized user"
         must_redirect_to root_path
 
         #no merchant signed in
         logout_path
-        categories = one.categories
-
         patch product_path(one.id), params:{categories: ["Birthday"]}
         flash[:status].must_equal :error
+        flash[:result_text].must_equal "Unauthorized user"
         must_redirect_to root_path
       end
 
