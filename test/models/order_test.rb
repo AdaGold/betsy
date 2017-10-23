@@ -10,6 +10,7 @@ describe Order do
   let(:shipped_order) { orders(:shipped_order)}
   let(:canceled_order) { orders(:canceled_order)}
   let(:guest_pending_order) { orders(:guest_pending_order)}
+  describe " "
 
   describe "relations" do
     it "has a nil user if not logged in" do

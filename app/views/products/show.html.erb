@@ -16,7 +16,9 @@
     </li>
     <li>
 
-      <%=link_to "Add to Cart", add_product_path(@product.id), method: :post %>
+      <%= button_to("Add to Cart", add_product_path(@product.id)) %>
+      <%= link_to("Add to Cart", add_product_path(@product.id), method: :post, class:'button') %>
+
     </li>
   </ul>
 </section>
