@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
   def index
-    @products = Product.all
+    @products = Product.show_available
   end
 
   def show
@@ -51,6 +51,20 @@ class ProductsController < ApplicationController
     flash[:status] = :success
     flash[:result_text] = "Successfully destroyed product #{@product.id}, #{@product.name}"
     redirect_to root_path
+  end
+
+  def change_visibility
+    if @product.visibility == false
+      @product.visibility = true
+      @product.save
+      flash[:result_text] = "Your product is now visible in browsing"
+      redirect_back(fallback_location: products_path)
+    else
+      @product.visibility = false
+      @product.save
+      flash[:result_text] = "Your product is no longer visibile in browsing"
+      redirect_back(fallback_location: products_path)
+    end
   end
 
 private

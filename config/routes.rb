@@ -11,12 +11,17 @@ Rails.application.routes.draw do
   post 'orders/add-product/:id', to: 'orders#add_product', as: 'add_product'
 
   get '/reviews/new/:id', to: 'reviews#new', as: 'new_new_review'
+  get '/users/profile/:id', to: 'users#profile', as: 'profile'
   resources :users
   resources :orders
-  resources :items
+  resources :items, except: [:create, :destroy]
+  post '/items/:id', to: 'items#create', as: 'create_item'
+  delete '/items/:id', to: 'items#destroy', as: 'destroy_item'
+
 
   resources :billing_data
   resources :products
+  post 'products/visibility/:id', to: 'products#change_visibility', as: 'change_visibility'
 
   get 'login', to: 'users#login', as: 'login'
   get 'logout', to: 'sessions#logout', as: 'logout'

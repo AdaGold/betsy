@@ -23,16 +23,16 @@ class ItemsController < ApplicationController
 
 # ---------------------------------------------
   def create
-    @item = Item.new item_params
+    @item = Item.new(product_id: params[:id])
 
     if @item.save
       # puts "success"
-      flash[:success] = "Item added successfully"
-      redirect_to root_path
+      flash[:success] = "#{Product.find(params[:id]).name} item added successfully"
+      redirect_back(fallback_location: root_path)
     else
       # puts "fail"
       # puts @item.errors.messages
-      flash.now[:error] = "Item not added"
+      flash.now[:error] = "Item not added to #{Product.find(params[:id])}"
       render :new
     end
   end
@@ -47,17 +47,21 @@ class ItemsController < ApplicationController
   # end
 
   def destroy
-    @item = Item.find_by(id: params[:id].to_i)
-
-    @item.destroy
-
-    redirect_to root_path
+    if Item.where(product_id: params[:id]).length > 0
+      @item = Item.where(product_id: params[:id])
+      @items.last.destroy
+      redirect_back(fallback_location: root_path)
+      flash[:result_text] = "1 #{Product.find(params[:id]).name} removed from inventory!"
+    else
+      flash[:result_text] = "There are no more items to remove"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
 
   def item_params
-    return params.require(:item).permit(:shipping_status, :purchase_status, :product_id, :order_id)
+    return params.require(:items).permit(:shipping_status, :purchase_status, :product_id, :order_id)
   end
 
 end
