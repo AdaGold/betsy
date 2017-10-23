@@ -1,6 +1,10 @@
 <h1><%= @product.name %></h1>
 <h3>$<%= @product.price %></h3>
 <h3>Categories: <%= @product.categories %></h3>
+<h3>Description: <%= @product.description %></h3>
+
+<!-- Size is changeable, just to make current viewing easier. -->
+<figure><%= image_tag(@product.photo_url, alt: @product.name, size: "250") %></figure>
 
 <%= link_to("Leave a review", new_review_path(@product.id), method: :get, class: "button") %>
 
