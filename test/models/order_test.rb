@@ -10,7 +10,22 @@ describe Order do
   let(:shipped_order) { orders(:shipped_order)}
   let(:canceled_order) { orders(:canceled_order)}
   let(:guest_pending_order) { orders(:guest_pending_order)}
+  describe "checkout" do
+    it "change all of the entries of an order to have true purchase_status" do
+      order = orders(:mias_pending_order)
+      entries = order.order_products
+      entries.must_be :!=, nil
+      entries.length.must_equal 1
+      entries.first.product.must_equal products(:converse)
+      # binding.pry
 
+      proc {
+      order.checkout
+    }.must_change 'Product.find_by(id: products(:converse).id).available_items.length', -1
+
+
+    end
+  end
   describe "relations" do
     it "has a nil user if not logged in" do
       result = guest_pending_order.user
@@ -69,7 +84,7 @@ describe Order do
       (pending_order.valid?).must_equal true
 
       pending_order.order_status = "paid"
-      binding.pry
+      # binding.pry
       (pending_order.valid?).must_equal false
 
     end

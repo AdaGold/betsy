@@ -34,17 +34,35 @@ describe ProductsController do
         get product_path(Product.last.id + 1)
         must_respond_with :not_found
       end
+      
+      it "users cannot leave reviews for their products" do
+        user = users(:carl)
+        log_in(user, :github)
+
+        get product_path(products(:converse).id)
+
+        controller.instance_variable_get("@current_user_is_not_product_owner").must_equal false
+
+      end
     end
-    #
+    
+    
+    
     describe "edit" do
       it "logged in owner can see an edit form for their product " do
         user = users(:carl)
         log_in(user, :github)
         session[:user_id].must_equal user.id
-
         get edit_product_path(products(:converse))
         must_respond_with :success
       end
+
+
+    # it "responds with 404 for non-existing product" do
+    #   get product_path(Product.last.id + 1)
+    #   must_respond_with :bad_request
+    # end
+
 
       it "must be the creator of a product to edit it" do
         get edit_product_path(products(:converse))

@@ -21,13 +21,15 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    if @pending_order.has_invalid_entries?
-      redirect_to order_path
-      flash[:errors] = ""
+    #
+    if mark_items_as_purchased
+      flash[:status] = :success
+      #nexT: mark the entire order as paid (currently only items are marked paid)
     else
+      flash[:status] = :error
+      redirect_back(fallback_location: cart_path)
 
     end
-
   end
 
   def purchase
@@ -54,5 +56,43 @@ class OrdersController < ApplicationController
   private
   def cart_entry_params
     # params.require(:product).permit(:id, :name, :description, :price, :user)
+  end
+
+  def mark_items_as_purchased
+    entries = @pending_order.order_products
+    order_id = @pending_order.id
+    items_for_purchase = []
+
+    entries.each do |entry|
+      if !(entry.valid?)
+        flash[:status] = :error
+        flash[:result_text] = "Check your cart, inventory has changed."
+        flash[:messages] << entry.errors
+        redirect_to cart_path
+        return
+      end
+      quantity = entry.quantity
+      available_items = entry.product.available_items
+
+      quantity.times do
+        items_for_purchase << available_items.pop
+      end
+    end
+
+    items_for_purchase.each {|item| item.purchase(order_id)}
+
+
+    items_for_purchase.each do |item|
+
+      if item.save
+        flash[:result_text] = "Items were saved."
+      else
+        flash[:status] = :error
+        flash[:result_text] << "Items were not saved.  Please contact web administrator.   "
+        flash[:messages] << item.errors
+        redirect_to cart_path
+      end
+
+    end
   end
 end

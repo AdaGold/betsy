@@ -44,18 +44,15 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    puts "*********"
-    puts "review = #{@review}"
-    puts "review valid? = #{@review.valid?}"
-
-    puts "*********"
-
+    # puts "*********"
+    # puts "review = #{@review}"
+    # puts "review valid? = #{@review.valid?}"
+    #
+    # puts "*********"
 
     if @review.save
-      puts "SUCCESS"
       redirect_to product_path(review_params[:product_id])
     else
-      puts "FAIL"
       flash.now[:error] = "Could not create Review"
       render :new
     end
