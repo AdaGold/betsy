@@ -21,6 +21,11 @@
       <li>
         <strong>Price:</strong> $<%= product.price %>
       </li>
+      <li>CATEGORIES:
+        <% product.categories.each do |category| %>
+          <%=category.name%>
+        <%end%>
+      </li>
     </ul>
   </article>
   <% end %>
