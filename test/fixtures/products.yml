@@ -11,6 +11,7 @@ flats:
   price: 9
   description: a pair of yellow flats
   user: carl
+  visibility: true
 
 coffee:
   name: coffee

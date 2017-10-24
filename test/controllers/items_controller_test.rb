@@ -18,10 +18,11 @@ describe ItemsController do
       item_id = Item.last.id + 1
       get item_path(item_id)
 
+      # must_respond_with :not_found
       must_respond_with :redirect
       must_redirect_to root_path
 
-      # must_respond_with :not_found
+
     end
   end
 
@@ -33,14 +34,19 @@ describe ItemsController do
   end
 
 
-  # TODO
   describe "Create" do
     it "Should be able to create a new item" do
-      proc {
-        post items_path, params: {item: {shipping_status: false, purchase_status: false, product_id: products(:converse).id, order_id: nil }}}.must_change 'Item.count', 1
 
-        must_respond_with :redirect
-        must_redirect_to root_path
+      # user = users(:carl)
+      # log_in(user, :github)
+
+      proc {
+        post create_item_path(products(:converse).id) }.must_change 'Item.count', 1
+
+      must_respond_with :redirect
+      must_redirect_to root_path
+
+
     end
   end
 
@@ -48,7 +54,7 @@ describe ItemsController do
   describe "Destroy" do
     it "Should be able to delete an item" do
       proc  {
-          delete item_path(items(:converse_no_order).id)}.must_change 'Item.count', - 1
+          delete item_path(products(:converse).id)}.must_change 'Item.count', -1
 
           must_respond_with :redirect
           must_redirect_to root_path
@@ -57,12 +63,6 @@ describe ItemsController do
 
 # ---------------------------------
 
-  # it "should get edit" do
-  #
-  # end
 
-  # it "should get update" do
-  #   get items_update_url
-  #   value(response).must_be :success?
-  # end
+
 end

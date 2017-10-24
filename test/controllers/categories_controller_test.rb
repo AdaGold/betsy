@@ -40,7 +40,6 @@ describe CategoriesController do
     end
   end
 
-# TODO
   describe "create" do
     it "Can create a new category" do
       proc {
@@ -50,6 +49,7 @@ describe CategoriesController do
       must_respond_with :redirect
       must_redirect_to categories_path
     end
+
 
     it "does not create a new category if a duplicate category is entered" do
       proc {

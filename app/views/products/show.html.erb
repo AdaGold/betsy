@@ -30,17 +30,10 @@
 <section class="reviews">
   <h4>What People are Saying!</h4>
 
-
-
-  <% if session[:user_id] != @product.user_id %>
-
-    Leave a Review <%= link_to "new review", new_review_path(product_id: @product.id) %>
-    <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
-
- <% end %>
-
-
-
+  
+<% if @current_user_is_not_product_owner %>
+  <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
+<% end %>
 
 
   <% @product.reviews.each do |review| %>

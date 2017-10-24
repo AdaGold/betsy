@@ -50,12 +50,22 @@ class ApplicationController < ActionController::Base
     @pending_order.save
   end
 
+  # def not_found
+  #   raise ActionController::RoutingError.new('Not Found')
+  #   redirect_to root_path
+  # end
+
+  def render_404
+  # DPR: supposedly this will actually render a 404 page in production
+  raise ActionController::RoutingError.new('Not Found')
+  end
+
+
   def new_pending_order(input_session_id, input_user_id)
     new_order = Order.new
     new_order.session_id = input_session_id
     new_order.user_id = input_user_id
     return new_order
   end
-
 
 end
