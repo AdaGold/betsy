@@ -59,7 +59,7 @@ describe ReviewsController do
 
       # let(:product) { products(:converse) }
 
-      it "Guests can leave a review on any product" do
+      it "Guests can leave reviews for any product" do
         proc {
           post reviews_path, params: {review: {text: "sample review", rating: 5, user_id: nil, product_id: products(:converse).id } }
         }.must_change 'Review.count', 1
@@ -75,40 +75,11 @@ describe ReviewsController do
       it "GUESTS cannot leave a review on an unfound product" do
       end
 
-
-      it "users cannot leave reviews for their products" do
-
-
-      end
     end
 
 
 
-    describe "EDIT" do
-      # it "Can only edit a review that you posted" do
-      # end
-      #
-      # it "Cannot edit a review that is not your own" do
-      # end
-    end
 
-
-
-    # describe "DELETE" do
-    #   # it "Cannot delete a review, even if it is your own" do
-    #   # end
-    # end
-
-
-
-    describe "show" do
-      # it "Can view a review" do
-      # end
-      #
-      # it "Cannot view a review that " do
-      #
-      # end
-    end
 
 
 

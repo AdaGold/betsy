@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
 
 
   def create
-    # @review = Review.new(review_params)
+    @review = Review.new(review_params)
     # puts "*********"
     # puts "review = #{@review}"
     # puts "review valid? = #{@review.valid?}"
