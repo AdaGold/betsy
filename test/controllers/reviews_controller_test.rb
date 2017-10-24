@@ -45,14 +45,14 @@ describe ReviewsController do
   describe "Guest (Unauthenticated)" do
 
     describe "NEW" do
-      # let(:product) { products(:converse) }
-      #
-      # it "Should be able to get to the new review form" do
-      #
-      #   get new_review_path(product)
-      #   must_respond_with :success
-      #
-      # end
+      let(:product) { products(:converse) }
+
+      it "Should be able to get to the new review form" do
+
+        get new_review_path(product)
+        must_respond_with :success
+
+      end
     end
 
     describe "CREATE" do
@@ -73,27 +73,27 @@ describe ReviewsController do
         end
 
       it "GUESTS cannot leave a review on an unfound product" do
-        
+
 
       end
     end
 
 
 
-    describe "EDIT" do
-      # it "Can only edit a review that you posted" do
-      # end
-      #
-      # it "Cannot edit a review that is not your own" do
-      # end
-    end
+    # describe "EDIT" do
+    #   # it "Can only edit a review that you posted" do
+    #   # end
+    #   #
+    #   # it "Cannot edit a review that is not your own" do
+    #   # end
+    # end
 
 
 
-    describe "DELETE" do
-      # it "Cannot delete a review, even if it is your own" do
-      # end
-    end
+    # describe "DELETE" do
+    #   # it "Cannot delete a review, even if it is your own" do
+    #   # end
+    # end
 
 
 
@@ -103,7 +103,7 @@ describe ReviewsController do
       #
       # it "Cannot view a review that " do
       #
-      # end
+      # enduser
     end
 
 

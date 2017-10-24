@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
     # puts params[:id]
 
-    # render_404 unless @item
+    render_404 unless @item
 
     unless @item
       flash[:error] = "Item not found"
@@ -28,9 +28,7 @@ class ItemsController < ApplicationController
     if @item.save
       # puts "success"
       flash[:success] = "#{Product.find(params[:id]).name} item added successfully"
-
-      redirect_to root_path
-      # redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_path)
     else
       # puts "fail"
       # puts @item.errors.messages
@@ -56,7 +54,7 @@ class ItemsController < ApplicationController
       @items.last.destroy
       redirect_back(fallback_location: root_path)
       flash[:result_text] = "1 #{Product.find(params[:id]).name} removed from inventory!"
-      
+
     else
       flash[:result_text] = "There are no more items to remove"
       redirect_back(fallback_location: root_path)
