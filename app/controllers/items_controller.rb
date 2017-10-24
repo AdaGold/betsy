@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-# ---------------------------------------------
+
   def create
     @item = Item.new(product_id: params[:id])
 
@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-# ---------------------------------------------
 
 
   # def edit
