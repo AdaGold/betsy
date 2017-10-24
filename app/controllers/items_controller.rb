@@ -20,10 +20,6 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8c1108f92eaab9b12c5b133b29b3a0edf51ded9f
   def create
     @item = Item.new(product_id: params[:id])
 
