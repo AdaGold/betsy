@@ -44,7 +44,7 @@ describe CategoriesController do
   describe "create" do
     it "Can create a new category" do
       proc {
-        post categories_path, params: {category: {name: "socks"} }
+        post categories_path, params: {category: {product_id: "socks"} }
       }.must_change 'Category.count', 1
 
       must_respond_with :redirect
