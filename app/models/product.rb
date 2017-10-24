@@ -33,4 +33,6 @@ class Product < ApplicationRecord
   def self.show_available
     Product.where(visibility: true)
   end
+
+
 end

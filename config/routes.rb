@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   post 'orders/add-product/:id', to: 'orders#add_product', as: 'add_product'
+  get '/checkout', to: 'orders#checkout', as: 'checkout'
 
   get '/reviews/new/:id', to: 'reviews#new', as: 'new_new_review'
   get '/users/profile/:id', to: 'users#profile', as: 'profile'

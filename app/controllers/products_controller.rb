@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def show
     @user = @product.user
+    @entry = OrderProduct.new
     unless @product
       render :not_found
     end
@@ -54,8 +55,14 @@ class ProductsController < ApplicationController
   end
 
   def add_to_order
-    @cart_entry = create_entry(params[:quantity])
     # binding.pry
+    @cart_entry = @pending_order.check_for_duplicates(@product.id)
+    if @cart_entry
+      @cart_entry.quantity += params[:quantity].to_i
+    else
+      @cart_entry = create_entry(params[:quantity])
+    end
+
     if @cart_entry.save
       flash[:status] = :success
       flash[:result_text] = "Successfully added to your cart!"
@@ -90,6 +97,11 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :description, :user_id, :price, :category_id)
   end
 
+  def entry_params
+    # params.require(:entry).permit(:quantity)
+    # return
+  end
+
   def find_product
     @product = Product.find(params[:id].to_i)
   end
@@ -101,5 +113,7 @@ class ProductsController < ApplicationController
     entry.quantity = input_quantity.to_i
     return entry
   end
+
+
 
   end

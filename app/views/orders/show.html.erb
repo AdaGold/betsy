@@ -14,13 +14,13 @@
           Product: <%= entry.product.name%>
         </li>
         <li>
-          Unit Cost: <%= entry.product.cost %>
+          Unit Cost: <%= entry.product.price %>
         </li>
         <li>
           Quantity: <%= entry.quantity %>
         </li>
         <li>
-          Product Subtotal: <%=entry.cost * entry.quantity %>
+          Product Subtotal: <%=entry.product.price * entry.quantity %>
         </li>
         <hr />
       </ul>
