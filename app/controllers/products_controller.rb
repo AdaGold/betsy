@@ -53,7 +53,6 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
-<<<<<<< HEAD
   def add_to_order
     @cart_entry = create_entry(params[:quantity])
     # binding.pry
@@ -68,6 +67,8 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product.id)
     end
   end
+
+
 
   private
 
@@ -101,4 +102,4 @@ class ProductsController < ApplicationController
     return entry
   end
 
-end
+  end

@@ -28,6 +28,7 @@ class Product < ApplicationRecord
     end
     return available if available.first != nil
     return false
+  end
 
   def self.show_available
     Product.where(visibility: true)

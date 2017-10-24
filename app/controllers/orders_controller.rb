@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
       flash[:errors] = ""
     else
 
+    end
 
   end
 

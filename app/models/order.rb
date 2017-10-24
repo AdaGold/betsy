@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   validates :order_status, presence: true
   validate :has_billing_datum?
   validate :has_valid_order_status?
-  validate :has_valid_order_products?
+  # validate :has_valid_order_products?
 
   def has_billing_datum?
     if self.order_status != "pending"
@@ -34,8 +34,7 @@ class Order < ApplicationRecord
       else
         return false #is a valid order
       end
-    end
   end
 
-  private
+
 end

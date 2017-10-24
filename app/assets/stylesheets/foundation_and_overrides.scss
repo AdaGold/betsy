@@ -3,10 +3,6 @@
 @import 'settings';
 @import 'foundation';
 
-// If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
-//
-@import 'motion-ui/motion-ui';
-
 // We include everything by default.  To slim your CSS, remove components you don't use.
 
 @include foundation-global-styles;
@@ -58,10 +54,3 @@
 @import 'motion-ui/motion-ui';
 @include motion-ui-transitions;
 @include motion-ui-animations;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> bd496e4ba28b7bf2eba7a220774debcd31a493b8
-=======
->>>>>>> 8bcb693f8ea51876ff4c0b85bf944aaf20f55b9b
