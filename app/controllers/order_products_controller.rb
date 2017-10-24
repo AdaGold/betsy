@@ -25,7 +25,6 @@ class OrderProductsController < ApplicationController
       return
     end
     @entry.quantity = sent_quantity
-
     new_quantity = @entry.quantity
     if @entry.save
       flash[:status] = :success
