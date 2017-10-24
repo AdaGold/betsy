@@ -26,7 +26,7 @@
           <%= form_for entry, url: order_product_path(entry.id), method: :patch do |f|  %>
           <%= f.label :quantity %>
           <%= f.text_field :quantity %>
-          <%= f.submit "edit"%>
+          <%= f.submit "Update Quantity"%>
           <% end %>
           Edit:<%= link_to "Edit Item", edit_order_product_path(entry.id), class:"button" %>
         </li>
@@ -40,10 +40,13 @@
 <% end %>
 <ul>
   <li>
-    Subtotal:
+    Subtotal: <%= @cart.sub_total %>
   </li>
   <li>
-    Total:
+    Tax: <%= @cart.tax_amount %>
+  </li>
+  <li>
+    Total: <%= @cart.taxed_total %>
   </li>
 </ul>
 <%= link_to("Proceed to Checkout", checkout_path, class:'button') %>
