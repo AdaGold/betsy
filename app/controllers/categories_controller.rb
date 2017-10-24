@@ -47,7 +47,7 @@ class CategoriesController < ApplicationController
       puts "SUCCESS"
       flash[:success] = "Category created!"
 
-      redirect_to user_path(@user)
+      redirect_to categories_path
 
     else
       puts "FAIL"

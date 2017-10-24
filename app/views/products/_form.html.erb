@@ -11,9 +11,19 @@
   <%= f.label :description %>
   <%= f.text_field :description %>
 
+  <!-- <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+    <%= b.label %>
+    <%= b.check_box %>
+  <% end %> -->
+
   <% Category.all.each do |category| %>
     <%= f.label :to, category.name, class:"checkbox"%>
-    <%= check_box_tag 'to[]', category.name, class:"checkbox"%>
+    <%= f.check_box(:category_ids, {:multiple => true}, category.id, nil) %>
+    <%# f.check_box 'to[]', category.name, class:"checkbox"%>
+
+
+    <%# check_box(object_name, method, options = {}, checked_value = "1", unchecked_value = "0") public %>
+
   <% end %>
 
   <%= f.submit "submit" %>
