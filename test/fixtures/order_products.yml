@@ -21,6 +21,6 @@ four:
   order: guest_pending_order
 
 mias_pending_products:
-  quantity: 2
+  quantity: 1
   product: converse
   order: mias_pending_order
