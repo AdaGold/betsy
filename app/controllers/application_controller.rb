@@ -41,5 +41,8 @@ class ApplicationController < ActionController::Base
     @pending_order.save
   end
 
-
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+    redirect_to root_path
+  end
 end

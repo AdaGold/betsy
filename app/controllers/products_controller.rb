@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
+  before_action :permission, except: [:show, :index]
+
   def index
     @products = Product.show_available
   end
@@ -76,5 +78,11 @@ private
 
   def find_product
     @product = Product.find(params[:id].to_i)
+  end
+
+  def permission
+    unless @user
+      render not_found
+    end
   end
 end
