@@ -110,14 +110,14 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id].to_i)
   end
 
-<<<<<<< HEAD
+
   def permission
     unless @user
       render not_found
     end
   end
-end
-=======
+
+
   def create_entry(input_quantity)
     entry = OrderProduct.new
     entry.product_id = @product.id
@@ -126,7 +126,4 @@ end
     return entry
   end
 
-
-
-  end
->>>>>>> 5d5151ab3be2a4ac9448413ff2be819bd49ae437
+end
