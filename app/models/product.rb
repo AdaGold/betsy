@@ -21,10 +21,12 @@ class Product < ApplicationRecord
     end
   end
 
+
+
   def available_items
     available = []
     self.items.each do |item|
-      available << item if !(item.shipping_status) || !(item.purchase_status)
+      available << item if !(item.shipping_status) && !(item.purchase_status)
     end
     return available if available.first != nil
     return false

@@ -29,7 +29,11 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create',  as: 'auth_callback'
   post 'products/:id', to: 'products#add_to_order', as: 'add_to_order'
 
-  # post 'order-product/:id', to: 'ordersproducts#create', as: 'order_product'
+  resources :order_products
+  get '/cart', to: 'orders#show', as: 'cart'
+
+
+  # post 'order-product/:id', to: 'orderproducts#create', as: 'order_product'
 
   # get 'items/index'
   # get 'items/show'

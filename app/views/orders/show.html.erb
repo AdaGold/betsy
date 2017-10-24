@@ -22,6 +22,17 @@
         <li>
           Product Subtotal: <%=entry.product.price * entry.quantity %>
         </li>
+        <li>
+          <%= form_for entry, url: order_product_path(entry.id), method: :patch do |f|  %>
+          <%= f.label :quantity %>
+          <%= f.text_field :quantity %>
+          <%= f.submit "Update Quantity"%>
+          <% end %>
+          Edit:<%= link_to "Edit Item", edit_order_product_path(entry.id), class:"button" %>
+        </li>
+        <li>
+          Delete: <%= link_to "Delete Item", order_product_path(entry.id), method: :delete, data: {confirm: "Are you sure you want to remove #{entry.product.name} from cart?"}, class:"button" %>
+        </li>
         <hr />
       </ul>
     </li>
@@ -29,13 +40,16 @@
 <% end %>
 <ul>
   <li>
-    Subtotal:
+    Subtotal: <%= @cart.sub_total %>
   </li>
   <li>
-    Total:
+    Tax: <%= @cart.tax_amount %>
+  </li>
+  <li>
+    Total: <%= @cart.taxed_total %>
   </li>
 </ul>
-<%= link_to("Proceed to Checkout", checkout_path, class:'button') %>
+<%= link_to("Proceed to Checkout", new_billing_datum_path, class:'button') %>
 <% end %>
 
 </section>

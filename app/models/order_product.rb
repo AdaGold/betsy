@@ -17,11 +17,4 @@ class OrderProduct < ApplicationRecord
     return false
   end
 
-  def price_change?
-
-  end
-
-
-
-
 end
