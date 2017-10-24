@@ -10,7 +10,6 @@ describe Order do
   let(:shipped_order) { orders(:shipped_order)}
   let(:canceled_order) { orders(:canceled_order)}
   let(:guest_pending_order) { orders(:guest_pending_order)}
-  describe " "
 
   describe "relations" do
     it "has a nil user if not logged in" do
@@ -61,6 +60,20 @@ describe Order do
   end
 
   describe "validations" do
+    it "cannot be saved as paid if it has invalid order_products" do
+      user = users(:mia)
+      pending_order = user.find_pending_order
+
+      pending_order.order_products.first.must_equal order_products(:mias_pending_products)
+
+      (pending_order.valid?).must_equal true
+
+      pending_order.order_status = "paid"
+      binding.pry
+      (pending_order.valid?).must_equal false
+
+    end
+
     it "must have session_id" do
       order.session_id.must_be :==, nil
       order.valid?.must_equal false

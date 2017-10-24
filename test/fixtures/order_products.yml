@@ -2,13 +2,13 @@
 
 one:
   quantity: 2
-  product_id: converse
-  order_id: one
+  product: converse
+  order: one
 
 two:
   quantity: 1
-  product_id: flats
-  order_id: four
+  product: flats
+  order: four
 
 three:
   quantity: 3
@@ -22,5 +22,5 @@ four:
 
 mias_pending_products:
   quantity: 2
-  product_id: converse
+  product: converse
   order: mias_pending_order

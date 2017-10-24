@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'foundation-rails'
+gem 'foundation-rails', '6.4.1.2'
 
 
 # Use Capistrano for deployment
@@ -48,6 +48,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'simplecov'
 end
 
 group :development do
