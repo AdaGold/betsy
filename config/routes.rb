@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   resources :order_products
   get '/cart', to: 'orders#show', as: 'cart'
+
+
   # post 'order-product/:id', to: 'orderproducts#create', as: 'order_product'
 
   # get 'items/index'
