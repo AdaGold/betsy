@@ -181,15 +181,17 @@ describe ProductsController do
       it "allows a user to change the visibility of a product they own" do
         user = users(:carl)
         log_in(user, :github)
-        get root_path
+
         product = products(:flats)
 
         product.visibility.must_equal true
+
         post change_visibility_path(product.id)
+        product = Product.find_by(id: product.id)
+        #fixtures is weird and needs scaffolding. hence line 190
         product.visibility.must_equal false
       end
     end
-
 
     describe "add_to_order" do
       it "should change number of order products" do
