@@ -8,11 +8,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    if @product
-      @user = @product.user
-      @entry = OrderProduct.new
-    else
-      render render_404
+    @current_user_is_not_product_owner = session[:user_id] != @product.user_id
+
+    @user = @product.user
+    unless @product
+      render :not_found
     end
   end
 
