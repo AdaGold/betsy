@@ -13,25 +13,27 @@
     <li>
       <strong>Sold By: </strong><%= link_to @product.user.username, user_path(@user.id) %>
     </li>
-    <li>
-
-      <%= button_to("Add to Cart", add_product_path(@product.id)) %>
-      <%= link_to("Add to Cart", add_product_path(@product.id), method: :post, class:'button') %>
-
-    </li>
   </ul>
 </section>
+
+  <ul>
+    <li>
+        <%= form_tag do %>
+        <%= label_tag(:quantity, "Quantity") %>
+        <%= text_field_tag(:quantity) %>
+        <%= submit_tag("Add to Cart")%>
+      <% end %>
+    </li>
+  </ul>
+
 
 <section class="reviews">
   <h4>What People are Saying!</h4>
 
-
-
+  
 <% if @current_user_is_not_product_owner %>
   <h3><%= link_to "Leave a Review!", new_new_review_path(@product) %></h3>
 <% end %>
-
-
 
 
   <% @product.reviews.each do |review| %>

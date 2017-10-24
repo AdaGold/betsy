@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
     @reviews = Review.order(:id)
   end
 
-
   def show
     @review = Review.find_by(id: params[:id].to_i)
 
@@ -38,8 +37,6 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-
-    # @product = Product.find(params[:id])
     @product = Product.find_by(id: params[:product_id].to_i)
   end
 

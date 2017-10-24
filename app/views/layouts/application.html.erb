@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "Northwesty" %></title>
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -65,3 +65,8 @@
 
   </body>
 </html>
+
+<p>Params: <%= params %></p>
+<p>session_id:<%= session[:session_id] %></p>
+<p>pending_order_id:<%= session[:pending_order_id] %></p>
+<p>user_id:<%= session[:user_id] if session[:user_id] %></p>

@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
+  before_action :permission, except: [:show, :index]
+  before_action :owns, only: [:edit, :update]
+
   def index
     @products = Product.show_available
   end
@@ -14,16 +17,25 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    if @product.id.nil?
+      render render_404
+    end
   end
 
   def update
+    unless @product
+      render render_404
+    end
+
     @product.update_attributes product_params
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "Successfully updated #{@product.name}"
+      redirect_to profile_path(@user)
     else
       flash[:status] = :failure
       flash[:result_text] = "Could not update #{@product.name}"
+      flash.now[:messages] = @product.errors.message
       render :edit, status: :not_found
     end
   end
@@ -40,6 +52,7 @@ class ProductsController < ApplicationController
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "Successfully created product #{@product.id} #{@product.name}"
+      redirect_to profile_path(@user)
     else
       flash[:status] = :failure
       flash[:result_text] = "Unable to create a product"
@@ -48,11 +61,25 @@ class ProductsController < ApplicationController
     end
   end
 
-  def destroy
-    @product.destroy
-    flash[:status] = :success
-    flash[:result_text] = "Successfully destroyed product #{@product.id}, #{@product.name}"
-    redirect_to root_path
+  def add_to_order
+    # binding.pry
+    @cart_entry = @pending_order.check_for_duplicates(@product.id)
+    if @cart_entry
+      @cart_entry.quantity += params[:quantity].to_i
+    else
+      @cart_entry = create_entry(params[:quantity])
+    end
+
+    if @cart_entry.save
+      flash[:status] = :success
+      flash[:result_text] = "Successfully added to your cart!"
+      # redirect_to order_path(@pending_order)
+      redirect_to product_path(@product.id)
+    else
+      flash[:result_text] = "Could not add that product to your cart"
+      flash[:messages] = @cart_entry.errors
+      redirect_to product_path(@product.id)
+    end
   end
 
   def change_visibility
@@ -61,7 +88,9 @@ class ProductsController < ApplicationController
       @product.save
       flash[:result_text] = "Your product is now visible in browsing"
       redirect_back(fallback_location: products_path)
+
     else
+      # binding.pry
       @product.visibility = false
       @product.save
       flash[:result_text] = "Your product is no longer visibile in browsing"
@@ -69,12 +98,43 @@ class ProductsController < ApplicationController
     end
   end
 
-private
+
+
+  private
+
   def product_params
     params.require(:product).permit(:name, :description, :user_id, :price, category_ids:[])
   end
 
-  def find_product
-    @product = Product.find(params[:id].to_i)
+  def entry_params
+    # params.require(:entry).permit(:quantity)
+    # return
   end
+
+  def find_product
+    @product = Product.find_by(id: params[:id].to_i)
+  end
+
+
+  def permission
+    unless @user
+      render render_404
+    end
+  end
+
+  def owns
+    unless @product && @user.id == @product.user_id
+      render render_404
+    end
+  end
+
+
+  def create_entry(input_quantity)
+    entry = OrderProduct.new
+    entry.product_id = @product.id
+    entry.order_id = @pending_order.id
+    entry.quantity = input_quantity.to_i
+    return entry
+  end
+
 end

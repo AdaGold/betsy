@@ -16,11 +16,9 @@ class ItemsController < ApplicationController
     end
   end
 
-
   def new
     @item = Item.new
   end
-
 
   def create
     @item = Item.new(product_id: params[:id])
@@ -37,20 +35,11 @@ class ItemsController < ApplicationController
     end
   end
 
-
-  # def edit
-  # end
-
-
-  # def update
-  # end
-
   def destroy
 
     if Item.where(product_id: params[:id]).length > 0
       @item = Item.where(product_id: params[:id])
       @item.last.destroy
-
       redirect_back(fallback_location: root_path)
 
       flash[:result_text] = "1 #{Product.find(params[:id]).name} removed from inventory!"
@@ -62,7 +51,6 @@ class ItemsController < ApplicationController
   end
 
   private
-
   def item_params
     return params.require(:items).permit(:shipping_status, :purchase_status, :product_id, :order_id)
   end
