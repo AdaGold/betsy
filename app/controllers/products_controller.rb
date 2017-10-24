@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @current_user_is_not_product_owner = session[:user_id] != @product.user_id
+
     @user = @product.user
     unless @product
       render :not_found

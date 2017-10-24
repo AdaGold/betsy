@@ -73,6 +73,10 @@ describe ReviewsController do
         end
 
       it "GUESTS cannot leave a review on an unfound product" do
+      end
+
+
+      it "users cannot leave reviews for their products" do
 
 
       end

@@ -22,6 +22,16 @@ describe ProductsController do
       must_respond_with :success
     end
 
+    it "users cannot leave reviews for their products" do
+      user = users(:carl)
+      log_in(user, :github)
+
+      get product_path(products(:converse).id)
+
+      controller.instance_variable_get("@current_user_is_not_product_owner").must_equal false
+
+    end
+
     # it "responds with 404 for non-existing product" do
     #   get product_path(Product.last.id + 1)
     #   must_respond_with :bad_request
@@ -120,6 +130,7 @@ describe ProductsController do
       it "cannot destroy a product that doesn't exist" do
 
       end
+
     end
   end
 end
