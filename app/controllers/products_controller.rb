@@ -82,23 +82,25 @@ class ProductsController < ApplicationController
     end
   end
 
-
-
-  private
-
   def change_visibility
     if @product.visibility == false
       @product.visibility = true
       @product.save
       flash[:result_text] = "Your product is now visible in browsing"
       redirect_back(fallback_location: products_path)
+
     else
+      # binding.pry
       @product.visibility = false
       @product.save
       flash[:result_text] = "Your product is no longer visibile in browsing"
       redirect_back(fallback_location: products_path)
     end
   end
+
+
+
+  private
 
   def product_params
     params.require(:product).permit(:name, :description, :user_id, :price, category_ids:[])

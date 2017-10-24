@@ -37,18 +37,18 @@ describe ProductsController do
     end
     #
     describe "edit" do
-      it "must be the creator of a product to edit it" do
-        get edit_product_path(products(:converse))
-        must_respond_with :not_found
-      end
-
-      it "produces an edit form for a valid product" do
+      it "logged in owner can see an edit form for their product " do
         user = users(:carl)
         log_in(user, :github)
         session[:user_id].must_equal user.id
 
         get edit_product_path(products(:converse))
         must_respond_with :success
+      end
+
+      it "must be the creator of a product to edit it" do
+        get edit_product_path(products(:converse))
+        must_respond_with :not_found
       end
 
       it "does not produce an edit form for a product a user doesn't own" do
@@ -60,7 +60,7 @@ describe ProductsController do
       end
 
 
-      it "!!!!!does not produce an edit form for bogus data" do
+      it "does not produce an edit form for bogus data" do
         user = users(:carl)
         log_in(user, :github)
         nonexistant_data = Product.last.id + 1
@@ -68,11 +68,21 @@ describe ProductsController do
         get edit_product_path(nonexistant_data)
         must_respond_with :not_found
       end
-
     end
 
 
     describe "update" do
+      it "a product cannot be updated, except by the owner" do
+        product = products(:converse)
+        product_datum = {
+          product: {
+            name: product.name + " updated"
+          }
+        }
+        patch product_path(product), params: product_datum
+        must_respond_with :not_found
+      end
+
       it "can update an existing work with valid data" do
         user = users(:carl)
         log_in(user, :github)
@@ -150,6 +160,33 @@ describe ProductsController do
           post products_path, params: nil_product
           must_respond_with :bad_request
         end
+      end
+
+      it "should throw 404 when no user is logged in" do
+        user = users(:carl)
+        product_data = {
+          product: {
+            name: "God Ugly Converse",
+            price: 99,
+            description: "Great pink shoes!",
+            user_id: user.id
+          }
+        }
+        post products_path, params: product_data
+        must_respond_with :not_found
+      end
+    end
+
+    describe "change_visibility" do
+      it "allows a user to change the visibility of a product they own" do
+        user = users(:carl)
+        log_in(user, :github)
+        get root_path
+        product = products(:flats)
+
+        product.visibility.must_equal true
+        post change_visibility_path(product.id)
+        product.visibility.must_equal false
       end
     end
 
