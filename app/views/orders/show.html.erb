@@ -5,12 +5,37 @@
 <% if @cart.order_products.length == 0 %>
   <%= "Get to shopping! Your cart is empty!" %>
 <% else %>>
-  <% @cart.order_products.each do |item| %>
-    <p>
-      THING: <%= Product.find(item.product_id).name %>
-      Quantity:
-    </p>
-    å<% end %>
+
+<% @cart.order_products.each do |entry| %>
+  <ol>
+    <li>
+      <ul>
+        <li>
+          Product: <%= entry.product.name%>
+        </li>
+        <li>
+          Unit Cost: <%= entry.product.price %>
+        </li>
+        <li>
+          Quantity: <%= entry.quantity %>
+        </li>
+        <li>
+          Product Subtotal: <%=entry.product.price * entry.quantity %>
+        </li>
+        <hr />
+      </ul>
+    </li>
+  </ol>
+<% end %>
+<ul>
+  <li>
+    Subtotal:
+  </li>
+  <li>
+    Total:
+  </li>
+</ul>
+<%= link_to("Proceed to Checkout", checkout_path, class:'button') %>
 <% end %>
 
 </section>

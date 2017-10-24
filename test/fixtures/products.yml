@@ -11,3 +11,9 @@ flats:
   price: 9
   description: a pair of yellow flats
   user: carl
+
+coffee:
+  name: coffee
+  price: 3
+  description: it's coffee
+  user: carl

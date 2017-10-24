@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def show
     @user = @product.user
+    @entry = OrderProduct.new
     unless @product
       render :not_found
     end
@@ -53,6 +54,31 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
+  def add_to_order
+    # binding.pry
+    @cart_entry = @pending_order.check_for_duplicates(@product.id)
+    if @cart_entry
+      @cart_entry.quantity += params[:quantity].to_i
+    else
+      @cart_entry = create_entry(params[:quantity])
+    end
+
+    if @cart_entry.save
+      flash[:status] = :success
+      flash[:result_text] = "Successfully added to your cart!"
+      # redirect_to order_path(@pending_order)
+      redirect_to product_path(@product.id)
+    else
+      flash[:result_text] = "Could not add that product to your cart"
+      flash[:messages] = @cart_entry.errors
+      redirect_to product_path(@product.id)
+    end
+  end
+
+
+
+  private
+
   def change_visibility
     if @product.visibility == false
       @product.visibility = true
@@ -67,12 +93,27 @@ class ProductsController < ApplicationController
     end
   end
 
-private
   def product_params
     params.require(:product).permit(:name, :description, :user_id, :price, category_ids:[])
+  end
+
+  def entry_params
+    # params.require(:entry).permit(:quantity)
+    # return
   end
 
   def find_product
     @product = Product.find(params[:id].to_i)
   end
-end
+
+  def create_entry(input_quantity)
+    entry = OrderProduct.new
+    entry.product_id = @product.id
+    entry.order_id = @pending_order.id
+    entry.quantity = input_quantity.to_i
+    return entry
+  end
+
+
+
+  end

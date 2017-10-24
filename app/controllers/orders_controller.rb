@@ -20,11 +20,23 @@ class OrdersController < ApplicationController
 
   end
 
+  def checkout
+    if @pending_order.has_invalid_entries?
+      redirect_to order_path
+      flash[:errors] = ""
+    else
+
+    end
+
+  end
+
+  def purchase
+  end
+
   def destroy
   end
 
   def add_product
-
     @cart_entry = OrderProduct.new(product_id: params[:id].to_i, order_id: @pending_order.id)
     if @cart_entry.save
       flash[:status] = :success

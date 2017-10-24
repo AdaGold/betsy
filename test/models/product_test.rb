@@ -1,7 +1,29 @@
 require "test_helper"
 
 describe Product do
-  let(:converse) {products(:converse)}
+  let(:converse) { products(:converse) }
+  let(:coffee) { products(:coffee) }
+  describe "available_items" do
+    it "should give an array" do
+      converse.available_items.must_be_instance_of Array
+      converse.available_items.length.must_equal 1
+    end
+    it "should return false if none are available" do
+      coffee.available_items.must_equal false
+    end
+
+  end
+
+  describe "num_available" do
+    it "should return a number of items available" do
+      converse.num_available.must_equal 1
+
+    end
+    it "should return 0 if no items are available" do
+      coffee.num_available.must_equal 0
+
+    end
+  end
   it "A product should be valid when given complete data" do
     converse.valid?.must_equal true
   end

@@ -122,4 +122,45 @@ describe ProductsController do
       end
     end
   end
+  describe "add_to_order" do
+    it "should change number of order products" do
+      user = users(:mia)
+      product = products(:converse)
+      log_in(user, :github)
+
+      get product_path(product.id)
+      proc {
+        post product_path(product.id), params: {quantity: "3"}
+      }.must_change 'OrderProduct.count', 1
+    end
+
+    it "should add an orderproduct to current pending order for auth user" do
+      user = users(:mia)
+      product = products(:converse)
+      quantity_data = {
+        quantity: "5"
+      }
+
+      start_count = OrderProduct.count
+      # pending_order = orders(:mias_pending_order)
+
+      log_in(user, :github)
+
+      get product_path(product.id)
+      pending_order = Order.find(session[:pending_order_id])
+      # session[:pending_order_id].must_equal pending_order.id
+
+      post product_path(product.id), params: quantity_data
+
+
+      OrderProduct.count.must_equal (start_count + 1)
+      pending_order.order_products.length.must_equal 2
+
+      pending_order.order_products.each do |entry|
+        entry.product_id.must_equal product.id
+        entry.order_id.must_equal pending_order.id
+      end
+    end
+
+  end
 end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   post 'orders/add-product/:id', to: 'orders#add_product', as: 'add_product'
+  get '/checkout', to: 'orders#checkout', as: 'checkout'
 
   get '/reviews/new/:id', to: 'reviews#new', as: 'new_new_review'
   get '/users/profile/:id', to: 'users#profile', as: 'profile'
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get 'login', to: 'users#login', as: 'login'
   get 'logout', to: 'sessions#logout', as: 'logout'
   get '/auth/:provider/callback', to: 'sessions#create',  as: 'auth_callback'
+  post 'products/:id', to: 'products#add_to_order', as: 'add_to_order'
 
   # post 'order-product/:id', to: 'ordersproducts#create', as: 'order_product'
 
