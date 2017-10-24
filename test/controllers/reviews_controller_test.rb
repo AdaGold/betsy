@@ -55,16 +55,17 @@ describe ReviewsController do
       end
     end
 
-    describe "CREATE" do
-      let(:product) { products(:converse) }
+    # describe "CREATE" do
+    #   let(:product) { products(:converse) }
+    #
+    #   # it "GUESTS can leave a review on any product" do
+    #   #
+    #   # end
+    #   #
+    #   # it "GUESTS cannot leave a review on an unfound product" do
+    #   # end
+    # end
 
-      it "GUESTS can leave a review on any product" do
-
-        # end
-        #
-        # it "GUESTS cannot leave a review on an unfound product" do
-        # end
-      end
 
 
 
