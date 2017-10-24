@@ -38,6 +38,7 @@ class ProductsController < ApplicationController
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "Successfully created product #{@product.id} #{@product.name}"
+      redirect_to profile_path(@user)
     else
       flash[:status] = :failure
       flash[:result_text] = "Unable to create a product"
