@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-10-24T09:16:48-07:00">2017-10-24T09:16:48-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-10-24T09:17:22-07:00">2017-10-24T09:17:22-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -83,7 +83,7 @@
       <tr>
         <td class="strong"><a href="#eaac9073b8f68f2bcedb8fbb6ee5aa34c31df135" class="src_link" title="app/controllers/items_controller.rb">app/controllers/items_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>70</td>
+        <td>66</td>
         <td>0</td>
         <td>0</td>
         <td>0</td>
@@ -1700,13 +1700,13 @@
         <li class="never" data-hits="" data-linenumber="23">
           
           
-          <code class="ruby">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>
+          <code class="ruby">  def create</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
-          <code class="ruby">=======</code>
+          <code class="ruby">    @item = Item.new(product_id: params[:id])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
@@ -1718,121 +1718,121 @@
         <li class="never" data-hits="" data-linenumber="26">
           
           
-          <code class="ruby">&gt;&gt;&gt;&gt;&gt;&gt;&gt; 8c1108f92eaab9b12c5b133b29b3a0edf51ded9f</code>
+          <code class="ruby">    if @item.save</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
           
           
-          <code class="ruby">  def create</code>
+          <code class="ruby">      # puts &quot;success&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
           
           
-          <code class="ruby">    @item = Item.new(product_id: params[:id])</code>
+          <code class="ruby">      flash[:success] = &quot;#{Product.find(params[:id]).name} item added successfully&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      redirect_back(fallback_location: root_path)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">    if @item.save</code>
+          <code class="ruby">    else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby">      # puts &quot;success&quot;</code>
+          <code class="ruby">      # puts &quot;fail&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">      flash[:success] = &quot;#{Product.find(params[:id]).name} item added successfully&quot;</code>
+          <code class="ruby">      # puts @item.errors.messages</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">      redirect_back(fallback_location: root_path)</code>
+          <code class="ruby">      flash.now[:error] = &quot;Item not added to #{Product.find(params[:id])}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby">      render :new</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
-          <code class="ruby">      # puts &quot;fail&quot;</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
           
           
-          <code class="ruby">      # puts @item.errors.messages</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="37">
           
           
-          <code class="ruby">      flash.now[:error] = &quot;Item not added to #{Product.find(params[:id])}&quot;</code>
+          <code class="ruby">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
           
           
-          <code class="ruby">      render :new</code>
+          <code class="ruby">=======</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="40">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>
+          <code class="ruby">  # def edit</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
           
           
-          <code class="ruby">=======</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby">  # def edit</code>
+          <code class="ruby">  # def update</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
@@ -1844,61 +1844,61 @@
         <li class="never" data-hits="" data-linenumber="47">
           
           
-          <code class="ruby">  #</code>
+          <code class="ruby">&gt;&gt;&gt;&gt;&gt;&gt;&gt; 8c1108f92eaab9b12c5b133b29b3a0edf51ded9f</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="48">
           
           
-          <code class="ruby">  #</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="49">
           
           
-          <code class="ruby">  # def update</code>
+          <code class="ruby">  def destroy</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="50">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">    if Item.where(product_id: params[:id]).length &gt; 0</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">&gt;&gt;&gt;&gt;&gt;&gt;&gt; 8c1108f92eaab9b12c5b133b29b3a0edf51ded9f</code>
+          <code class="ruby">      @item = Item.where(product_id: params[:id])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      @item.last.destroy</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
           
           
-          <code class="ruby">  def destroy</code>
+          <code class="ruby">      redirect_back(fallback_location: root_path)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="54">
           
           
-          <code class="ruby">    if Item.where(product_id: params[:id]).length &gt; 0</code>
+          <code class="ruby">      flash[:result_text] = &quot;1 #{Product.find(params[:id]).name} removed from inventory!&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
           
           
-          <code class="ruby">      @item = Item.where(product_id: params[:id])</code>
+          <code class="ruby">    else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
           
           
-          <code class="ruby">      @item.last.destroy</code>
+          <code class="ruby">      flash[:result_text] = &quot;There are no more items to remove&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
@@ -1910,76 +1910,52 @@
         <li class="never" data-hits="" data-linenumber="58">
           
           
-          <code class="ruby">      flash[:result_text] = &quot;1 #{Product.find(params[:id]).name} removed from inventory!&quot;</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="59">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="60">
           
           
-          <code class="ruby">      flash[:result_text] = &quot;There are no more items to remove&quot;</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="61">
           
           
-          <code class="ruby">      redirect_back(fallback_location: root_path)</code>
+          <code class="ruby">  private</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="62">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  def item_params</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="63">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    return params.require(:items).permit(:shipping_status, :purchase_status, :product_id, :order_id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="64">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="65">
           
           
-          <code class="ruby">  private</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="66">
-          
-          
-          <code class="ruby">  def item_params</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="67">
-          
-          
-          <code class="ruby">    return params.require(:items).permit(:shipping_status, :purchase_status, :product_id, :order_id)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="68">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="69">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby">end</code>

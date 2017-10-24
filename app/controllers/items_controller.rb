@@ -34,17 +34,6 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-<<<<<<< HEAD
-=======
-
-
-  # def edit
-  # end
-  #
-  #
-  # def update
-  # end
->>>>>>> 8c1108f92eaab9b12c5b133b29b3a0edf51ded9f
 
   def destroy
     if Item.where(product_id: params[:id]).length > 0
