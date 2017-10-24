@@ -51,7 +51,7 @@ class BillingDataController < ApplicationController
 
 
   def destroy
-    @billing_data = BillingDatum.find_by(id: params[id].to_i)
+    @billing_data = BillingDatum.find(params[id].to_i)
     @billing_data.destroy
     redirect_to root_path
   end
