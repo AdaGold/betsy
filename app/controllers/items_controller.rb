@@ -16,12 +16,10 @@ class ItemsController < ApplicationController
     end
   end
 
-
   def new
     @item = Item.new
   end
 
-# ---------------------------------------------
   def create
     @item = Item.new(product_id: params[:id])
 
@@ -36,15 +34,6 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-# ---------------------------------------------
-
-
-  # def edit
-  # end
-  #
-  #
-  # def update
-  # end
 
   def destroy
     if Item.where(product_id: params[:id]).length > 0
@@ -59,7 +48,6 @@ class ItemsController < ApplicationController
   end
 
   private
-
   def item_params
     return params.require(:items).permit(:shipping_status, :purchase_status, :product_id, :order_id)
   end
