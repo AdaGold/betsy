@@ -158,9 +158,7 @@ describe ProductsController do
 
     end
   end
-<<<<<<< HEAD
 
-=======
   describe "add_to_order" do
     it "should change number of order products" do
       user = users(:mia)
@@ -202,5 +200,4 @@ describe ProductsController do
     end
 
   end
->>>>>>> 5d5151ab3be2a4ac9448413ff2be819bd49ae437
 end
