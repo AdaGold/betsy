@@ -45,26 +45,38 @@ describe ReviewsController do
   describe "Guest (Unauthenticated)" do
 
     describe "NEW" do
-      let(:product) { products(:converse) }
+      # let(:product) { products(:converse) }
+      #
+      # it "Should be able to get to the new review form" do
+      #
+      #   get new_review_path(product)
+      #   must_respond_with :success
+      #
+      # end
+    end
 
-      it "Should be able to get to the new review form" do
+    describe "CREATE" do
 
-        get new_review_path(product)
-        must_respond_with :success
+      # let(:product) { products(:converse) }
+
+      it "Guests can leave a review on any product" do
+        proc {
+          post reviews_path, params: {review: {text: "sample review", rating: 5, user_id: nil, product_id: products(:converse).id } }
+        }.must_change 'Review.count', 1
+
+        # products(:converse)
+        # Product.find_by(id:  )
+
+        must_respond_with :redirect
+        must_redirect_to product_path(products(:converse).id)
+
+        end
+
+      it "GUESTS cannot leave a review on an unfound product" do
+        
 
       end
     end
-
-    # describe "CREATE" do
-    #   let(:product) { products(:converse) }
-    #
-    #   # it "GUESTS can leave a review on any product" do
-    #   #
-    #   # end
-    #   #
-    #   # it "GUESTS cannot leave a review on an unfound product" do
-    #   # end
-    # end
 
 
 
@@ -76,27 +88,6 @@ describe ReviewsController do
       #   it "Cannot edit a review that is not your own" do
       #   end
       # end
-
-
-
-      # describe "DELETE" do
-      #   it "Cannot delete a review, even if it is your own" do
-      #   end
-      # end
-
-
-
-      # describe "show" do
-      #   it "Can view a review" do
-      #   end
-      #
-      #   it "Cannot view a review that " do
-      #
-      #   end
-      # end
-
-
-
 
 
       # it "should respond with 404 if the item review page is not found" do

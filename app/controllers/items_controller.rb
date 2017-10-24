@@ -26,7 +26,9 @@ class ItemsController < ApplicationController
     if @item.save
       # puts "success"
       flash[:success] = "#{Product.find(params[:id]).name} item added successfully"
-      redirect_back(fallback_location: root_path)
+
+      redirect_to root_path
+      # redirect_back(fallback_location: root_path)
     else
       # puts "fail"
       # puts @item.errors.messages
@@ -36,11 +38,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+
+    puts params
+
     if Item.where(product_id: params[:id]).length > 0
       @item = Item.where(product_id: params[:id])
       @item.last.destroy
       redirect_back(fallback_location: root_path)
       flash[:result_text] = "1 #{Product.find(params[:id]).name} removed from inventory!"
+      
     else
       flash[:result_text] = "There are no more items to remove"
       redirect_back(fallback_location: root_path)
