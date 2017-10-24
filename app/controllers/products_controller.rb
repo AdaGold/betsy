@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "Successfully updated #{@product.name}"
+      redirect_to profile_path(@user)
     else
       flash[:status] = :failure
       flash[:result_text] = "Could not update #{@product.name}"
