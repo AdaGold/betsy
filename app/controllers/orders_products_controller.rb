@@ -9,9 +9,28 @@ class OrdersProductsController < ApplicationController
     end
   end
 
+  def destroy
+    find_entry
+    if !@entry
+      render_404
+      return
+    end
+    deleted_entry = "#{@entry.product.name}"
+    if @entry.destroy
+      flash[:success] = "Successfully deleted #{deleted_entry}."
+      redirect_to order_path(@pending_order.id)
+    else
+      
+    end
+  end
+
 
   private
   def cart_entry_params
     # params.require(:product).permit(:id, :name, :description, :price, :user)
+  end
+
+  def find_entry
+    @entry = OrderProduct.find_by(id: params[:id])
   end
 end

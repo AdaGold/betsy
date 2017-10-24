@@ -22,6 +22,12 @@
         <li>
           Product Subtotal: <%=entry.product.price * entry.quantity %>
         </li>
+        <li>
+          Edit:<%= link_to "Edit Item", edit_order_product_path(entry.id), class:"button" %>
+        </li>
+        <li>
+          Delete: <%= link_to "Delete Item", order_product_path(entry.id), method: :delete, data: {confirm: "Are you sure you want to remove #{entry.product.name} from cart?"}, class:"button" %>
+        </li>
         <hr />
       </ul>
     </li>

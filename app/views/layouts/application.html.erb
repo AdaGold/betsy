@@ -43,8 +43,7 @@
             <%end%>
           </li>
           <li>
-            <!------------- THIS LINK IS BROKEN---------- -->
-            <%# link_to "Cart", order_path(@pending_order.id), class:"button" %>
+            <%= link_to "Cart", cart_path, class:"button" %>
           </li>
 
         </ul>
