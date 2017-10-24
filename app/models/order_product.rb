@@ -12,7 +12,7 @@ class OrderProduct < ApplicationRecord
     if product.num_available >= quantity
       return true
     else
-      self.errors[:quantity] << "is invalid. There are currently #{product.num_available} of #{product.name}. Please update your order."
+      self.errors[:quantity] << "is invalid. There are currently only #{product.num_available} of #{product.name}. Please update your order."
     end
     return false
   end
