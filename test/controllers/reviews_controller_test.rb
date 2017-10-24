@@ -41,7 +41,7 @@ describe ReviewsController do
 
   # end
 
-# ------------------------TODO--------------------------
+  # ------------------------TODO--------------------------
   describe "Guest (Unauthenticated)" do
 
     describe "NEW" do
@@ -80,38 +80,17 @@ describe ReviewsController do
 
 
 
-    describe "EDIT" do
-      # it "Can only edit a review that you posted" do
-      # end
+
+      # describe "EDIT" do
+      #   it "Can only edit a review that you posted" do
+      #   end
       #
-      # it "Cannot edit a review that is not your own" do
+      #   it "Cannot edit a review that is not your own" do
+      #   end
+      # end
+
+
+      # it "should respond with 404 if the item review page is not found" do
       # end
     end
-
-
-
-    describe "DELETE" do
-      # it "Cannot delete a review, even if it is your own" do
-      # end
-    end
-
-
-
-    describe "show" do
-      # it "Can view a review" do
-      # end
-      #
-      # it "Cannot view a review that " do
-      #
-      # end
-    end
-
-
-
-
-
-    # it "should respond with 404 if the item review page is not found" do
-    # end
-
   end
-end
