@@ -1,23 +1,32 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
   before_action :permission, except: [:show, :index]
+  before_action :owns, only: [:edit, :update]
 
   def index
     @products = Product.show_available
   end
 
   def show
-    @user = @product.user
-    @entry = OrderProduct.new
-    unless @product
-      render :not_found
+    if @product
+      @user = @product.user
+      @entry = OrderProduct.new
+    else
+      render render_404
     end
   end
 
   def edit
+    if @product.id.nil?
+      render render_404
+    end
   end
 
   def update
+    unless @product
+      render render_404
+    end
+
     @product.update_attributes product_params
     if @product.save
       flash[:status] = :success
@@ -26,6 +35,7 @@ class ProductsController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "Could not update #{@product.name}"
+      flash.now[:messages] = @product.errors.message
       render :edit, status: :not_found
     end
   end
@@ -49,13 +59,6 @@ class ProductsController < ApplicationController
       flash[:messages] = @product.errors.messages
       render :new, status: :bad_request
     end
-  end
-
-  def destroy
-    @product.destroy
-    flash[:status] = :success
-    flash[:result_text] = "Successfully destroyed product #{@product.id}, #{@product.name}"
-    redirect_to root_path
   end
 
   def add_to_order
@@ -107,13 +110,19 @@ class ProductsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find(params[:id].to_i)
+    @product = Product.find_by(id: params[:id].to_i)
   end
 
 
   def permission
     unless @user
-      render not_found
+      render render_404
+    end
+  end
+
+  def owns
+    unless @product && @user.id == @product.user_id
+      render render_404
     end
   end
 

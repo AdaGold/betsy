@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :items, except: [:create, :destroy]
+  
   post '/items/:id', to: 'items#create', as: 'create_item'
   delete '/items/:id', to: 'items#destroy', as: 'destroy_item'
 
