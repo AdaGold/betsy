@@ -53,7 +53,6 @@ class ReviewsController < ApplicationController
     #
     # puts "*********"
 
-
     if @review.save
       redirect_to product_path(review_params[:product_id])
     else

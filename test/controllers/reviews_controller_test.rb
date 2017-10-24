@@ -80,13 +80,13 @@ describe ReviewsController do
 
 
 
-    # describe "EDIT" do
-    #   # it "Can only edit a review that you posted" do
-    #   # end
-    #   #
-    #   # it "Cannot edit a review that is not your own" do
-    #   # end
-    # end
+    describe "EDIT" do
+      # it "Can only edit a review that you posted" do
+      # end
+      #
+      # it "Cannot edit a review that is not your own" do
+      # end
+    end
 
 
 
@@ -103,7 +103,7 @@ describe ReviewsController do
       #
       # it "Cannot view a review that " do
       #
-      # enduser
+      # end
     end
 
 

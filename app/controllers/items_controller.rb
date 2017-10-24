@@ -6,9 +6,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    # puts params[:id]
+    puts params[:id]
 
-    render_404 unless @item
+    # render_404 unless @item
 
     unless @item
       flash[:error] = "Item not found"
@@ -40,19 +40,19 @@ class ItemsController < ApplicationController
 
   # def edit
   # end
-  #
-  #
+
+
   # def update
   # end
 
   def destroy
 
-    puts params
-
     if Item.where(product_id: params[:id]).length > 0
       @item = Item.where(product_id: params[:id])
       @item.last.destroy
+
       redirect_back(fallback_location: root_path)
+
       flash[:result_text] = "1 #{Product.find(params[:id]).name} removed from inventory!"
 
     else
