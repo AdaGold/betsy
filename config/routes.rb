@@ -11,10 +11,11 @@ Rails.application.routes.draw do
 
   get '/reviews/new/:id', to: 'reviews#new', as: 'new_new_review'
   get '/users/profile', to: 'users#profile', as: 'profile'
+  get '/order_fulfillment', to: 'users#order_fulfillment', as: 'order_fulfillment'
   resources :users
   resources :orders
   resources :items, except: [:create, :destroy]
-  
+
   post '/items/:id', to: 'items#create', as: 'create_item'
   delete '/items/:id', to: 'items#destroy', as: 'destroy_item'
 
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
 
   resources :order_products
   get '/cart', to: 'orders#show', as: 'cart'
+
 
 
   # post 'order-product/:id', to: 'orderproducts#create', as: 'order_product'

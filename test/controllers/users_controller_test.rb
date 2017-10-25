@@ -1,6 +1,22 @@
 require "test_helper"
 
 describe UsersController do
+  describe "order_fulfillment" do
+    it "should get order_fulfillment page for logged in user" do
+      user = users(:mia)
+      log_in(user, :github)
+
+      get order_fulfillment_path
+
+      must_respond_with :success
+
+    end
+    it "should respond with an error if not logged in " do
+      get order_fulfillment_path
+
+      must_respond_with :not_found
+    end
+  end
   describe "INDEX" do
     it "should get index" do
       get users_path
@@ -27,6 +43,8 @@ describe UsersController do
   end
 
   it "should successfully create a new user" do
+    #GM: Should users be successfully created through user controller?
+    #Or should this be limited to sessions#login?
     proc  {
       post users_path, params: {users: {username: "Test", email: "test@test.com"}}}.must_change 'User.count', 1
 
@@ -35,6 +53,7 @@ describe UsersController do
   end
 
   it "should be able to update a user" do
+    log_in(users(:carl), :github)
     put user_path(users(:carl)), params: {user: {username: "Karl"} }
     user = User.find(users(:carl).id)
     user.username = "Karl"
