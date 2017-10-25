@@ -12,6 +12,7 @@ describe User do
     end
     it "everything in the array should be an OrderProduct" do
       result = carl.merchant_entries
+      # binding.pry
       result.each do |entry|
         entry.must_be_instance_of OrderProduct
       end
@@ -24,6 +25,15 @@ describe User do
       result.each do |entry|
         [products(:converse), products(:flats), products(:coffee), products(:pencil)].must_include entry.product
       end
+    end
+
+    it "every entry should be tied to an order that is not pending" do
+      result = carl.merchant_entries
+      failed_entries = []
+      result.each do |entry|
+        failed_entries << entry if entry.order.order_status == "pending"
+      end
+      failed_entries.length.must_equal 0
     end
   end
 
