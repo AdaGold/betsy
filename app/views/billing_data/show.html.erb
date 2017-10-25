@@ -1,14 +1,15 @@
-<h1>BillingData#show</h1>
-<p>Find me in app/views/billing_data/show.html.erb</p>
-<ul>
+<h1>Your Billing Information</h1>
 
-<li>Email Address: <%= @billing_data.email %></li>
-<li>Name on Card: <%= @billing_data.credit_card_name %></li>
-<li>Mailing Address: <%= @billing_data.mailing_address %></li>
-<li>Credit Card Number: <%= @billing_data.credit_card_number %></li>
-<li>CVV: <%= @billing_data.credit_card_cvv %></li>
-<li>Billing Zipcode: <%= @billing_data.billing_zip_code %></li>
+<ul>
+  <li>Email Address: <%= @billing_data.email %></li>
+  <li>Name on Card: <%= @billing_data.credit_card_name %></li>
+  <li>Mailing Address: <%= @billing_data.mailing_address %></li>
+  <li>Credit Card Number: <%= @billing_data.credit_card_number %></li>
+  <li>CVV: <%= @billing_data.credit_card_cvv %></li>
+  <li>Billing Zipcode: <%= @billing_data.billing_zip_code %></li>
 </ul>
 
-<%= link_to "Edit Billing Information", edit_billing_datum_path(@billing_data.id) %>
-<%= link_to "Confirm Order" %>
+<ul class="menu">
+  <%= link_to "Edit Billing Information", edit_billing_datum_path(@billing_data.id), class:"button" %>
+  <%= link_to "Confirm Order", checkout_path%>
+</ul>

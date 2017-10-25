@@ -18,7 +18,7 @@
           <%= product.description %>
         </li>
         <li>
-          Number in Stock: <%=product.items.count%>
+          Number in Stock: <%=product.items.where(purchase_status: false).count%>
         </li>
         <li>
           <%= link_to "Edit this Product", edit_product_path(product.id), class:"button"%>

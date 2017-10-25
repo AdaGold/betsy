@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
-  before_action :permission, except: [:show, :index]
+  before_action :permission, except: [:show, :index, :add_to_order]
   before_action :owns, only: [:edit, :update]
 
   def index
