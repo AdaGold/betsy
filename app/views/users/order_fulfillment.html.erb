@@ -1,0 +1,70 @@
+<h1>Merchant Order Fulfillment Page</h1>
+<% if !(@entries) %>
+<p>
+  Oops!  You haven't sold anything yet.  Keep doing you!
+</p>
+<% else %>
+<h3>Pending Items</h3>
+<p>
+  These items have been purchased and need to be shipped.
+</p>
+<section class="merchant_entries">
+  <% if @paid_entries %>
+  <table>
+    <tr>
+      <th>
+        Order Number
+      </th>
+      <th>
+        Date of Order
+      </th>
+      <th>
+        Product Name
+      </th>
+      <th>
+        Quantity
+      </th>
+      <th>
+        Subtotal
+      </th>
+      <th>
+        Order Status:
+      </th>
+      <th>
+        Ship
+      </th>
+    </tr>
+    <% @pending_entries.each do |entry| %>
+    <tr>
+      <td>
+        <%= entry.order.id %>
+      </td>
+      <td>
+        <%= entry.order.updated_at %>
+      </td>
+      <td>
+        <%= entry.product.name %>
+      </td>
+      <td>
+        <%= entry.quantity %>
+      </td>
+      <td>
+        <%= entry.subtotal %>
+      </td>
+      <td>
+        <%= entry.order.order_status %>
+      </td>
+      <td>
+        <%= link_to "Ship", ship_order_product_path(entry.id), method: :post %>
+      </td>
+    </tr>
+
+
+    <% end %>
+    <% else %>
+    <p>
+      No orders currently require your attention.  Check back later.
+    </p>
+    <% end %>
+  </section>
+  <% end %>

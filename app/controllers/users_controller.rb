@@ -54,7 +54,9 @@ class UsersController < ApplicationController
   end
 
   def order_fulfillment
-
+    @entries = @user.merchant_entries
+    organize_entries if @entries
+    
   end
 
 
@@ -87,5 +89,16 @@ class UsersController < ApplicationController
 
   def render_404
   render file: "/public/404.html", status: 404
+  end
+
+  def organize_entries
+    @paid_orders = []
+    @shipped_orders = []
+    @canceled_orders = []
+    @entries.each do |entry|
+      @paid_orders << entry if entry.paid?
+      @shipped_orders << entry if entry.shipped?
+      @canceled_orders << entry if entry.canceled?
+    end
   end
 end
