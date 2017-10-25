@@ -20,15 +20,6 @@ class User < ApplicationRecord
     return false
   end
 
-  def merchant_pending_entries
-    entries = merchant_entries
-    pending_entries = []
-    entries.each { |entry| pending_entries << entry if entry.pending?}
-  end
-
-
-
-
   def find_pending_order #synonymous to cart
     pending_orders = []
     self.orders.each do |order|
