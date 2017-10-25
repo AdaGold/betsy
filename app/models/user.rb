@@ -9,6 +9,23 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :email, presence: true
 
+  def merchant_entries
+    products = self.products
+    merchant_entries = []
+    products.each do |product|
+      entries = OrderProduct.where(product_id: product.id)
+      entries.each { |entry| merchant_entries << entry if entry.order.order_status != "pending"}
+    end
+    return merchant_entries if merchant_entries.first != nil
+    return false
+  end
+
+  def merchant_pending_entries
+    entries = merchant_entries
+    pending_entries = []
+    entries.each { |entry| pending_entries << entry if entry.pending?}
+  end
+
 
 
 
