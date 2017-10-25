@@ -51,13 +51,15 @@
   </ul>
 
 
-  <% @user = User.find_by(id: session[:user_id]) %>
-  <%if @user.billing_datum_id %>
-    USER: <%= @user.username %>
-    Billing Datum ID <%= @user.billing_datum_id %>
-    <%= link_to("Proceed to Checkout", edit_billing_datum_path(@user.billing_datum_id), class:'button') %>
-  <%elsif @pending_order.billing_datum_id %>
-    <%= link_to("Proceed to checkout", edit_billing_datum_path(@pending_order.billing_datum_id), class:"button")%>
+  <%if session[:user_id]%>
+
+  <%end%>
+
+  <%if @pending_order.billing_datum_id %>
+    <%= link_to("Proceed to Checkout", edit_billing_datum_path(@pending_order.billing_datum_id), class:'button') %>
+  <%elsif session[:user_id] %>
+    <% @user = User.find_by(id: session[:user_id]) %>
+    <%= link_to("Proceed to checkout", edit_billing_datum_path(@user.billing_datum_id), class:"button")%>
   <%else%>
     <%= link_to("Proceed to Checkout", new_billing_datum_path, class:'button')%>
   <%end %>
