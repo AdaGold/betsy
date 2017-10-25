@@ -21,6 +21,9 @@
       <li>
         <strong>Price:</strong> $<%= product.price %>
       </li>
+      <li>
+        Number Available: <%= product.items.where(purchase_status:false).count %>
+      </li>
       <li>CATEGORIES:
         <% product.categories.each do |category| %>
           <%=category.name%>

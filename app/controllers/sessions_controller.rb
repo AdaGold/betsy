@@ -55,6 +55,7 @@ class SessionsController < ApplicationController
   def logout
     session[:user_id] = nil
     flash[:result_text] = "Successfully logged out!"
+    session[:pending_order_id] = nil
 
     redirect_to root_path
   end
