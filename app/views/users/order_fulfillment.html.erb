@@ -1,10 +1,55 @@
 <h1>Merchant Order Fulfillment Page</h1>
-<% if !(@entries) %>
-<p>
-  Oops!  You haven't sold anything yet.  Keep doing you!
-</p>
-<% else %>
-<h3>Pending Items</h3>
+
+<h3>Merchant Stats</h3>
+<h4>Total Revenue <%#= @user.revenue %></h4>
+<table>
+  <tr>
+    <th>
+      Paid Orders
+    </th>
+    <th>
+      Shipped Orders
+    </th>
+    <th>
+      Canceled Orders
+    </th>
+  </tr>
+  <td>
+    <%#= @paid_entries.revenue %>
+  </td>
+  <td>
+    <%#= @shipped_entries.revenue %>
+  </td>
+  <td>
+    <%#= @canceled_entries.revenue %>
+  </td>
+</table>
+
+<h4>Total Orders</h4>
+<table>
+  <tr>
+    <th>
+      Paid Orders
+    </th>
+    <th>
+      Shipped Orders
+    </th>
+    <th>
+      Canceled Orders
+    </th>
+  </tr>
+  <td>
+    <%= @paid_entries.length %>
+  </td>
+  <td>
+    <%= @shipped_entries.length %>
+  </td>
+  <td>
+    <%= @canceled_entries.length %>
+  </td>
+</table>
+
+<h3>Purchased Orders</h3>
 <p>
   These items have been purchased and need to be shipped.
 </p>
@@ -31,19 +76,21 @@
         Order Status:
       </th>
       <th>
-        Ship
+        Shipping Action
       </th>
+
     </tr>
-    <% @pending_entries.each do |entry| %>
+    <% @paid_entries.each do |entry| %>
     <tr>
       <td>
         <%= entry.order.id %>
+        <%= link_to entry.order.id, view_order_path(entry.order.id) %>
       </td>
       <td>
         <%= entry.order.updated_at %>
       </td>
       <td>
-        <%= entry.product.name %>
+        <%= link_to(entry.product.name, product_path(entry.product.id)) %>
       </td>
       <td>
         <%= entry.quantity %>
@@ -55,16 +102,138 @@
         <%= entry.order.order_status %>
       </td>
       <td>
-        <%= link_to "Ship", ship_order_product_path(entry.id), method: :post %>
+        <% if entry.items_shipped? %>
+        shipped
+        <% else %>
+        <%= link_to "Ship", ship_path(entry.id), method: :post, class:"button" %>
+        <% end %>
       </td>
     </tr>
 
-
     <% end %>
+  </table>
+  <% else %>
+  <p>
+    No orders currently require your attention.  Check back later.
+  </p>
+  <% end %>
+  <h3>Shipped Orders</h3>
+  <p>
+    These items have been shipped
+  </p>
+  <section class="merchant_entries">
+
+    <% if @shipped_entries %>
+    <table>
+      <tr>
+        <th>
+          Order Number
+        </th>
+        <th>
+          Date of Order
+        </th>
+        <th>
+          Product Name
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>
+          Subtotal
+        </th>
+        <th>
+          Order Status:
+        </th>
+      </tr>
+      <% @shipped_entries.each do |entry| %>
+      <tr>
+        <td>
+          <%= entry.order.id %>
+          <%= link_to entry.order.id, view_order_path(entry.order.id) %>
+        </td>
+        <td>
+          <%= entry.order.updated_at %>
+        </td>
+        <td>
+          <%= link_to(entry.product.name, product_path(entry.product.id)) %>
+        </td>
+        <td>
+          <%= entry.quantity %>
+        </td>
+        <td>
+          <%= entry.subtotal %>
+        </td>
+        <td>
+          <%= entry.order.order_status %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+
     <% else %>
     <p>
-      No orders currently require your attention.  Check back later.
+      No orders have been shipped.  Check back later.
+    </p>
+    <% end %>
+
+  </section>
+  <h3>Canceled Orders</h3>
+  <p>
+    These are orders that were canceled.  Yikes.
+  </p>
+  <section class="merchant_entries">
+
+    <% if @canceled_entries %>
+    <table>
+      <tr>
+        <th>
+          Order Number
+        </th>
+        <th>
+          Date of Order
+        </th>
+        <th>
+          Product Name
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>
+          Subtotal
+        </th>
+        <th>
+          Order Status:
+        </th>
+
+      </tr>
+      <% @shipped_entries.each do |entry| %>
+      <tr>
+        <td>
+          <%= entry.order.id %>
+          <%#= link_to entry.order.id, order_path(entry.order.id) %>
+        </td>
+        <td>
+          <%= entry.order.updated_at %>
+        </td>
+        <td>
+          <%= link_to(entry.product.name, product_path(entry.product.id)) %>
+        </td>
+        <td>
+          <%= entry.quantity %>
+        </td>
+        <td>
+          <%= entry.subtotal %>
+        </td>
+        <td>
+          <%= entry.order.order_status %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <% else %>
+    <p>
+      No orders have been canceled.  Congrats!  Check back later though.
     </p>
     <% end %>
   </section>
-  <% end %>
