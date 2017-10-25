@@ -33,29 +33,29 @@ pending_order:
 paid_order:
   order_status: paid
   user: mia
-  billing_datum_id: two
+  billing_datum: two
   session_id: 112sa
 
 shipped_order:
   order_status: shipped
   user: carl
-  billing_datum_id: one
+  billing_datum: one
   session_id: 1catDog
 
 canceled_order:
   order_status: canceled
   user:
-  billing_datum_id: three
+  billing_datum: three
   session_id: 2pipper232
 
 guest_pending_order:
   order_status: pending
   user_id:
-  billing_datum_id:
+  billing_datum:
   session_id: 12e
 
 mias_pending_order:
   order_status: pending
   user: mia
-  billing_datum_id: mia_billing_datum
+  billing_datum: mia_billing_datum
   session_id: 23908sdklj

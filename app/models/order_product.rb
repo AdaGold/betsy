@@ -17,4 +17,10 @@ class OrderProduct < ApplicationRecord
     return false
   end
 
+  def pending?
+    order = self.order
+    return true if order.order_status = "pending"
+    return false
+  end
+
 end
