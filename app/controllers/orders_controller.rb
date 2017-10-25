@@ -21,14 +21,16 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    #
     if mark_items_as_purchased
       flash[:status] = :success
+      @pending_order.order_status = :paid
+      @pending_order.save
+      
       #nexT: mark the entire order as paid (currently only items are marked paid)
     else
       flash[:status] = :error
+      flash[:result_text] = "There was an error; you could not be checked out at this time"
       redirect_back(fallback_location: cart_path)
-
     end
   end
 
@@ -67,8 +69,8 @@ class OrdersController < ApplicationController
       if !(entry.valid?)
         flash[:status] = :error
         flash[:result_text] = "Check your cart, inventory has changed."
-        flash[:messages] << entry.errors
-        redirect_to cart_path
+        flash[:messages] = entry.errors
+        # redirect_to cart_path
         return
       end
       quantity = entry.quantity
@@ -89,8 +91,9 @@ class OrdersController < ApplicationController
       else
         flash[:status] = :error
         flash[:result_text] << "Items were not saved.  Please contact web administrator.   "
-        flash[:messages] << item.errors
-        redirect_to cart_path
+        flash[:messages] = "There were errors"
+        # item.errors
+        # redirect_to cart_path
       end
 
     end
