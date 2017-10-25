@@ -1,0 +1,24 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.storename {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.productinfo-container {
+  display: flex;
+}
+
+.productinfo {
+  display: inline-flex;
+}
+
+div h3, div ul {
+  // display: flex;
+}
+
+li {
+  list-style-type: none;
+}

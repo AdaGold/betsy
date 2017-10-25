@@ -1,0 +1,27 @@
+
+<h2>Enter your Billing Data</h2>
+
+<%= form_for @billing_data do |f| %>
+
+<% f.hidden_field :user_id, value: @user %>
+
+<%= f.label :email %>
+<%= f.text_field :email%>
+
+<%= f.label :cred_card_name %>
+<%= f.text_field :credit_card_name %>
+
+<%= f.label :mailing_address %>
+<%= f.text_field  :mailing_address%>
+
+<%= f.label :credit_card_number%>
+<%= f.text_field  :credit_card_number%>
+
+<%= f.label :credit_card_cvv%>
+<%= f.text_field  :credit_card_cvv%>
+
+<%= f.label :billing_zip_code%>
+<%= f.text_field  :billing_zip_code%>
+
+<%= f.submit "Submit Payment Information" %>
+<%end%>

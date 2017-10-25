@@ -1,0 +1,9 @@
+
+<h2>All Merchants</h2>
+<section class="all_users">
+  <%@users.each do |user|%>
+  <article class="user_details">
+    <%=link_to user.username, user_path(user.id) %>
+  </article>
+  <%end%>
+</section>

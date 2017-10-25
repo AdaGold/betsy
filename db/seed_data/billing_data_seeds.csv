@@ -1,0 +1,4 @@
+billing_data_id,user_id,email,mailing_address,credit_card_name,credit_card_number,credit_card_cvv,billing_zip_code
+1,2,"selliot@gmail.com","123 Wallingford Ave., Seattle, WA","Sage Elliot","7777 5555 4444 2222","444","98115",
+2,7,"janep@gmail.com","724 Pine St., Seattle, WA","Jane Pine","1212 3434 5656 7878","121","98107",
+3,10,"amelia@hotmail.com","123 Yesler Way, Seattle, WA","Amelia Yesler","1234 5678 9101 1234","999","98101"

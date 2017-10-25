@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text:
+  rating: 4
+  user_id: mia
+  product_id: converse
+
+two:
+  text: A good product
+  rating: 5
+  user_id: carl
+  product_id: flats

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= content_for?(:title) ? yield(:title) : "Northwesty" %></title>
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <header>
+    <div class="container">
+      <nav>
+        <label for="show-menu" class="show-menu">Menu</label>
+        <input type="checkbox" id="show-menu" role="button">
+        <ul id="menu">
+          <li class="companyname">
+            <h1 ><%= link_to "NorthWesty", root_path %></h1>
+          </li>
+          <li class="menu_item">
+            <%= link_to "Products", products_path %>
+            <ul class="hidden">
+              <li class="menu_item"><%= link_to "Browse All Products", products_path%></li>
+              <li class="menu_item"><%= link_to "Browse By Category", categories_path%></li>
+              <li class="menu_item"><%= link_to "Browse by Merchant", users_path%></li>
+            </ul>
+          </li>
+          <li class="menu_item">
+            <%= link_to "Users", users_path %>
+            <ul class="hidden">
+              <li class="menu_item"><%= link_to "Users", users_path%></li>
+            </ul>
+          </li>
+          <li class="menu_item" id="Login-Logout">
+            <% if session[:user_id]%>
+              <% @user = session[:user_id]%>
+              <%= link_to "Your Profile", profile_path(@user), class:"button" %>
+              <%= link_to "Log out", logout_path, class:"button float-right" %>
+            <%else%>
+              <%= link_to "Login/SignUp with Github", "/auth/github", class:"button float-right"%>
+            <%end%>
+          </li>
+          <li>
+            <%= link_to "Cart", cart_path, class:"button" %>
+          </li>
+
+        </ul>
+      </nav>
+  </header>
+
+  <section class="flash">
+    <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+    <% end %>
+  </section>
+
+<%= yield %>
+
+  <footer class="row small-12 large-12">
+    <p><em>Copyright M^GJ*C 2017</em></p>
+  </footer>
+
+  </body>
+</html>

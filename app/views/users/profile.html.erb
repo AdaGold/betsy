@@ -1,0 +1,40 @@
+<h1><%=@user.username%>'s Profile</h1>
+<p>
+  Not <%=@user.username%>? <%=link_to "Log out!", logout_path%>
+</p>
+
+<%= link_to "Manage your Orders" %>
+<%= link_to "Create a New Product", new_product_path, class:"button" %>
+
+<section class="my_products">
+  <% @user.products.order(:id).each do |product| %>
+    <article class="products">
+      <h3><%= product.name %></h3>
+      <ul>
+        <li>
+          <%= product.price %>
+        </li>
+        <li>
+          <%= product.description %>
+        </li>
+        <li>
+          Number in Stock: <%=product.items.where(purchase_status: false).count%>
+        </li>
+        <li>
+          <%= link_to "Edit this Product", edit_product_path(product.id), class:"button"%>
+        </li>
+        <li>
+         <%= button_to "Add Inventory", create_item_path(product.id), method: :post, class:"button"%>
+        </li>
+        <li>
+          <%= button_to "Reduce Inventory", destroy_item_path(product.id), method: :delete, class: "button" %>
+        </li>
+        <li> Currently on the Market: <strong>
+          <%= product.visibility %></strong>
+          <%= button_to "Change Product Visibility", change_visibility_path(product.id), class:"button"%>
+
+        </li>
+      </ul>
+      <%end%>
+    </article>
+</section>

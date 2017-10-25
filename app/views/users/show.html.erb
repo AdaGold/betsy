@@ -1,0 +1,29 @@
+
+<div class="user_show">
+  <section class="users_products">
+    <div class="row large-12 columns storename">
+      <h2><%=@user.username%>'s store</h2>
+    </div>
+      <% @user.products.show_available.each do |product|%>
+        <aside class="productinfo-container row large-12 columns" >
+          <a href="https://www.fillmurray.com/100/100"><img src="http://fillmurray.com/100/100"></a>
+          <div class="productinfo">
+            <ul>
+              <li>
+                <h3 class="productname"><%= link_to product.name, product_path(product.id) %></h3>
+              </li>
+              <li>
+                <strong>Price:</strong> $<%= product.price %>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      <% end %>
+  </section>
+
+  <section>
+    <p>
+      Want to contact <%=@user.username%>? Email them at <%=link_to @user.email%>
+    </p>
+  </section>
+</div>

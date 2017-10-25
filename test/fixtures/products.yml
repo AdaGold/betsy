@@ -1,0 +1,32 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+converse:
+  name: converse
+  price: 10
+  description: some black converses
+  user: carl
+
+flats:
+  name: flats
+  price: 9
+  description: a pair of yellow flats
+  user: carl
+  visibility: true
+
+coffee:
+  name: coffee
+  price: 3
+  description: it's coffee
+  user: carl
+
+pencil:
+  name: blackwing pencil
+  price: 5
+  description: it's a pencil
+  user: carl
+
+chocolate:
+  name: dark chocolate
+  price: 200
+  description: it's good
+  user: sophie_no_pending_order

@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+carl:
+  username: carl carle
+  email: carl@carlcarle.me
+  uid: 100
+
+mia:
+  username: momma mia
+  email: mia@mommamia.com
+  uid: 200
+
+sophie_no_pending_order:
+  username: s0phie
+  email: sophie@sophie.net
+  uid: 300

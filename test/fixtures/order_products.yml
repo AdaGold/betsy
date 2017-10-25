@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 2
+  product: converse
+  order: one
+
+two:
+  quantity: 1
+  product: flats
+  order: four
+
+three:
+  quantity: 3
+  product: converse
+  order: paid_order
+
+four:
+  quantity: 5
+  product: flats
+  order: guest_pending_order
+
+mias_pending_products:
+  quantity: 1
+  product: converse
+  order: mias_pending_order
+
+guest_pending_products:
+  quantity: 1
+  product: pencil
+  order: guest_pending_order
+
+pencil_paid_order:
+  quantity: 1
+  product: pencil
+  order: paid_order
+
+guest_pencil_paid_order:
+  quantity: 100
+  product: pencil
+  order: guest_paid_order

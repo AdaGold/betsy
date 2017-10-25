@@ -1,0 +1,67 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_status: pending
+  user_id: carl
+  billing_datum_id: one
+  session_id: orderone
+
+two:
+  order_status: paid
+  user_id: mia
+  billing_datum_id: two
+  session_id: ordertwo
+
+three:
+  order_status: shipped
+  user_id: carl
+  billing_datum_id: one
+  session_id: orderthree
+
+four:
+  order_status: canceled
+  user_id:
+  billing_datum_id: three
+  session_id: orderfour
+
+pending_order:
+  order_status: pending
+  user: carl
+  billing_datum_id:
+  session_id: orderpending_order
+
+paid_order:
+  order_status: paid
+  user: mia
+  billing_datum: two
+  session_id: orderpaid_order
+
+shipped_order:
+  order_status: shipped
+  user: carl
+  billing_datum: one
+  session_id: ordershipped_order
+
+canceled_order:
+  order_status: canceled
+  user:
+  billing_datum: three
+  session_id: ordercanceled_order
+
+guest_pending_order:
+  order_status: pending
+  user_id:
+  billing_datum:
+  session_id: orderguest_pending_order
+
+mias_pending_order:
+  order_status: pending
+  user: mia
+  billing_datum: mia_billing_datum
+  session_id: ordermias_pending_order
+
+guest_paid_order:
+  order_status: paid
+  user_id:
+  billing_datum: guest_billing_datum
+  session_id: guest_paid_order

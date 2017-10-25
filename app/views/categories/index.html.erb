@@ -1,0 +1,16 @@
+<h1>Browse by Category</h1>
+
+<section>
+
+<% if @user != nil %>
+  <%= link_to("Create Category", new_category_path) %>
+<% end %>
+
+<% @categories.each do |category| %>
+<%# category.products.to_json %>
+  <ul>
+    <li><%= link_to category.name, category_path(category.id) %></li>
+  </ul>
+<% end %>
+
+</section>
