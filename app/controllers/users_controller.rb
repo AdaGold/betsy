@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   def order_fulfillment
     @entries = @user.merchant_entries
     organize_entries if @entries
-    
+
   end
 
 
@@ -92,13 +92,13 @@ class UsersController < ApplicationController
   end
 
   def organize_entries
-    @paid_orders = []
-    @shipped_orders = []
-    @canceled_orders = []
+    @paid_entries = []
+    @shipped_entries = []
+    @canceled_entries = []
     @entries.each do |entry|
-      @paid_orders << entry if entry.paid?
-      @shipped_orders << entry if entry.shipped?
-      @canceled_orders << entry if entry.canceled?
+      @paid_entries << entry if entry.paid?
+      @shipped_entries << entry if entry.shipped?
+      @canceled_entries << entry if entry.canceled?
     end
   end
 end
