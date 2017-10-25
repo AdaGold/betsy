@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
       flash[:status] = :success
       @pending_order.order_status = :paid
       @pending_order.save
-      
+      session[:pending_order_id] = nil
       #nexT: mark the entire order as paid (currently only items are marked paid)
     else
       flash[:status] = :error
