@@ -45,8 +45,33 @@ class OrderProduct < ApplicationRecord
     end
   end
 
+  def shipped?
+    order = self.order
+    if order.order_status == "shipped"
+      return true
+    else
+      return false
+    end
+  end
+
   def subtotal
     return (self.quantity) * (self.product.price)
+  end
+
+  def items_shipped?
+    order = self.order
+    entry_items = []
+    if order
+      order.items.each do |item|
+        entry_items << item if item.product_id == product.id
+      end
+      if entry_items
+        entry_items.each do |item|
+          return true if item.shipping_status #if item has been shipped, return true
+        end
+      end
+      return false
+    end
   end
 
 
