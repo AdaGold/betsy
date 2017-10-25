@@ -24,3 +24,18 @@ mias_pending_products:
   quantity: 1
   product: converse
   order: mias_pending_order
+
+guest_pending_products:
+  quantity: 1
+  product: pencil
+  order: guest_pending_order
+
+pencil_paid_order:
+  quantity: 1
+  product: pencil
+  order: paid_order
+
+guest_pencil_paid_order:
+  quantity: 100
+  product: pencil
+  order: guest_paid_order

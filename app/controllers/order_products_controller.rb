@@ -1,4 +1,18 @@
 class OrderProductsController < ApplicationController
+  def ship
+    find_entry
+    if !(@entry)
+      render_404
+      return
+    end
+    if @entry.items_shipped?
+      render_404
+      return
+    end
+    ship_items
+
+  end
+
   def create
     @cart_entry = OrderProduct.new(product_id: params[:id], order_id: @pending_order)
     if @cart_entry.save
@@ -61,5 +75,29 @@ class OrderProductsController < ApplicationController
 
   def find_entry
     @entry = OrderProduct.find_by(id: params[:id])
+  end
+
+  def ship_items
+    order = @entry.order
+    product = @entry.product
+    entry_items = []
+    order.items.each do |item|
+      entry_items << item if item.product_id == product.id
+    end
+    if entry_items.length > 0
+      entry_items.each do |item|
+        item.shipping_status = true
+        item.save
+      end
+      flash[:status] = :success
+      flash[:result_text] = "Successfully shipped entry #{@entry.id}!"
+      redirect_to order_fulfillment_path
+
+    else
+      flash[:result_text] = "There was an error with updating entry #{@entry.id}.  There are no items associated with this order.  Sorry."
+      flash[:status] = :error
+      redirect_to order_fulfillment_path
+
+    end
   end
 end
