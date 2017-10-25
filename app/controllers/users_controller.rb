@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :persmission, include: [:profile]
+  before_action :permission, except: [:index, :show]
 
   def new
     @user = User.new
@@ -53,6 +53,11 @@ class UsersController < ApplicationController
     @user = @user
   end
 
+  def order_fulfillment
+    @entries = @user.merchant_entries
+    organize_entries if @entries
+
+  end
 
 
   # TODO if the user is to be deleted, me must then delete all of there products.
@@ -76,9 +81,24 @@ class UsersController < ApplicationController
     return params.require(:users).permit(:username, :email)
   end
 
-  # def persmission
-  #   unless params[:id] == @user
-  #     render :not_found
-  #   end
-  # end
+  def permission
+    if !(@user)
+      render_404
+    end
+  end
+
+  def render_404
+  render file: "/public/404.html", status: 404
+  end
+
+  def organize_entries
+    @paid_entries = []
+    @shipped_entries = []
+    @canceled_entries = []
+    @entries.each do |entry|
+      @paid_entries << entry if entry.paid?
+      @shipped_entries << entry if entry.shipped?
+      @canceled_entries << entry if entry.canceled?
+    end
+  end
 end

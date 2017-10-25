@@ -1,0 +1,44 @@
+<h1>Order #<%=@order_for_view.id %></h1>
+
+<table>
+  <tr>
+    <th>
+    Name:
+    </th>
+    <td>
+      <%= @order_for_view.billing_datum.credit_card_name %>
+    </td>
+    </tr>
+    <tr>
+    <th>
+      Email:
+    </th>
+    <td>
+      <%= @order_for_view.billing_datum.email %>
+    </td>
+    </tr>
+    <tr>
+    <th>
+      Mailing Address:
+    </th>
+    <td>
+      <%= @order_for_view.billing_datum.mailing_address %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Last 4 Digits of Credit Card:
+    </th>
+    <td>
+      <%= @order_for_view.billing_datum.credit_card_number[-5..-1] %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Credit Card Expiration Date:
+    </th>
+    <td>
+      lol woops
+    </td>
+  </tr>
+</table>
