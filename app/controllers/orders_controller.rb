@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   def checkout
     if mark_items_as_purchased
       flash[:status] = :success
-      @pending_order.order_status = :paid
+      @pending_order.order_status = "paid"
       @pending_order.save
       session[:pending_order_id] = nil
       #nexT: mark the entire order as paid (currently only items are marked paid)
@@ -68,10 +68,9 @@ class OrdersController < ApplicationController
     entries.each do |entry|
       if !(entry.valid?)
         flash[:status] = :error
-        flash[:result_text] = "Check your cart, inventory has changed."
+        flash[:result_text] = "Check your cart, inventory has changed for #{entry.product}"
         flash[:messages] = entry.errors
-        # redirect_to cart_path
-        return
+        return false
       end
       quantity = entry.quantity
       available_items = entry.product.available_items
@@ -94,6 +93,7 @@ class OrdersController < ApplicationController
         flash[:messages] = "There were errors"
         # item.errors
         # redirect_to cart_path
+        return
       end
 
     end
