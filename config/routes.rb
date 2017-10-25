@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   resources :order_products
   get '/cart', to: 'orders#show', as: 'cart'
 
+  post '/ship/:id', to: 'order_products#ship', as: 'ship'
+
+  get '/view/:id', to: 'orders#view', as: 'view_order'
+
 
 
   # post 'order-product/:id', to: 'orderproducts#create', as: 'order_product'

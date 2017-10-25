@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  def view
+    find_order
+  end
   def index
   end
 
@@ -94,5 +97,9 @@ class OrdersController < ApplicationController
       end
 
     end
+  end
+
+  def find_order
+    @order_for_view = Order.find(params[:id])
   end
 end
