@@ -44,4 +44,16 @@ describe OrderProduct do
       result.must_equal false
     end
   end
+
+  describe "subtotal" do
+    it "should return a number" do
+
+    end
+    it "should return the correct subtotal" do
+
+    end
+    it "should return false if missing a quantity or price" do
+
+    end
+  end
 end

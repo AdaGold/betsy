@@ -27,4 +27,28 @@ class OrderProduct < ApplicationRecord
     end
   end
 
+  def paid?
+    order = self.order
+    if order.order_status == "paid"
+      return true
+    else
+      return false
+    end
+  end
+
+  def canceled?
+    order = self.order
+    if order.order_status == "canceled"
+      return true
+    else
+      return false
+    end
+  end
+
+  def subtotal
+    return (self.quantity) * (self.product.price)
+  end
+
+
+
 end
