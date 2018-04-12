@@ -1,5 +1,5 @@
 # bEtsy
-[b]Etsy will be an online store where a wide variety of products can be listed and sold by any user. In this project we will focus on reinforcing the major components of Rails, Model Validation, as well as introducing some more complex logic such as user authentication.
+[Much like other e-commerce platforms](https://www.etsy.com/), your team will make an online store where a wide variety of products can be listed and sold by any user. This project focuses on reinforcing the major components of Rails, model validations, testing, and more complex logic such as user authentication.
 
 This is a [Stage 3](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) project requiring you to expand upon what you have learned in class.
 
@@ -11,6 +11,7 @@ This is a [Stage 3](https://github.com/Ada-Developers-Academy/pedagogy/blob/mast
   - Views
 - User based application logic
 - User authentication
+- Testing on models and controllers
 - Agile practices
 - Feature branch management with Git
 - Group project ownership
@@ -31,17 +32,17 @@ This is a [Stage 3](https://github.com/Ada-Developers-Academy/pedagogy/blob/mast
 1. Figure out your workflow for the project, re: Git and Task management
   1. Do you want to use git branches? Pull requests?
   1. Determine who will be the Stand Up Leader and Task Leader for the first week
-1. Create a Trello board and ensure that all team members and instructors have access
+1. Create a Trello board to use as a Kanban board and ensure that all team members and instructors have access
 1. Review the User Stories below and create Trello tasks to represent them
-1. Slack your team name, app name, and link to your trello board to your Project Manager
+1. Slack your team name, app name, and link to your Trello board to your Project Manager
 
 ## Expectations
 Build an online system for listing, selling, reviewing, and buying a wide variety of products listed by multiple merchants.
 
 ### General Requirements
 - Unit tests and/or specs for
-  - Controllers
   - Models
+  - Controllers
 - Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 
@@ -54,7 +55,7 @@ As a guest to the website (not signed in) I **can**:
 - Browse products by merchant (users)
 - View any individual product with additional details
 - Leave a review for a product providing:
-    - A Text review
+    - A text review
     - A rating out of 5
 - Add in-stock products to my cart
 - Remove products from my cart
@@ -75,7 +76,7 @@ As a guest to the website (not signed in) I **can**:
     - Each item in the order with a quantity and line-item subtotal
     - A link to the item description page
     - Order total price
-    - DateTime the order was placed
+    - Date/time the order was placed
     - The current status of the order
 - Sign up to be a merchant using OAuth
     - Every merchant must have a username
@@ -126,9 +127,9 @@ As a signed-in user, I **cannot**:
 
 - Review my own products
 - View order items from a shared order that belong to another merchant
-- View another users private data (i.e. order fulfillment or product management)
+- View another user's private data (i.e. order fulfillment or product management)
 
-### Model Validations
+### Validations
 Many of our models will have attributes that are required for our application to use and display data consistently. Each model will have attributes with requirements for a valid record. The requirements are summarized below:
 
 #### Merchant
@@ -161,7 +162,7 @@ Many of our models will have attributes that are required for our application to
 - Rating must be between 1 and 5
 
 ## Submission Guidelines
-Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. There are comprehension  questions to answer with your submission that you should complete together as a group. Remember, you can submit a PR and still make some final changes to your code, so don't wait until the last minute.
+Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. There are comprehension questions to answer with your submission that you should complete together as a group. Remember, you can submit a PR and still make some final changes to your code, so don't wait until the last minute.
 
 ## Team Leaders
 Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of the second week; every team member should be in at least one leader role during the project.
@@ -171,13 +172,13 @@ Each team will have team leaders who are responsible for keeping track of each t
   - Takes notes about each person's daily report in Stand Up
   - Keeps the meeting moving
 - **Task Leader**
-  - Leads discussion on task assignment
+  - Leads discussion on task assignment and prioritization
     - Decide if a task should be completed alone or in a pair
     - Assign tasks based on...
       - Individual comfort
       - Desire
       - Ability
-  - Ensures the task list stays up to date
+  - Ensures the Kanban board stays up to date
 
 ## Stand Up Meetings
 The Stand Up Leader should determine the daily time for your stand up meeting with the team. Once you come up with a time, confirm with your PM that this time will work for them.
@@ -196,3 +197,6 @@ Each team will present their progress and respond to questions from their Projec
 Each team will present their product in a final presentation to the group on the final Friday. Your presentation should be no more than 7 minutes. The presentation should include every team member and:
 - what you learned as individuals and as a group
 - a short story-driven demo of interesting features
+
+## What Instructors Are Looking For
+Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
