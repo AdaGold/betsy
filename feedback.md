@@ -39,3 +39,6 @@ The app is styled to create an attractive user interface |
 Content is organized with HTML5 semantic tags |
 CSS is DRY |
 **Overall** |
+
+
+# Only the person who submitted the PR will get an email about this feedback. Please let the rest of your team know about it.
