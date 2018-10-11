@@ -46,6 +46,31 @@ Build an online system for listing, selling, reviewing, and buying a wide variet
 - Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 
+### Prioritization
+
+This project contains many user stories, some of which are more relevant to our in-class learning goals than others. Here is a rough categorization of how important various features are:
+
+#### High Priority
+
+- Browsing products
+- Using the shopping cart (adding items, checking out)
+- Authentication as a merchant
+- CRUD on products, including authorization rules
+- Model testing, particularly for any custom logic
+- Controller testing
+
+#### Medium Priority
+
+- Product categories
+- Basic validations (things that will break the site)
+- Tracking product inventory
+- Order fulfillment
+
+#### Low Priority
+
+- Reviews and ratings
+- Comprehensive validations, particularly around submitting an order
+
 ### User Stories
 #### Guest User (Unauthenticated)
 As a guest to the website (not signed in) I **can**:
