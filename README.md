@@ -46,6 +46,31 @@ Build an online system for listing, selling, reviewing, and buying a wide variet
 - Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 
+### Prioritization
+
+This project contains many user stories, some of which are more relevant to our in-class learning goals than others. Here is a rough categorization of how important various features are:
+
+#### High Priority
+
+- Browsing products
+- Using the shopping cart (adding items, checking out)
+- Authentication as a merchant
+- CRUD on products, including authorization rules
+- Model testing, particularly for any custom logic
+- Controller testing
+
+#### Medium Priority
+
+- Product categories
+- Basic validations (things that will break the site)
+- Tracking product inventory
+- Order fulfillment
+
+#### Low Priority
+
+- Reviews and ratings
+- Comprehensive validations, particularly around submitting an order
+
 ### User Stories
 #### Guest User (Unauthenticated)
 As a guest to the website (not signed in) I **can**:
@@ -161,10 +186,11 @@ Many of our models will have attributes that are required for our application to
 - Rating must be an integer
 - Rating must be between 1 and 5
 
-## Submission Guidelines
-Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. There are comprehension questions to answer with your submission that you should complete together as a group. Remember, you can submit a PR and still make some final changes to your code, so don't wait until the last minute.
+## Process
 
-## Team Leaders
+We expect you to follow the agile process we've learned about in class as you work on this project.
+
+### Team Leaders
 Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of the second week; every team member should be in at least one leader role during the project.
 
 - **Stand Up Leader**
@@ -180,12 +206,12 @@ Each team will have team leaders who are responsible for keeping track of each t
       - Ability
   - Ensures the Kanban board stays up to date
 
-## Stand Up Meetings
+### Stand Up Meetings
 The Stand Up Leader should determine the daily time for your stand up meeting with the team. Once you come up with a time, confirm with your PM that this time will work for them.
 
 At the end of each day, your team's assigned Project Manager will review the Trello board to ensure it captures the updates that your team has made throughout the day.
 
-## Interim Demo
+### Interim Demo
 In a real world work environment, a team's success is measured by their product as opposed to each individual's contribution.
 
 Each team will present their progress and respond to questions from their Project Manager on the first Friday. Every team member will participate in these demos; the PM will ask specific questions regarding
@@ -193,10 +219,20 @@ Each team will present their progress and respond to questions from their Projec
 1. The technical decisions and implementation
 1. Every team member's understanding of the underlying technical structures
 
+### Midpoint Retrospective
+
+On the first Friday, instead of our normal full-class retro, each team will get together and conduct a small-scale retro. One team member should facilitate, this may be the standup leader or someone else. Your retro should focus on the following questions:
+- What has gone well?
+- What could have gone better?
+- Where is our direction still unclear?
+
 ## Final Presentation
 Each team will present their product in a final presentation to the group on the final Friday. Your presentation should be no more than 7 minutes. The presentation should include every team member and:
 - what you learned as individuals and as a group
 - a short story-driven demo of interesting features
+
+## Submission Guidelines
+Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. There are comprehension questions to answer with your submission that you should complete together as a group. Remember, you can submit a PR and still make some final changes to your code, so don't wait until the last minute.
 
 ## What Instructors Are Looking For
 Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
