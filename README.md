@@ -3,6 +3,8 @@
 
 This is a [Stage 3](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) project requiring you to expand upon what you have learned in class.
 
+Due date: EOD Friday October 26
+
 ## Project Learning Goals
 - Core comprehension of:
   - Routes
