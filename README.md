@@ -22,7 +22,7 @@ Due date: EOD Friday October 26
 - Groups of three or four will collaborate in pairs or individually and will report to their assigned Project Manager (one of the instructors)
 - Use a task manager like [Trello](http://trello.com) to track your team's efforts
 - Build a logical user-flow that moves across multiple controllers and models
-- Use HTML/CSS and Foundation to style your website
+- Use HTML/CSS and Bootstap or another CSS framework to style your website
 
 ## Getting Started
 1. As a group decide on an app name (this may help lead the aesthetic)
