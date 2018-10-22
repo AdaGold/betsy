@@ -13,7 +13,7 @@ Nested routes follow RESTful conventions |
 oAuth used for User authentication |
 Functionality restricted based on user roles |
 Products can be added and removed from cart |
-Users can view past orders |
+Users can look up past orders by ID |
 Merchants can add, edit and view their products |
 Errors are reported to the user |
 **Order Functionality** |
