@@ -228,7 +228,7 @@ As a guest I **cannot**:
 
 - Add products to the cart that are out of stock
 - View any link or page to manage any products
-- View any of the account pages
+- View any merchant dashboard page
 
 #### Authenticated Users
 As a signed-in user, I **can**:
@@ -244,8 +244,8 @@ As a signed-in user, I **can**:
     - stock
 - Assign my products to any number of categories
 - Retire a product from being sold, which hides it from browsing
-- View an account page to edit/update my existing products
-- View an account page showing my order fulfillment
+- View my merchant dashboard page to edit/update my existing products
+- View my merchant dashboard page showing my order fulfillment
 - On the order fulfillment page:
     - Total Revenue
     - Total Revenue by status
