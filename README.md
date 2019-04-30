@@ -312,7 +312,10 @@ Each team will present their product in a final presentation to the group on the
 - a short story-driven demo of interesting features
 
 ## Submission Guidelines
+
 Your final project must be deployed to [Heroku](http://heroku.com). Your team will open a single pull request for the entire project. There are comprehension questions to answer with your submission that you should complete together as a group. Remember, you can submit a PR and still make some final changes to your code, so don't wait until the last minute.
+
+We ask you and your team members to list specific areas of feedback for instructors. Please be specific about files and lines of code. Please do not give an answer vague, like "testing"! Thank you!
 
 ## What Instructors Are Looking For
 Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
