@@ -53,7 +53,7 @@ Teams will build this online platform following these principles:
 1. Review the Process Requirements below
     - Determine who will be the Stand Up Leader and Task Leader for the first week
 1. Create a Trello board to use as a Kanban board and ensure that all team members and the PM have access
-1. Review the User Stories below and create Trello tasks to represent them
+1. Review the Functional Requirements below and create Trello tasks to represent them
 1. Slack your team name, app name, and invitation link to your Trello board to your Project Manager
 1. Begin work on drafting an ERD together as a team!
 
@@ -191,7 +191,10 @@ This project contains many user stories, some of which are more relevant to our 
 ### User Stories
 
 #### Guest User (Unauthenticated)
-As a guest to the website (not signed in) I **can**:
+
+All users who are not signed-in are guests. All guest users are users who are not signed-in.
+
+As a guest to the website (not signed-in) I **can**:
 
 - Browse all products
 - Browse products by category
@@ -231,7 +234,10 @@ As a guest I **cannot**:
 - View any link or page to manage any products
 - View any merchant dashboard page
 
-#### Authenticated Users
+#### Merchants (Authenticated Users)
+
+All signed-in users are merchants. All merchants are signed-in users.
+
 As a signed-in user, I **can**:
 
 - Do everything a guest user can do except for sign up and sign in
