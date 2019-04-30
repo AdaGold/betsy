@@ -55,6 +55,7 @@ Teams will build this online platform following these principles:
 1. Create a Trello board to use as a Kanban board and ensure that all team members and the PM have access
 1. Review the User Stories below and create Trello tasks to represent them
 1. Slack your team name, app name, and invitation link to your Trello board to your Project Manager
+1. Begin work on drafting an ERD together as a team!
 
 ## Non-Functional Requirements
 
