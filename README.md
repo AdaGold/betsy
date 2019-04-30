@@ -138,6 +138,24 @@ On the first Friday, instead of our normal full-class retro, each team will get 
 - What could have gone better?
 - Where is our direction still unclear?
 
+## Workflow Requirements
+
+It is required on this project that each person follows the workflow of a full-stack developer.
+
+Each person is not required to be an _expert_ on each thing, or to do the work perfectly.
+
+However, after project setup has happened and project feature development is underway, each developer will be responsible for maintaining good practices.
+
+For each task/feature that you work on, you are also responsible for:
+
+- writing all of the unit tests relevant to their feature (nominal and edge cases)
+- writing all of the controller tests (nominal and edge cases)
+- writing the view code needed for the feature
+- running the tests before pushing code
+- adhering to the team's standards of git hygiene (PRs, branches, etc)
+
+Do _not_ leave writing the tests to your features to someone else!
+
 ---
 
 ## Prioritization
