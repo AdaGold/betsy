@@ -50,10 +50,11 @@ Teams will build this online platform following these principles:
   1. Each team member should clone the repo to their computer
 1. Figure out your workflow for the project, re: git and task management
   1. Do you want to use git branches? Pull requests?
+1. Review the Process Requirements below
   1. Determine who will be the Stand Up Leader and Task Leader for the first week.
     1. The Stand Up Leader's first responsibility is to determine the daily stand-up time, create a Google Calendar event, and invite your PM
     1. The Task Leader's first responsibility is to determine the time for the first demo, create a Google Calendar event, and invite your PM
-1. Create a Trello board to use as a Kanban board and ensure that all team members and the PM have access
+    1. Create a Trello board to use as a Kanban board and ensure that all team members and the PM have access
 1. Review the User Stories below and create Trello tasks to represent them
 1. Slack your team name, app name, and invitation link to your Trello board to your Project Manager
 
@@ -207,28 +208,49 @@ Many of our models will have attributes that are required for our application to
 - Rating must be an integer
 - Rating must be between 1 and 5
 
-## Process
+## Process Requirements
 
-We expect you to follow the agile process we've learned about in class as you work on this project.
+We expect you to follow this modified Agile process as you work on this project:
 
 ### Team Leaders
-Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of the second week; every team member should be in at least one leader role during the project.
 
-- **Stand Up Leader**
-  - Notifies team members about meeting schedule and ensures that everyone is present and ready
-  - Takes notes about each person's daily report in Stand Up
-  - Keeps the meeting moving
-- **Task Leader**
-  - Leads discussion on task assignment and prioritization
-    - Decide if a task should be completed alone or in a pair
-    - Assign tasks based on...
-      - Individual comfort
-      - Desire
-      - Ability
-  - Ensures the Kanban board stays up to date
+Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of the second week; every team member will be in at least one leader role during the project.
+
+#### Stand Up Leader
+
+The stand up leader has the following responsibilities:
+
+- Determine the daily time for team standup. Once a time is decided, confirm with the PM that this time will work for them
+- Notify team members about meeting schedule and ensures that everyone is present and ready
+- Take notes about each person's update reported during stand up
+- Keep the meeting moving
+
+#### Task Leader
+
+The task leader has the following responsibilities:
+
+- Leads discussion on task assignment, prioritization, and organization
+- Decide if a task should be completed alone or in a pair
+- Assign tasks based on...
+  - Individual comfort
+  - Desire
+  - Ability
 
 ### Stand Up Meetings
-The Stand Up Leader should determine the daily time for your stand up meeting with the team. Once you come up with a time, confirm with your PM that this time will work for them.
+
+Make sure they're scheduled and they happen. The ideal stand up meeting is short and it's an important way to start the day on the right page. It's also the best chance to get the team together and ask for help.
+
+### Kanban Board
+
+Everyone is responsible for keeping the Kanban board accurate _at all times_.
+
+This means the following:
+- When you pick up a task, move the task from the "To do" column to "Doing"
+- When you finish a task, move the task from the "Doing" column to "Done"
+- When you stop work on a task, move the task from "Doing" back to "To do"
+- When a task changes in nature, update the task's name and description and any relevant labels
+
+_Do not_ leave the responsibility of the Kanban board to just one or two people. _Stay accountable to your team and the work you are doing._
 
 At the end of each day, your team's assigned Project Manager will review the Trello board to ensure it captures the updates that your team has made throughout the day.
 
@@ -247,7 +269,8 @@ On the first Friday, instead of our normal full-class retro, each team will get 
 - What could have gone better?
 - Where is our direction still unclear?
 
-## Final Presentation
+## Final Presentation Requirements
+
 Each team will present their product in a final presentation to the group on the final Friday. Your presentation should be no more than 7 minutes. The presentation should include every team member and:
 - what you learned as individuals and as a group
 - a short story-driven demo of interesting features
