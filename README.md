@@ -57,14 +57,14 @@ Teams will build this online platform following these principles:
 1. Review the User Stories below and create Trello tasks to represent them
 1. Slack your team name, app name, and invitation link to your Trello board to your Project Manager
 
-### Non-Functional Requirements
+## Non-Functional Requirements
 
 - Unit tests
 - Controller tests
 - Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 
-### Prioritization
+## Prioritization Requirements
 
 This project contains many user stories, some of which are more relevant to our in-class learning goals than others. Here is a rough categorization of how important various features are:
 
@@ -89,7 +89,10 @@ This project contains many user stories, some of which are more relevant to our 
 - Reviews and ratings
 - Comprehensive validations, particularly around submitting an order
 
+## Functional Requirements
+
 ### User Stories
+
 #### Guest User (Unauthenticated)
 As a guest to the website (not signed in) I **can**:
 
