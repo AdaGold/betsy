@@ -1,9 +1,16 @@
 # bEtsy
+
+## At a Glance
+
+- Group, [stage 3](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) project
+- Due EOD Friday, 6 PM PST, *DATE HERE*
+
+## Introduction
+
 [Much like other e-commerce platforms](https://www.etsy.com/), your team will make an online store where a wide variety of products can be listed and sold by any user. This project focuses on reinforcing the major components of Rails, model validations, testing, and more complex logic such as user authentication.
 
-This is a [Stage 3](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) project requiring you to expand upon what you have learned in class.
+## Learning Goals
 
-## Project Learning Goals
 - Core comprehension of:
   - Routes
   - Controllers
@@ -16,33 +23,44 @@ This is a [Stage 3](https://github.com/Ada-Developers-Academy/pedagogy/blob/mast
 - Feature branch management with Git
 - Group project ownership
 
-## Guidelines
-- Groups of three or four will collaborate in pairs or individually and will report to their assigned Project Manager (one of the instructors)
-- Use a task manager like [Trello](http://trello.com) to track your team's efforts
-- Build a logical user-flow that moves across multiple controllers and models
-- Use HTML/CSS and Bootstap or another CSS framework to style your website
+## Objective
+
+We will build an online platform for listing, selling, reviewing, and buying a wide variety of products listed by multiple merchants.
+
+This platform will support different kinds of users:
+
+- users who never log in, and primarily want to be able to browse products and mange their shopping cart
+- users who become merchants by logging in, and primarily want to manage products listed in their online shop
+
+Teams will build this online platform following these principles:
+
+- collaborate in pairs or individually throughout the week
+- report to their assigned Project Manager (one of the instructors) and have frequent communication with them
+- use a task manager like [Trello](http://trello.com) to track all work
+- build a logical user-flow that moves across multiple controllers and models
+- use HTML/CSS and Bootstap or another CSS framework to style your website
 
 ## Getting Started
+
 1. As a group decide on an app name (this may help lead the aesthetic)
 1. As a group decide on a team name (this will amuse your instructors)
 1. Have one person on your team fork/clone the project master as per usual
   1. Create a new rails app using `rails new .`
   1. Add all other team members as collaborators
   1. Each team member should clone the repo to their computer
-1. Figure out your workflow for the project, re: Git and Task management
+1. Figure out your workflow for the project, re: git and task management
   1. Do you want to use git branches? Pull requests?
-  1. Determine who will be the Stand Up Leader and Task Leader for the first week
-1. Create a Trello board to use as a Kanban board and ensure that all team members and instructors have access
+  1. Determine who will be the Stand Up Leader and Task Leader for the first week.
+    1. The Stand Up Leader's first responsibility is to determine the daily stand-up time, create a Google Calendar event, and invite your PM
+    1. The Task Leader's first responsibility is to determine the time for the first demo, create a Google Calendar event, and invite your PM
+1. Create a Trello board to use as a Kanban board and ensure that all team members and the PM have access
 1. Review the User Stories below and create Trello tasks to represent them
-1. Slack your team name, app name, and link to your Trello board to your Project Manager
+1. Slack your team name, app name, and invitation link to your Trello board to your Project Manager
 
-## Expectations
-Build an online system for listing, selling, reviewing, and buying a wide variety of products listed by multiple merchants.
+### Non-Functional Requirements
 
-### General Requirements
-- Unit tests and/or specs for
-  - Models
-  - Controllers
+- Unit tests
+- Controller tests
 - Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 
