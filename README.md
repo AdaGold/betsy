@@ -63,7 +63,71 @@ Teams will build this online platform following these principles:
 - Test code coverage (using SimpleCov - remember me!)
   - 90% for all controller and model classes
 
-## Prioritization Requirements
+## Process Requirements
+
+We expect you to follow this modified Agile process as you work on this project:
+
+### Team Leaders
+
+Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of the second week; every team member will be in at least one leader role during the project.
+
+#### Stand Up Leader
+
+The stand up leader has the following responsibilities:
+
+- Determine the daily time for team standup. Once a time is decided, confirm with the PM that this time will work for them
+- Notify team members about meeting schedule and ensures that everyone is present and ready
+- Take notes about each person's update reported during stand up
+- Keep the meeting moving
+
+#### Task Leader
+
+The task leader has the following responsibilities:
+
+- Leads discussion on task assignment, prioritization, and organization
+- Decide if a task should be completed alone or in a pair
+- Assign tasks based on...
+  - Individual comfort
+  - Desire
+  - Ability
+
+### Stand Up Meetings
+
+Make sure they're scheduled and they happen. The ideal stand up meeting is short and it's an important way to start the day on the right page. It's also the best chance to get the team together and ask for help.
+
+### Kanban Board
+
+Everyone is responsible for keeping the Kanban board accurate _at all times_.
+
+This means the following:
+- When you pick up a task, move the task from the "To do" column to "Doing"
+- When you finish a task, move the task from the "Doing" column to "Done"
+- When you stop work on a task, move the task from "Doing" back to "To do"
+- When a task changes in nature, update the task's name and description and any relevant labels
+
+_Do not_ leave the responsibility of the Kanban board to just one or two people. _Stay accountable to your team and the work you are doing._
+
+At the end of each day, your team's assigned Project Manager will review the Trello board to ensure it captures the updates that your team has made throughout the day.
+
+### Interim Demo
+
+In a real world work environment, a team's success is measured by their product as opposed to each individual's contribution.
+
+Each team will present their progress and respond to questions from their Project Manager at the halfway mark of the project. Every team member will participate in these demos; the PM will ask specific questions regarding:
+1. The team's progress and plan for completing the project
+1. The technical decisions and implementation
+1. Every team member's understanding of the underlying technical structures
+
+### Midpoint Retrospective
+
+On the first Friday, instead of our normal full-class retro, each team will get together and conduct a small-scale retro. One team member should facilitate, this may be the standup leader or someone else. Your retro should focus on the following questions:
+- What has gone well?
+- What could have gone better?
+- Where is our direction still unclear?
+
+---
+
+## Prioritization
 
 This project contains many user stories, some of which are more relevant to our in-class learning goals than others. Here is a rough categorization of how important various features are:
 
@@ -206,66 +270,7 @@ Many of our models will have attributes that are required for our application to
 - Rating must be an integer
 - Rating must be between 1 and 5
 
-## Process Requirements
-
-We expect you to follow this modified Agile process as you work on this project:
-
-### Team Leaders
-
-Each team will have team leaders who are responsible for keeping track of each team member's contributions. Rotate leader roles at the beginning of the second week; every team member will be in at least one leader role during the project.
-
-#### Stand Up Leader
-
-The stand up leader has the following responsibilities:
-
-- Determine the daily time for team standup. Once a time is decided, confirm with the PM that this time will work for them
-- Notify team members about meeting schedule and ensures that everyone is present and ready
-- Take notes about each person's update reported during stand up
-- Keep the meeting moving
-
-#### Task Leader
-
-The task leader has the following responsibilities:
-
-- Leads discussion on task assignment, prioritization, and organization
-- Decide if a task should be completed alone or in a pair
-- Assign tasks based on...
-  - Individual comfort
-  - Desire
-  - Ability
-
-### Stand Up Meetings
-
-Make sure they're scheduled and they happen. The ideal stand up meeting is short and it's an important way to start the day on the right page. It's also the best chance to get the team together and ask for help.
-
-### Kanban Board
-
-Everyone is responsible for keeping the Kanban board accurate _at all times_.
-
-This means the following:
-- When you pick up a task, move the task from the "To do" column to "Doing"
-- When you finish a task, move the task from the "Doing" column to "Done"
-- When you stop work on a task, move the task from "Doing" back to "To do"
-- When a task changes in nature, update the task's name and description and any relevant labels
-
-_Do not_ leave the responsibility of the Kanban board to just one or two people. _Stay accountable to your team and the work you are doing._
-
-At the end of each day, your team's assigned Project Manager will review the Trello board to ensure it captures the updates that your team has made throughout the day.
-
-### Interim Demo
-In a real world work environment, a team's success is measured by their product as opposed to each individual's contribution.
-
-Each team will present their progress and respond to questions from their Project Manager on the first Friday. Every team member will participate in these demos; the PM will ask specific questions regarding
-1. The team's progress and plan for completing the project
-1. The technical decisions and implementation
-1. Every team member's understanding of the underlying technical structures
-
-### Midpoint Retrospective
-
-On the first Friday, instead of our normal full-class retro, each team will get together and conduct a small-scale retro. One team member should facilitate, this may be the standup leader or someone else. Your retro should focus on the following questions:
-- What has gone well?
-- What could have gone better?
-- Where is our direction still unclear?
+---
 
 ## Final Presentation Requirements
 
