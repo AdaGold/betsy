@@ -45,16 +45,14 @@ Teams will build this online platform following these principles:
 1. As a group decide on an app name (this may help lead the aesthetic)
 1. As a group decide on a team name (this will amuse your instructors)
 1. Have one person on your team fork/clone the project master as per usual
-  1. Create a new rails app using `rails new .`
-  1. Add all other team members as collaborators
-  1. Each team member should clone the repo to their computer
+    - Create a new rails app using `rails new .`
+    - Add all other team members as collaborators
+    - Each team member should clone the repo to their computer
 1. Figure out your workflow for the project, re: git and task management
-  1. Do you want to use git branches? Pull requests?
+    - Do you want to use git branches? Pull requests?
 1. Review the Process Requirements below
-  1. Determine who will be the Stand Up Leader and Task Leader for the first week.
-    1. The Stand Up Leader's first responsibility is to determine the daily stand-up time, create a Google Calendar event, and invite your PM
-    1. The Task Leader's first responsibility is to determine the time for the first demo, create a Google Calendar event, and invite your PM
-    1. Create a Trello board to use as a Kanban board and ensure that all team members and the PM have access
+    - Determine who will be the Stand Up Leader and Task Leader for the first week
+1. Create a Trello board to use as a Kanban board and ensure that all team members and the PM have access
 1. Review the User Stories below and create Trello tasks to represent them
 1. Slack your team name, app name, and invitation link to your Trello board to your Project Manager
 
