@@ -58,10 +58,23 @@ Teams will build this online platform following these principles:
 
 ## Non-Functional Requirements
 
-- Unit tests
-- Controller tests
-- Test code coverage (using SimpleCov - remember me!)
-  - 90% for all controller and model classes
+This project must have:
+  - 90% reported coverage for all controller and model classes using SimpleCov
+  - Deployment to Heroku
+
+### Images Must Be Externally Hosted
+
+**All images used must be hosted on an external service.** To use an externally-hosted image, use absolute URLs to the website.
+
+Examples of websites that will host your images:
+- Imgur
+- Google+ Photos
+- Flickr
+- TinyPic
+
+You may use any other service besides those examples.
+
+Heroku and Rails have very specific requirements to make images appear correctly after deployment. To avoid distracting yourselves from fighting deployment fires, we recommend using externally hosted images
 
 ## Process Requirements
 
@@ -151,6 +164,8 @@ This project contains many user stories, some of which are more relevant to our 
 
 - Reviews and ratings
 - Comprehensive validations, particularly around submitting an order
+
+---
 
 ## Functional Requirements
 
