@@ -40,5 +40,21 @@ Content is organized with HTML5 semantic tags |
 CSS is DRY |
 **Overall** |
 
+<!-- 
+Things to Check:
+
+1.  Test Coverage for Models
+2.  Test Coverage for Controllers
+3.  Merchant Dashboard & checkout routes, no extra route params
+4.  Cannot access the dashboard of another merchant
+5.  Merchants can change status of an order item
+6.  Cannot access the cart of another user
+7.  Can purchase items from the store
+8.  Cannot purchase more than the supply of a product
+9.  As a merchant can add products
+10.  Guest users can't add products
+11.  Cannot review your own product (while logged in)
+-->
+
 
 # Only the person who submitted the PR will get an email about this feedback. Please let the rest of your team know about it.
