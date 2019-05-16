@@ -22,9 +22,9 @@ Add another merchant's product |
 Check out |
 Check that stock was reduced |
 Change order-item's status on dashboard |
-Verify unable to edit another merchant's product |
-Verify unable to see another merchant's dashboard |
 Verify unable to leave a review for your own product |
+Verify unable to edit another merchant's product by manually editing URL |
+Verify unable to see another merchant's dashboard by manually editing URL |
 
 ### Code Review
 
@@ -54,6 +54,16 @@ Leave a review:<br>  - Works when not logged in<br>  - Works when logged in as s
 
 ## Overall Feedback
 
-<!-- Great work overall! You've built a fully functional web store from top to bottom. This represents a huge amount of work, and you should be proud of yourselves! Your code is pretty well organized all the way from the CSS to the database, and I am quite happy with this submission. There are definitely places where things could be cleaned up or refined, or where there are feature gaps you might like to fill. However bEtsy is a huge project on a very short timeline, and this feedback should not at all diminish the magnitude of what you've accomplished. Keep up the hard work! -->
+<!-- 
+Great work overall! You've built a fully functional web store from top to bottom. This represents a huge amount of work, and you should be proud of yourselves!. 
+
+I am particularly impressed by the way that you...
+
+I do see some room for improvement around...
+
+[Common topics include authorization, route organization, moving business logic to the model, testing for any of the above]
+
+bEtsy is a huge project on a very short timeline, and this feedback should not at all diminish the magnitude of what you've accomplished. Keep up the hard work!
+-->
 
 # Only the person who submitted the PR will get an email about this feedback. Please let the rest of your team know about it.
