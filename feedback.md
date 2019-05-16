@@ -54,16 +54,14 @@ Leave a review:<br>  - Works when not logged in<br>  - Works when logged in as s
 
 ## Overall Feedback
 
-<!-- 
 Great work overall! You've built a fully functional web store from top to bottom. This represents a huge amount of work, and you should be proud of yourselves!. 
 
 I am particularly impressed by the way that you...
 
 I do see some room for improvement around...
 
-[Common topics include authorization, route organization, moving business logic to the model, testing for any of the above]
+<!-- Common topics include authorization, route organization, moving business logic to the model, testing for any of the above -->
 
 bEtsy is a huge project on a very short timeline, and this feedback should not at all diminish the magnitude of what you've accomplished. Keep up the hard work!
--->
 
 # Only the person who submitted the PR will get an email about this feedback. Please let the rest of your team know about it.
