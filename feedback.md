@@ -1,7 +1,7 @@
 # bEtsy
 ## What We're Looking For
 
-<!-- Reviewer instructions: no in-line comments on this one! Give it a quick review, and fill out the table, that's it. The goal is no more than 30 (closer to 20) minutes per submission. -->
+<!-- Reviewer instructions: no in-line comments on this one! Give it a quick review, and fill out the table, that's it. The goal is no more than 30 (closer to 20) minutes per submission. Note that canned positive feedback is included at the bottom - adjust this as appropriate to the submission. -->
 
 ### Manual testing
 
@@ -54,6 +54,6 @@ Leave a review:<br>  - Works when not logged in<br>  - Works when logged in as s
 
 ## Overall Feedback
 
-Great job overall! ... Keep up the hard work!
+<!-- Great work overall! You've built a fully functional web store from top to bottom. This represents a huge amount of work, and you should be proud of yourselves! Your code is pretty well organized all the way from the CSS to the database, and I am quite happy with this submission. There are definitely places where things could be cleaned up or refined, or where there are feature gaps you might like to fill. However bEtsy is a huge project on a very short timeline, and this feedback should not at all diminish the magnitude of what you've accomplished. Keep up the hard work! -->
 
 # Only the person who submitted the PR will get an email about this feedback. Please let the rest of your team know about it.
