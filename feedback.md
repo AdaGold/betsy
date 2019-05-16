@@ -53,4 +53,8 @@ Leave a review:<br>  - Works when not logged in<br>  - Works when logged in as s
 
 <!-- A note on checking tests: usually just reading test names is enough, unless something is obviously wrong. You don't need to go in and evaluate the test code. Nor do you need to write much text in the evaluation, just "yes", "no", or "missing some". -->
 
+## Overall Feedback
+
+Great job overall! ... Keep up the hard work!
+
 # Only the person who submitted the PR will get an email about this feedback. Please let the rest of your team know about it.
