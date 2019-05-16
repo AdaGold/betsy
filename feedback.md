@@ -44,10 +44,10 @@ Checkout -> decrease inventory |
 Merchant's total revenue |
 Find all orders for this merchant (instance method on `Merchant`) |
 Find all items from this order that are sold by this merchant (instance method on `Order`) |
-**Model Tests** |
+**Selected Model Tests** |
 Add item to cart:<br>  - Can add a good product<br>  - Can't add a product w/o enough stock<br>  - Can't add a retired product<br>  - Can't add to an order that's not in cart mode<br>  - Logic specific to this implementation |
 Get orders for this merchant:<br>  - Includes all orders from this merchant<br>  - Doesn't include orders from another merchant<br>  - Orders are not included more than once<br>  - Does something reasonable when there are no orders for this merchant |
-**Controller Tests** |
+**Selected Controller Tests** |
 Add item to cart:<br>  - Empty cart (should be created)<br>  - Cart already exists (should add to same order)<br>  - Product already in cart (should update quantity)<br>  - Bad product ID, product is retired, quantity too high, or something like that (error) |
 Leave a review:<br>  - Works when not logged in<br>  - Works when logged in as someone other than the product's merchant<br>  - Doesn't work if logged in as this product's merchant<br>  - Doesn't work if validations fail |
 
