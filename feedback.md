@@ -15,7 +15,7 @@ Verify unable to create a new product |
 **After logging in** | |
 Create a category |
 Create a product in that category with stock 10 |
-Add the product you created  |
+Add the product you created to your cart |
 Add it again (should update quantity) |
 Verify unable to increase quantity beyond stock |
 Add another merchant's product |
