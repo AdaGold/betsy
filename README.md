@@ -40,6 +40,11 @@ Teams will build this online platform following these principles:
 - build a logical user-flow that moves across multiple controllers and models
 - use HTML/CSS and Bootstap or another CSS framework to style your website
 
+## A Note About Teamwork and Asking Questions
+Please continue to feel free to come to the instructional team with project questions. That said, please only come to instructors with questions in pairs. Before coming to one of us, we ask that both people in the pair have looked into the issue together.
+
+The instructors have found that when multiple people from the same team come to us and they're both looked into the question, the group has more opportunity to support each other and the questions tend to be answered more quickly because the team has thought about their question more thoroughly.  It also spreads knowledge of features across the team.
+
 ## Getting Started
 
 1. As a group decide on an app name (this may help lead the aesthetic)
