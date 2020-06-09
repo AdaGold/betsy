@@ -51,6 +51,20 @@ Leave a review:<br>  - Works when not logged in<br>  - Works when logged in as s
 
 <!-- A note on checking tests: usually just reading test names is enough, unless something is obviously wrong. You don't need to go in and evaluate the test code. Nor do you need to write much text in the evaluation, just "yes", "no", or "missing some". -->
 
+## Code Style Bonus Awards
+
+<!-- Instructors: Please strike a balance between liberal/stingy with these. These are simply built-in pieces of positive feedback; use this to encourage and push students towards a cleaner code style! -->
+
+Was the code particularly impressive in code style for any of these reasons (or more...?)
+
+| Quality | Yes? |
+| --- | --- |
+| Perfect Indentation | ✅
+| Elegant/Clever | ✅
+| Descriptive/Readable | ✅
+| Concise | ✅
+| Logical/Organized | ✅
+
 ## Overall Feedback
 
 <!--
