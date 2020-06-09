@@ -29,6 +29,7 @@ Verify unable to see another merchant's dashboard by manually editing URL | ✔�
 
 Criteria | yes / no
 ---  | ---
+90% reported coverage for all controller and model classes using SimpleCov | ✔️?
 **Routes** |
 No un-needed routes generated (check `reviews`) | ✔️?
 Routes not overly-nested (check products and merchants) | ✔️?
