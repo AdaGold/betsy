@@ -35,7 +35,7 @@ No un-needed routes generated (check `reviews`) | ✔️?
 Routes not overly-nested (check products and merchants) | ✔️?
 Merchant dashboard and cart page use a non-parameterized routes (should pull merchant or cart ID from session) | ✔️?
 **Controllers** |
-Controller-filter to require login by default | ✔️?
+Controller-filter to require login is applied to all merchant-specific actions (update/add item, add category, view merchant dashboard, etc.) - filter method is not duplicated across multiple files | ✔️?
 Helper methods or filters to find logged-in user, cart, product, etc | ✔️?
 No excessive business logic | ✔️?
 **Business logic that ought to live in the model** |
